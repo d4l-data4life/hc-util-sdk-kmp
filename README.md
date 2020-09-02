@@ -1,1 +1,0 @@
-# hc-sdk-util-kmp

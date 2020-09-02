@@ -68,9 +68,6 @@ instrumentation tests
 
 Add the following maven repository url to your root build.gradle:
 
-Please take a look over at Github https://docs.github.com/en/packages/publishing-and-managing-packages/about-github-packages#about-tokens[aboout-github-packages#tokens] on how to generate your private token for accessing the Github Package Registry.
-Add `gpr.user = {your Github username}` and `gpr.key = {private github access token}` to your `gradle.properties`
-
 ----
 allprojects {
     repositories {
