@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      D4L_CLIENT_CONFIG_ANDROID: ${{ secrets.D4L_CLIENT_CONFIG_ANDROID }}
-      D4L_TEST_CONFIG_ANDROID: ${{ secrets.D4L_TEST_CONFIG_ANDROID }}
       PACKAGE_REGISTRY_USERNAME: ${{ secrets.PACKAGE_REGISTRY_USERNAME }}
       PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
