@@ -1,0 +1,26 @@
+name: D4L CI
+
+on:
+  push:
+    branches:
+      - main
+      - release/*
+  pull_request:
+    branches:
+      - main
+      - release/*
+
+jobs:
+  build-and-verify:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display runner context
+        run: hostname -s
+      - uses: actions/checkout@v2
+      - name: Cleanup
+        run: ./gradlew clean
+      - name: Build
+        run: ./gradlew build
+
