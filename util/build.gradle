@@ -87,9 +87,11 @@ publishing {
             if (publication.name == "androidRelease") {
                 publication.artifactId = "$project.name-android"
             } else if (publication.name == "metadata") {
-                publication.artifactId = "$project.name-metadata"
+                publication.artifactId = "$project.name-common"
             } else if (publication.name == "jvm") {
                 publication.artifactId = "$project.name-jvm"
+            } else if (publication.name == 'kotlinMultiplatform') {
+                publication.artifactId = "$project.name"
             }
             pom {
                 name = "${LibraryConfig.name}"
