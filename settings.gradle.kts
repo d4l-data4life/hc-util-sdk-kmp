@@ -13,11 +13,12 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
+rootProject.name = "hc-util-sdk-kmp"
 
-plugins {
-    `kotlin-dsl`
-}
+enableFeaturePreview("GRADLE_METADATA")
 
-repositories {
-    jcenter()
-}
+include(
+    ":util",
+    ":android",
+    ":jvm"
+)

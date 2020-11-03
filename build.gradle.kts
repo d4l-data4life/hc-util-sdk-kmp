@@ -14,15 +14,37 @@
  * contact D4L by email to help@data4life.care.
  */
 
-pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "kotlin-multiplatform") {
-                useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
-            }
-        }
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath(GradlePlugins.kotlin)
+        classpath(GradlePlugins.android)
     }
 }
-rootProject.name = 'hc-util-sdk-kmp'
 
-include ':util', ':android', ':jvm'
+plugins {
+    kotlinMultiplatform(false)
+    dependencyUpdates()
+}
+
+allprojects {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+        jcenter()
+
+        maven("https://kotlin.bintray.com/kotlin")
+        maven("https://kotlin.bintray.com/kotlinx")
+        maven("https://jitpack.io")
+    }
+}
+
+tasks.named<Wrapper>("wrapper") {
+    gradleVersion = "6.7"
+    distributionType = Wrapper.DistributionType.ALL
+}
