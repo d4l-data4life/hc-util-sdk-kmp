@@ -15,32 +15,26 @@
  */
 
 object Versions {
-    const val kotlin = "1.3.50"
 
     /**
      *  https://github.com/Kotlin/kotlinx.coroutines
      */
     const val kotlinCoroutines = "1.1.1"
 
-    object GradlePlugin {
+    object GradlePlugins {
         const val kotlin = Versions.kotlin
         const val android = "4.0.1"
 
         /**
-         * [Dexcount](https://github.com/KeepSafe/dexcount-gradle-plugin)
+         * [DependencyUpdates](https://github.com/ben-manes/gradle-versions-plugin)
          */
-        const val dexcount = "0.8.4"
-
-        /**
-         * [Gradle DownloadTask](https://github.com/michel-kraemer/gradle-download-task)
-         */
-        const val downloadTask = "3.4.3"
-
-        /**
-         * [Dokka - Documentation Engine for Kotlin](https://github.com/Kotlin/dokka)
-         */
-        const val dokka = "0.9.17"
+        const val dependencyUpdates = "0.34.0"
     }
+
+    // Kotlin
+    // https://github.com/JetBrains/kotlin
+    const val kotlin = "1.3.50"
+    const val kotlinGradlePlugin = kotlin
 
     // Java
     const val javaXAnnotation = "3.0.2"

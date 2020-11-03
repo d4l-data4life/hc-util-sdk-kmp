@@ -14,22 +14,6 @@
  * contact D4L by email to help@data4life.care.
  */
 
-object GradlePlugins {
-    val android = "com.android.tools.build:gradle:${Versions.GradlePlugin.android}"
-    val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.GradlePlugin.kotlin}"
-
-    val dexcount =
-        "com.getkeepsafe.dexcount:dexcount-gradle-plugin:${Versions.GradlePlugin.dexcount}"
-
-    /**
-     * [Gradle DownloadTask](https://github.com/michel-kraemer/gradle-download-task)
-     */
-    val downloadTask = "de.undercouch:gradle-download-task:${Versions.GradlePlugin.downloadTask}"
-
-    val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.GradlePlugin.dokka}"
-}
-
-
 object Libraries {
     // Kotlin
     val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
