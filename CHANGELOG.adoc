@@ -18,6 +18,8 @@ toc::[]
 
 === Changed
 
+* Change project to support Kotlin 1.4.10 and new Kotlin Multiplatform setup
+
 === Removed
 
 === Fixed
