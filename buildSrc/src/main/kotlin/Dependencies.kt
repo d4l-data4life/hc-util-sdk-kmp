@@ -17,7 +17,6 @@
 object Dependencies {
 
     val kotlin = Kotlin
-
     object Kotlin {
         const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
         const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
@@ -66,6 +65,9 @@ object Dependencies {
 
         // Material
         const val material = "com.google.android.material:material:${Versions.material}"
+
+        // Test
+        const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
     }
 
     val androidTest = AndroidTest

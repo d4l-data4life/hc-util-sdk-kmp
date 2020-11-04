@@ -29,7 +29,7 @@ group = LibraryConfig.group
 
 
 kotlin {
-    android() {
+    android {
         publishLibraryVariants("release")
 //        artifacts {
 //            archives androidSourcesJar
@@ -61,6 +61,8 @@ kotlin {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.testJvm)
                 implementation(Dependencies.multiplatform.kotlin.testJvmJunit)
+
+                implementation(Dependencies.android.robolectric)
             }
         }
 
@@ -102,6 +104,19 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        getByName("main") {
+            manifest.srcFile("src/androidMain/AndroidManifest.xml")
+            java.setSrcDirs(setOf("src/androidMain/kotlin"))
+            res.setSrcDirs(setOf("src/androidMain/res"))
+        }
+
+        getByName("test") {
+            java.setSrcDirs(setOf("src/androidTest/kotlin"))
+            res.setSrcDirs(setOf("src/androidTest/res"))
+        }
     }
 }
 

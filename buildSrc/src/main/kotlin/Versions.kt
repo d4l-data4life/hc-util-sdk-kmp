@@ -56,4 +56,9 @@ object Versions {
 
     // Junit Test
     const val testJUnit = "4.13.1"
+
+    /**
+     * [Robolectric](https://github.com/robolectric/robolectric)
+     */
+    const val robolectric = "4.4"
 }

@@ -16,14 +16,14 @@
 
 package care.data4life.sdk.util
 
-import android.support.test.runner.AndroidJUnit4
 import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(RobolectricTestRunner::class)
 class Base64Test {
 
     @Test

@@ -18,7 +18,5 @@ rootProject.name = "hc-util-sdk-kmp"
 enableFeaturePreview("GRADLE_METADATA")
 
 include(
-    ":util",
-    ":android",
-    ":jvm"
+    ":util"
 )
