@@ -24,6 +24,10 @@ plugins {
     id("maven-publish")
 }
 
+apply {
+    plugin("org.ajoberstar.git-publish")
+}
+
 version = LibraryConfig.version
 group = LibraryConfig.group
 
@@ -31,10 +35,6 @@ group = LibraryConfig.group
 kotlin {
     android {
         publishLibraryVariants("release")
-//        artifacts {
-//            archives androidSourcesJar
-//            archives androidJavadocJar
-//        }
     }
 
     jvm()
@@ -123,19 +123,8 @@ android {
 configure<PublishingExtension> {
     publications {
         withType<MavenPublication> {
-            groupId = "${LibraryConfig.publish.groupId}.${LibraryConfig.publish.artifactId}"
-            artifactId = LibraryConfig.publish.artifactId
+            groupId = "${LibraryConfig.publish.groupId}.${LibraryConfig.publish.name}"
             version = LibraryConfig.publish.version
-
-//            if (publication.name == "androidRelease") {
-//                publication.artifactId = "$project.name-android"
-//            } else if (publication.name == "metadata") {
-//                publication.artifactId = "$project.name-common"
-//            } else if (publication.name == "jvm") {
-//                publication.artifactId = "$project.name-jvm"
-//            } else if (publication.name == 'kotlinMultiplatform') {
-//                publication.artifactId = "$project.name"
-//            }
 
             pom {
                 name.set(LibraryConfig.publish.name)
@@ -172,11 +161,93 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/${LibraryConfig.githubOwner}/${LibraryConfig.githubRepository}")
+            url =
+                uri("https://maven.pkg.github.com/${LibraryConfig.githubOwner}/${LibraryConfig.githubRepository}")
             credentials {
-                username = (project.findProperty("gpr.user") ?: System.getenv("PACKAGE_REGISTRY_USERNAME")).toString()
-                password = (project.findProperty("gpr.key") ?: System.getenv("PACKAGE_REGISTRY_TOKEN")).toString()
+                username = (project.findProperty("gpr.user")
+                    ?: System.getenv("PACKAGE_REGISTRY_USERNAME")).toString()
+                password = (project.findProperty("gpr.key")
+                    ?: System.getenv("PACKAGE_REGISTRY_TOKEN")).toString()
             }
+        }
+
+        val target = "file://${project.buildDir}/gitPublish"
+
+        maven {
+            name = "ReleasePackages"
+            url = uri("$target/releases")
+        }
+
+        maven {
+            name = "SnapshotPackages"
+            url = uri("$target/snapshots")
+        }
+
+        maven {
+            name = "FeaturePackages"
+            url = uri("$target/features")
         }
     }
 }
+
+configure<org.ajoberstar.gradle.git.publish.GitPublishExtension> {
+    repoUri.set("git@github.com:d4l-data4life/maven-repository.git")
+
+    branch.set("main")
+
+    contents {
+    }
+
+    preserve {
+        include("**/*")
+    }
+
+    commitMessage.set("Publish ${LibraryConfig.name} $version")
+}
+
+val publishFeature by tasks.creating {
+    group = "publishing"
+
+    dependsOn("gitPublishReset")
+    dependsOn("gitPublishCopy")
+    dependsOn("publishAllPublicationsToFeaturePackagesRepository")
+    dependsOn("gitPublishCommit")
+    dependsOn("gitPublishPush")
+
+    tasks.findByName("gitPublishCopy")!!.mustRunAfter("gitPublishReset")
+    tasks.findByName("publishAllPublicationsToFeaturePackagesRepository")!!.mustRunAfter("gitPublishCopy")
+    tasks.findByName("gitPublishCommit")!!.mustRunAfter("publishAllPublicationsToFeaturePackagesRepository")
+    tasks.findByName("gitPublishPush")!!.mustRunAfter("gitPublishCommit")
+}
+
+val publishSnapshot by tasks.creating {
+    group = "publishing"
+
+    dependsOn("gitPublishReset")
+    dependsOn("gitPublishCopy")
+    dependsOn("publishAllPublicationsToSnapshotPackagesRepository")
+    dependsOn("gitPublishCommit")
+    dependsOn("gitPublishPush")
+
+    tasks.findByName("gitPublishCopy")!!.mustRunAfter("gitPublishReset")
+    tasks.findByName("publishAllPublicationsToSnapshotPackagesRepository")!!.mustRunAfter("gitPublishCopy")
+    tasks.findByName("gitPublishCommit")!!.mustRunAfter("publishAllPublicationsToSnapshotPackagesRepository")
+    tasks.findByName("gitPublishPush")!!.mustRunAfter("gitPublishCommit")
+}
+
+val publishRelease by tasks.creating {
+    group = "publishing"
+
+    dependsOn("gitPublishReset")
+    dependsOn("gitPublishCopy")
+    dependsOn("publishAllPublicationsToReleasePackagesRepository")
+    dependsOn("gitPublishCommit")
+    dependsOn("gitPublishPush")
+
+    tasks.findByName("gitPublishCopy")!!.mustRunAfter("gitPublishReset")
+    tasks.findByName("publishAllPublicationsToReleasePackagesRepository")!!.mustRunAfter("gitPublishCopy")
+    tasks.findByName("gitPublishCommit")!!.mustRunAfter("publishAllPublicationsToReleasePackagesRepository")
+    tasks.findByName("gitPublishPush")!!.mustRunAfter("gitPublishCommit")
+}
+
+

@@ -15,11 +15,10 @@
  */
 
 object LibraryConfig {
-    const val version = "1.6.1"
+    const val version = "1.6.4"
     const val versionCode = 9
     const val group = "care.data4life"
-    const val artifact = "hc-util-sdk-kmp"
-
+    const val name = "hc-util-sdk-kmp"
 
     const val githubOwner = "d4l-data4life"
     const val githubRepository = "hc-util-sdk-kmp"
@@ -28,10 +27,12 @@ object LibraryConfig {
     val publish = PublishConfig
 
     object PublishConfig {
-        const val name = "${LibraryConfig.githubOwner}/${LibraryConfig.githubRepository}"
+        const val name = LibraryConfig.name
         const val version = LibraryConfig.version
-        const val groupId = "${LibraryConfig.group}"
-        const val artifactId = ""
+        const val groupId = LibraryConfig.group
+        const val artifactId = "util"
+
+        const val year = "2020"
 
         const val publishSources = true
         const val publishDocs = true
@@ -52,8 +53,7 @@ object LibraryConfig {
         const val licenseUrl = "$url/blob/main/LICENSE"
         const val licenseDistribution = "repo"
 
-        const val year = "2020"
-
+        // SCM
         const val scmUrl = "git://$host/$path.git"
         const val scmConnection = "scm:$url"
         const val scmDeveloperConnection = scmConnection
@@ -61,7 +61,7 @@ object LibraryConfig {
 
     val android = AndroidLibraryConfig
     object AndroidLibraryConfig {
-        const val minSdkVersion = 21
+        const val minSdkVersion = 23
         const val compileSdkVersion = 30
         const val targetSdkVersion = 30
 

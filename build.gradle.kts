@@ -19,10 +19,12 @@ buildscript {
         mavenCentral()
         google()
         jcenter()
+        maven("https://dl.bintray.com/data4life/maven")
     }
     dependencies {
         classpath(GradlePlugins.kotlin)
         classpath(GradlePlugins.android)
+        classpath("care.data4life:gradle-git-publish:3.1.0")
     }
 }
 
