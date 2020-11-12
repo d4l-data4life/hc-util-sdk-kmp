@@ -48,6 +48,8 @@ allprojects {
 }
 
 jgitver {
+    strategy(fr.brouillard.oss.jgitver.Strategies.CONFIGURABLE)
+
     policy(closureOf<fr.brouillard.oss.gradle.plugins.JGitverPluginExtensionBranchPolicy> {
         pattern = "feature/(.*)"
         transformations = listOf("LOWERCASE_EN")

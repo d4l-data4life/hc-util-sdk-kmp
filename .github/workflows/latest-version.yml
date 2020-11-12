@@ -1,23 +1,21 @@
-name: D4L CI
+name: Latest Version
 
 on:
   push:
     branches:
       - main
       - release/*
-  pull_request:
-    branches:
-      - main
-      - release/*
 
 jobs:
-  build-and-verify:
+  latest-version:
 
     runs-on: ubuntu-latest
 
     env:
       PACKAGE_REGISTRY_USERNAME: ${{ secrets.PACKAGE_REGISTRY_USERNAME }}
       PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
+      GRGIT_USER: ${{ secrets.PACKAGE_REGISTRY_USERNAME }}
+      GRGIT_PASS: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
     steps:
       - name: Display runner context
@@ -28,6 +26,9 @@ jobs:
           java-version: 1.8
       - name: Cleanup
         run: ./gradlew clean
+      - name: Version
+        run: ./gradlew version
       - name: Build
         run: ./gradlew build
-
+      - name: Publish Snapshot to Maven Repo
+        run: ./gradlew publishSnapshot
