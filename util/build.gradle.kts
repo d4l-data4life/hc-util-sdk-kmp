@@ -28,9 +28,7 @@ apply {
     plugin("org.ajoberstar.git-publish")
 }
 
-version = LibraryConfig.version
 group = LibraryConfig.group
-
 
 kotlin {
     android {
@@ -88,8 +86,8 @@ android {
         minSdkVersion(LibraryConfig.android.minSdkVersion)
         targetSdkVersion(LibraryConfig.android.targetSdkVersion)
 
-        versionCode = LibraryConfig.android.versionCode
-        versionName = LibraryConfig.android.versionName
+        versionCode = 1
+        versionName = "${project.version}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments(
@@ -124,7 +122,6 @@ configure<PublishingExtension> {
     publications {
         withType<MavenPublication> {
             groupId = "${LibraryConfig.publish.groupId}.${LibraryConfig.publish.name}"
-            version = LibraryConfig.publish.version
 
             pom {
                 name.set(LibraryConfig.publish.name)

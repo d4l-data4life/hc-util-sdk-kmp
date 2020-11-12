@@ -15,8 +15,6 @@
  */
 
 object LibraryConfig {
-    const val version = "1.6.4"
-    const val versionCode = 9
     const val group = "care.data4life"
     const val name = "hc-util-sdk-kmp"
 
@@ -28,14 +26,9 @@ object LibraryConfig {
 
     object PublishConfig {
         const val name = LibraryConfig.name
-        const val version = LibraryConfig.version
         const val groupId = LibraryConfig.group
-        const val artifactId = "util"
 
         const val year = "2020"
-
-        const val publishSources = true
-        const val publishDocs = true
 
         // URL
         const val host = "github.com"
@@ -60,13 +53,11 @@ object LibraryConfig {
     }
 
     val android = AndroidLibraryConfig
+
     object AndroidLibraryConfig {
         const val minSdkVersion = 23
         const val compileSdkVersion = 30
         const val targetSdkVersion = 30
-
-        const val versionCode = LibraryConfig.versionCode
-        const val versionName = LibraryConfig.version
 
         const val resourcePrefix = "hc_util_"
     }

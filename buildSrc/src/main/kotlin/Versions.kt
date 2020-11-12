@@ -24,6 +24,8 @@ object Versions {
          * [DependencyUpdates](https://github.com/ben-manes/gradle-versions-plugin)
          */
         const val dependencyUpdates = "0.34.0"
+
+        const val gitVersioning = "0.6.1"
     }
 
     // Kotlin

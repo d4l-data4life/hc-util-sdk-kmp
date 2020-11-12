@@ -52,3 +52,7 @@ fun PluginDependenciesSpec.androidKotlinExtensions(): PluginDependencySpec =
 
 fun PluginDependenciesSpec.dependencyUpdates(): PluginDependencySpec =
     id("com.github.ben-manes.versions").version(Versions.GradlePlugins.dependencyUpdates)
+
+
+fun PluginDependenciesSpec.gitVersioning(): PluginDependencySpec =
+    id("fr.brouillard.oss.gradle.jgitver").version(Versions.GradlePlugins.gitVersioning)
