@@ -14,8 +14,6 @@ jobs:
     env:
       PACKAGE_REGISTRY_USERNAME: ${{ secrets.PACKAGE_REGISTRY_USERNAME }}
       PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
-      GRGIT_USER: ${{ secrets.PACKAGE_REGISTRY_USERNAME }}
-      GRGIT_PASS: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
     steps:
       - name: Display runner context
@@ -23,6 +21,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - run: git branch -D ${{ github.head_ref }} || true
+      - name: Reattach head
+        run: git checkout -b ${{ github.head_ref }}
       - name: Cleanup
         run: ./gradlew clean
       - name: Version

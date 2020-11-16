@@ -48,7 +48,12 @@ allprojects {
 }
 
 jgitver {
-    strategy(fr.brouillard.oss.jgitver.Strategies.CONFIGURABLE)
+    strategy(fr.brouillard.oss.jgitver.Strategies.MAVEN)
+
+    policy(closureOf<fr.brouillard.oss.gradle.plugins.JGitverPluginExtensionBranchPolicy> {
+        pattern = "release/(.*)"
+        transformations = listOf("IGNORE")
+    })
 
     policy(closureOf<fr.brouillard.oss.gradle.plugins.JGitverPluginExtensionBranchPolicy> {
         pattern = "feature/(.*)"
@@ -61,8 +66,6 @@ jgitver {
     })
 
     nonQualifierBranches = "main"
-
-    useDistance(true)
 }
 
 tasks.named<Wrapper>("wrapper") {
