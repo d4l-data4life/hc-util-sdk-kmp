@@ -21,6 +21,8 @@ jobs:
       - name: Display runner context
         run: hostname -s
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: webfactory/ssh-agent@v0.4.1
           with:
             ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
