@@ -1,3 +1,4 @@
+:util-sdk-version: 1.6.1
 :toc: macro
 :toclevels: 2
 :toc-title:
@@ -27,7 +28,7 @@ link:{link-repository}[*Explore the docs »*]
 link:{link-repository}/issues[Report Bug] · link:{link-repository}/issues[Request Feature]
 
 
-image:https://img.shields.io/badge/Latest-{fhir-sdk-version}-blueviolet.svg[{util-sdk-version}, link={link-repository}/releases]
+image:https://img.shields.io/badge/Latest-{util-sdk-version}-blueviolet.svg[{util-sdk-version}, link={link-repository}/releases]
 image:{link-repository}/workflows/D4L%20CI%20KMP/badge.svg[Build Status, link={link-repository}/actions]
 image:https://img.shields.io/badge/Platform-Android%20•%20JVM%20-blue.svg[Platform]
 image:https://img.shields.io/badge/license-PRIVATE-lightgrey.svg[License, link=LICENSE]
