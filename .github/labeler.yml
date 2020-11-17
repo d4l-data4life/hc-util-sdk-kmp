@@ -19,5 +19,5 @@ library:
 sample-android:
   - sample-android/**/*
 
-sample-ios:
-  - sample-ios/**/*
+sample-jvm:
+  - sample-jvm/**/*
