@@ -1,4 +1,4 @@
-name: Latest Version
+name: D4L CI - Latest Version
 
 on:
   push:

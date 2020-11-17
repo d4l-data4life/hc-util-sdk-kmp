@@ -1,12 +1,13 @@
-name: Publish Release
+name: D4L CI - Pull-Request Validation
 
 on:
-  push:
-    tags:
-      - 'v*'
+  pull_request:
+    branches:
+      - main
+      - release/*
 
 jobs:
-  publish-release:
+  pull-request-validation:
 
     runs-on: [self-hosted, macos]
 
@@ -27,9 +28,8 @@ jobs:
         run: ./gradlew clean
       - name: Version
         run: ./gradlew version
-      - name: Build project
+      - name: Build
         run: ./gradlew build
-      - name: Publish to GitHub Packages
-        run: ./gradlew publishAllPublicationToGitHubPackagesRepository
-      - name: Publish Release to Maven Repo
-        run: ./gradlew publishRelease
+      - name: Publish Feature to Maven Repo
+        run: ./gradlew publishFeature
+
