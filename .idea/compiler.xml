@@ -6,10 +6,6 @@
       <module name="hc-util-sdk-kmp.util.commonTest" target="1.6" />
       <module name="hc-util-sdk-kmp.util.jvmMain" target="1.6" />
       <module name="hc-util-sdk-kmp.util.jvmTest" target="1.6" />
-      <module name="util-multiplatform_jvmMain" target="1.6" />
-      <module name="util-multiplatform_jvmTest" target="1.6" />
-      <module name="util_jvmMain" target="1.6" />
-      <module name="util_jvmTest" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
