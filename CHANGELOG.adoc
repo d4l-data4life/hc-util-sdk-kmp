@@ -28,4 +28,9 @@ toc::[]
 
 === Bumped
 
+=== Breaking
+
+* Change Android support to min Android 6.0 (API 23) and target Android 11.0 (API 30)
+
 === Migration
+
