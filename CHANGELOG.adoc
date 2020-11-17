@@ -16,6 +16,8 @@ toc::[]
 
 === Added
 
+* Add deployment configuration for feature, snapshot and release
+
 === Changed
 
 * Change project to support Kotlin 1.4.10 and new Kotlin Multiplatform setup
