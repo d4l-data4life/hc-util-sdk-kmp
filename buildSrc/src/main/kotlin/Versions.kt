@@ -25,13 +25,20 @@ object Versions {
          */
         const val dependencyUpdates = "0.34.0"
 
+        /**
+         * [jGitVer](https://github.com/jgitver/gradle-jgitver-plugin)
+         */
         const val gitVersioning = "0.6.1"
+
+        /**
+         * [Gradle Git Publish](https://github.com/d4l-data4life/gradle-git-publish)
+         */
+        const val gitPublish = "3.2.0"
     }
 
     // Kotlin
     // https://github.com/JetBrains/kotlin
     const val kotlin = "1.4.10"
-    const val kotlinGradlePlugin = kotlin
 
     // Android
     // https://developer.android.com/studio/write/java8-support

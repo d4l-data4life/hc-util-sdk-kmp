@@ -24,7 +24,7 @@ buildscript {
     dependencies {
         classpath(GradlePlugins.kotlin)
         classpath(GradlePlugins.android)
-        classpath("care.data4life:gradle-git-publish:3.1.0")
+        classpath(GradlePlugins.gitPublish)
     }
 }
 

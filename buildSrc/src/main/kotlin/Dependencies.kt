@@ -18,7 +18,7 @@ object Dependencies {
 
     val kotlin = Kotlin
     object Kotlin {
-        const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+        const val stdLib = multiplatform.kotlin.stdlibJdk
         const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     }
 
@@ -42,7 +42,6 @@ object Dependencies {
     }
 
     val test = Test
-
     object Test {
         const val junit = "junit:junit:${Versions.testJUnit}"
     }

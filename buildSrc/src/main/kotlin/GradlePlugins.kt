@@ -20,21 +20,14 @@ import org.gradle.plugin.use.PluginDependencySpec
 object GradlePlugins {
     const val android = "com.android.tools.build:gradle:${Versions.GradlePlugins.android}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.GradlePlugins.kotlin}"
+    const val gitPublish = "care.data4life:gradle-git-publish:${Versions.GradlePlugins.gitPublish}"
 }
 
 fun PluginDependenciesSpec.kotlinMultiplatform(apply: Boolean = true): PluginDependencySpec =
-    id("org.jetbrains.kotlin.multiplatform").version(Versions.kotlinGradlePlugin).apply(apply)
+    id("org.jetbrains.kotlin.multiplatform").version(Versions.GradlePlugins.kotlin).apply(apply)
 
 fun PluginDependenciesSpec.kotlinMultiplatform(): PluginDependencySpec =
     id("org.jetbrains.kotlin.multiplatform")
-
-
-fun PluginDependenciesSpec.kotlinSerialization(apply: Boolean = true): PluginDependencySpec =
-    id("org.jetbrains.kotlin.plugin.serialization").version(Versions.kotlinGradlePlugin)
-        .apply(apply)
-
-fun PluginDependenciesSpec.kotlinSerialization(): PluginDependencySpec =
-    id("org.jetbrains.kotlin.plugin.serialization")
 
 
 fun PluginDependenciesSpec.androidApp(): PluginDependencySpec =
@@ -45,9 +38,6 @@ fun PluginDependenciesSpec.androidLibrary(): PluginDependencySpec =
 
 fun PluginDependenciesSpec.androidKotlin(): PluginDependencySpec =
     id("kotlin-android")
-
-fun PluginDependenciesSpec.androidKotlinExtensions(): PluginDependencySpec =
-    id("kotlin-android-extensions")
 
 
 fun PluginDependenciesSpec.dependencyUpdates(): PluginDependencySpec =

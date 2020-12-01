@@ -48,7 +48,7 @@ object LibraryConfig {
 
         // SCM
         const val scmUrl = "git://$host/$path.git"
-        const val scmConnection = "scm:$url"
+        const val scmConnection = "scm:$scmUrl"
         const val scmDeveloperConnection = scmConnection
     }
 

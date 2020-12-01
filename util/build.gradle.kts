@@ -25,7 +25,7 @@ plugins {
 }
 
 apply {
-    plugin("org.ajoberstar.git-publish")
+    plugin("care.data4life.git-publish")
 }
 
 group = LibraryConfig.group
@@ -187,7 +187,7 @@ publishing {
     }
 }
 
-configure<org.ajoberstar.gradle.git.publish.GitPublishExtension> {
+configure<care.data4life.gradle.git.publish.GitPublishExtension> {
     repoUri.set("git@github.com:d4l-data4life/maven-repository.git")
 
     branch.set("main")
@@ -246,5 +246,3 @@ val publishRelease by tasks.creating {
     tasks.findByName("gitPublishCommit")!!.mustRunAfter("publishAllPublicationsToReleasePackagesRepository")
     tasks.findByName("gitPublishPush")!!.mustRunAfter("gitPublishCommit")
 }
-
-
