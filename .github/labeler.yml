@@ -6,10 +6,13 @@ dependencies:
 
 documentation:
   - docs/**/*
+  - sdk-doc/**/*
   - README.adoc
-  - LICENSE.adoc
+  - LICENSE
   - CHANGELOG.adoc
+  - CODE-OF-CONDUCT.adoc
   - CONTRIBUTION.adoc
+  - readmeOSS.adoc
 
 # Platform
 library:
