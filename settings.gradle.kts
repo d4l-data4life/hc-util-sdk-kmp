@@ -13,22 +13,10 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
+rootProject.name = "hc-util-sdk-kmp"
 
-plugins {
-    `kotlin-dsl`
-}
+enableFeaturePreview("GRADLE_METADATA")
 
-repositories {
-    jcenter()
-    mavenCentral()
-    maven("https://dl.bintray.com/data4life/maven")
-}
-
-dependencies {
-    implementation("com.palantir.gradle.gitversion:gradle-git-version:0.12.3")
-    implementation("care.data4life:gradle-git-publish:3.2.0")
-}
-
-kotlinDslPluginOptions {
-    experimentalWarning.set(false)
-}
+include(
+    ":util"
+)
