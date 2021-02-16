@@ -1,5 +1,5 @@
-:util-sdk-version: 1.6.1
 = Data4Life Util SDK
+:util-sdk-version: 1.7.0
 :doctype: article
 :!showtitle:
 :toc: macro

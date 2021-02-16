@@ -12,7 +12,23 @@ and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioni
 ==== Versions
 toc::[]
 
+
 == https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.6.1...main[Unreleased]
+
+=== Added
+
+=== Changed
+
+=== Removed
+
+=== Fixed
+
+=== Bumped
+
+=== Migration
+
+
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.6.1...v1.7.0[1.7.0]
 
 === Added
 
@@ -21,16 +37,9 @@ toc::[]
 === Changed
 
 * Change project to support Kotlin 1.4.10 and new Kotlin Multiplatform setup
+* _**BREAKING**_ Change Android support to min Android 6.0 (API 23) and target Android 11.0 (API 30)
 
-=== Removed
 
-=== Fixed
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.6.1[1.6.1]
 
-=== Bumped
-
-=== Breaking
-
-* Change Android support to min Android 6.0 (API 23) and target Android 11.0 (API 30)
-
-=== Migration
-
+Initial release taken to be open sourced.
