@@ -38,7 +38,7 @@ endif::[]
             <img src="assets/images/version-latest.svg" alt="Latest version"/>
         </a>
         <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp/actions">
-            <img src="https://github.com/d4l-data4life/hc-util-sdk-kmpp/workflows/D4L%20CI%20KMP/badge.svg" alt="Build Status"/>
+            <img src="https://github.com/d4l-data4life/hc-util-sdk-kmp/workflows/D4L%20CI%20-%20Latest%20Version/badge.svg" alt="D4L CI - Latest Version: Build status"/>
         </a>
         <a>
             <img src="assets/images/platform-support-android-jvm.svg" alt="Platform"/>
