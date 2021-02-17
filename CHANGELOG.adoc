@@ -17,6 +17,7 @@ toc::[]
 === Added
 
 * Add deployment configuration for feature, snapshot and release
+* Add spotless code style plugin
 
 === Changed
 
