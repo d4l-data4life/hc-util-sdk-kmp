@@ -1,16 +1,16 @@
 /*
- * Copyright (c) 2020 D4L data4life gGmbH / All rights reserved.
+ * Copyright (c) 2021 D4L data4life gGmbH / All rights reserved.
  *
- * D4L owns all legal rights, title and interest in and to the Software Development Kit ("SDK"), 
+ * D4L owns all legal rights, title and interest in and to the Software Development Kit ("SDK"),
  * including any intellectual property rights that subsist in the SDK.
  *
  * The SDK and its documentation may be accessed and used for viewing/review purposes only.
- * Any usage of the SDK for other purposes, including usage for the development of 
- * applications/third-party applications shall require the conclusion of a license agreement 
+ * Any usage of the SDK for other purposes, including usage for the development of
+ * applications/third-party applications shall require the conclusion of a license agreement
  * between you and D4L.
  *
- * If you are interested in licensing the SDK for your own applications/third-party 
- * applications and/or if you’d like to contribute to the development of the SDK, please 
+ * If you are interested in licensing the SDK for your own applications/third-party
+ * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
 
@@ -42,8 +42,22 @@ enum class MimeType(val contentType: String) {
                 arrayOf<Byte?>(0xFF.toByte(), 0xD8.toByte(), 0xFF.toByte(), 0xE8.toByte()),
                 arrayOf<Byte?>(0xFF.toByte(), 0xD8.toByte(), 0xFF.toByte(), 0xEE.toByte())
             )
-            PNG -> return arrayOf(arrayOf<Byte?>(0x89.toByte(), 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A))
-            TIFF -> return arrayOf(arrayOf<Byte?>(0x4D, 0x4D, 0x00, 0x2A), arrayOf<Byte?>(0x49, 0x49, 0x2A, 0x00))
+            PNG -> return arrayOf(
+                arrayOf<Byte?>(
+                    0x89.toByte(),
+                    0x50,
+                    0x4E,
+                    0x47,
+                    0x0D,
+                    0x0A,
+                    0x1A,
+                    0x0A
+                )
+            )
+            TIFF -> return arrayOf(
+                arrayOf<Byte?>(0x4D, 0x4D, 0x00, 0x2A),
+                arrayOf<Byte?>(0x49, 0x49, 0x2A, 0x00)
+            )
             PDF -> return arrayOf(arrayOf<Byte?>(0x25, 0x50, 0x44, 0x46, 0x2d))
             DCM -> return arrayOf(arrayOf<Byte?>(0x44, 0x49, 0x43, 0x4D))
             else -> return arrayOfNulls(0)
