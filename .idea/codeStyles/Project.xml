@@ -12,7 +12,6 @@
           <package name="javax" alias="false" withSubpackages="true" />
           <package name="kotlin" alias="false" withSubpackages="true" />
           <package name="" alias="false" withSubpackages="true" />
-          <package name="" alias="false" withSubpackages="true" />
           <package name="" alias="true" withSubpackages="true" />
         </value>
       </option>
