@@ -29,6 +29,8 @@ toc::[]
 
 === Bumped
 
+* Gradle 6.7.1 -> 6.8.2
+
 === Breaking
 
 * Change Android support to min Android 6.0 (API 23) and target Android 11.0 (API 30)
