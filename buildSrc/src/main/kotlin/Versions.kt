@@ -23,7 +23,7 @@ object Versions {
         /**
          * [Spotless](https://github.com/diffplug/spotless)
          */
-        const val spotless = "5.10.1"
+        const val spotless = "5.10.2"
 
         /**
          * [DependencyUpdates](https://github.com/ben-manes/gradle-versions-plugin)

@@ -21,6 +21,7 @@ plugins {
 repositories {
     jcenter()
     mavenCentral()
+    gradlePluginPortal()
     maven("https://dl.bintray.com/data4life/maven")
 }
 
