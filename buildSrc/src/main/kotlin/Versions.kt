@@ -21,14 +21,14 @@ object Versions {
         const val android = "4.0.1"
 
         /**
+         * [Spotless](https://github.com/diffplug/spotless)
+         */
+        const val spotless = "5.10.1"
+
+        /**
          * [DependencyUpdates](https://github.com/ben-manes/gradle-versions-plugin)
          */
         const val dependencyUpdates = "0.34.0"
-
-        /**
-         * [jGitVer](https://github.com/jgitver/gradle-jgitver-plugin)
-         */
-        const val gitVersioning = "0.6.1"
 
         /**
          * [Gradle Git Publish](https://github.com/d4l-data4life/gradle-git-publish)

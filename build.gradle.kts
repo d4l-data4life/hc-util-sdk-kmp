@@ -30,6 +30,8 @@ buildscript {
 
 plugins {
     kotlinMultiplatform(false)
+
+    spotless()
     dependencyUpdates()
 
     id("scripts.versioning")
@@ -52,4 +54,12 @@ allprojects {
 tasks.named<Wrapper>("wrapper") {
     gradleVersion = "6.7.1"
     distributionType = Wrapper.DistributionType.ALL
+}
+
+spotless {
+    kotlin {
+        target("util/**/*.kt")
+        indentWithSpaces()
+        endWithNewline()
+    }
 }

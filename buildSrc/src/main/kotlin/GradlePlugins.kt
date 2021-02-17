@@ -14,6 +14,7 @@
  * contact D4L by email to help@data4life.care.
  */
 
+import org.gradle.kotlin.dsl.version
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -38,6 +39,10 @@ fun PluginDependenciesSpec.androidLibrary(): PluginDependencySpec =
 
 fun PluginDependenciesSpec.androidKotlin(): PluginDependencySpec =
     id("kotlin-android")
+
+
+fun PluginDependenciesSpec.spotless(apply: Boolean = true): PluginDependencySpec =
+    id("com.diffplug.spotless").version(Versions.GradlePlugins.spotless).apply(apply)
 
 
 fun PluginDependenciesSpec.dependencyUpdates(): PluginDependencySpec =
