@@ -64,4 +64,11 @@ spotless {
         indentWithSpaces()
         endWithNewline()
     }
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktlint()
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
 }
