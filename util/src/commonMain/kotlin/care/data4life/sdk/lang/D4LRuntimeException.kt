@@ -28,5 +28,4 @@ open class D4LRuntimeException(message: String? = null, cause: Throwable? = null
     constructor() : this(null, null)
     constructor(message: String?) : this(message, null)
     constructor(cause: Throwable?) : this(cause?.toString(), cause)
-
 }

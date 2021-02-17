@@ -16,13 +16,10 @@
 
 package care.data4life.sdk.util
 
-
 actual object Base64 {
-
 
     private const val CHARSET_UTF8 = "UTF-8"
     private val CHARSET = charset(CHARSET_UTF8)
-
 
     actual fun encode(data: ByteArray): ByteArray {
         return java.util.Base64.getEncoder().encode(data)
@@ -47,5 +44,4 @@ actual object Base64 {
     actual fun decodeToString(encodedData: String): String {
         return java.util.Base64.getDecoder().decode(encodedData).toString(CHARSET)
     }
-
 }

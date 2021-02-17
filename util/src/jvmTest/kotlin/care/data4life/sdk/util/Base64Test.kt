@@ -28,7 +28,6 @@ class Base64Test {
         val expected = ENCODED.toByteArray(CHARSET)
         val input = DECODED.toByteArray(CHARSET)
 
-
         // when
         val actual = Base64.encode(input)
 
@@ -48,7 +47,6 @@ class Base64Test {
         // then
         assertTrue(expected.contentEquals(actual))
     }
-
 
     @Test
     fun encodeToString_shouldReturnEncodedString_whenInputString() {
@@ -76,7 +74,6 @@ class Base64Test {
         assertEquals(expected, actual)
     }
 
-
     @Test
     fun encodeToString_shouldReturnEncodedString_whenInputByteArray() {
         // given
@@ -102,7 +99,6 @@ class Base64Test {
         // then
         assertEquals(expected, actual)
     }
-
 
     @Test
     fun decode_shouldReturnDecodedByteArray_whenInputByteArray() {
@@ -130,7 +126,6 @@ class Base64Test {
         assertTrue(expected.contentEquals(actual))
     }
 
-
     @Test
     fun decode_shouldReturnDecodedByteArray_whenInputString() {
         // given
@@ -157,7 +152,6 @@ class Base64Test {
         assertTrue(expected.contentEquals(actual))
     }
 
-
     @Test
     fun decodeToString_shouldReturnDecodedString_whenInputString() {
         // given
@@ -183,7 +177,6 @@ class Base64Test {
         // then
         assertEquals(expected, actual)
     }
-
 
     companion object {
         private val CHARSET = charset("UTF-8")

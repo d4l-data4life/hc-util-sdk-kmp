@@ -24,8 +24,7 @@ enum class MimeType(val contentType: String) {
     DCM("application/dicom"),
     UNKNOWN("");
 
-
-    //source: https://en.wikipedia.org/wiki/List_of_file_signatures
+    // source: https://en.wikipedia.org/wiki/List_of_file_signatures
     fun byteSignature(): Array<Array<Byte?>?> {
         when (this) {
             JPEG -> return arrayOf(
@@ -69,7 +68,6 @@ enum class MimeType(val contentType: String) {
         else -> 0
     }
 
-
     companion object {
 
         fun recognizeMimeType(data: ByteArray?): MimeType {
@@ -80,14 +78,12 @@ enum class MimeType(val contentType: String) {
                     val upperBound = mimeType.offset() + (mimeSignature?.size ?: 0)
                     if (data.size < upperBound) continue
 
-
                     val magicBytes = data.copyOfRange(mimeType.offset(), upperBound)
                     if (areArraysEqual(magicBytes, mimeSignature)) return mimeType
                 }
             }
             return UNKNOWN
         }
-
 
         private fun areArraysEqual(input: ByteArray, reference: Array<Byte?>?): Boolean {
             if (input.size != reference?.size) return false
@@ -99,8 +95,5 @@ enum class MimeType(val contentType: String) {
             }
             return true
         }
-
-
     }
-
 }

@@ -16,7 +16,6 @@
 
 package care.data4life.sdk.util
 
-
 actual object Base64 {
 
     private const val CHARSET_UTF8 = "UTF-8"

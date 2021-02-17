@@ -16,5 +16,4 @@
 
 package care.data4life.sdk.util
 
-
 expect interface Serializable

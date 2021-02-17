@@ -21,5 +21,4 @@ object DataRestriction {
     // 20 mb
     const val DATA_SIZE_MAX_MB = 20
     const val DATA_SIZE_MAX_BYTES = DATA_SIZE_MAX_MB * 1024 * 1024
-
 }

@@ -19,7 +19,6 @@ package care.data4life.sdk.util
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-
 class CharByteConversionTest {
     private val testCharArray = charArrayOf('a', 'b', 'c')
     private val testByteArray = byteArrayOf('a'.toByte(), 'b'.toByte(), 'c'.toByte())

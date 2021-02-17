@@ -32,5 +32,4 @@ interface Logger {
      * Log an error exception with optional message
      */
     fun error(t: Throwable, message: String?)
-
 }

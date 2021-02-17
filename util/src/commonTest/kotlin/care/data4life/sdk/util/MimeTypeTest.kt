@@ -21,7 +21,6 @@ import kotlin.test.assertEquals
 
 class MimeTypeTest {
 
-
     @Test
     fun genericJpg() {
         val data = byteArrayOf(0xFF.toByte(), 0xD8.toByte(), 0xFF.toByte(), 0xDB.toByte())
@@ -127,6 +126,4 @@ class MimeTypeTest {
 
         assertEquals(MimeType.UNKNOWN, result)
     }
-
-
 }

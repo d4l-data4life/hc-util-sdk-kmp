@@ -35,5 +35,4 @@ sealed class DataRestrictionException(message: String? = null, cause: Throwable?
 
     class UnsupportedFileType :
         DataRestrictionException(message = "Only this file types are supported: JPEG, PNG, TIFF, PDF and DCM!")
-
 }

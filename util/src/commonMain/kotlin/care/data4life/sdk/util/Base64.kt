@@ -16,7 +16,6 @@
 
 package care.data4life.sdk.util
 
-
 expect object Base64 {
 
     fun encode(data: ByteArray): ByteArray
