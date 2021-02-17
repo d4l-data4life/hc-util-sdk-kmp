@@ -71,4 +71,11 @@ spotless {
         indentWithSpaces()
         endWithNewline()
     }
+    format("misc") {
+        target("**/*.adoc", "**/*.md", "**/.gitignore", ".java_version")
+
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
 }
