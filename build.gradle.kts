@@ -58,7 +58,8 @@ tasks.named<Wrapper>("wrapper") {
 
 spotless {
     kotlin {
-        target("util/**/*.kt")
+        target("**/*.kt")
+        targetExclude("buildSrc/build/")
         ktlint()
         trimTrailingWhitespace()
         indentWithSpaces()

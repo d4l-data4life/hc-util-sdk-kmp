@@ -21,7 +21,6 @@ object LibraryConfig {
     const val githubOwner = "d4l-data4life"
     const val githubRepository = "hc-util-sdk-kmp"
 
-
     val publish = PublishConfig
 
     object PublishConfig {

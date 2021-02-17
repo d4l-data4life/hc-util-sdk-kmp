@@ -30,7 +30,6 @@ fun PluginDependenciesSpec.kotlinMultiplatform(apply: Boolean = true): PluginDep
 fun PluginDependenciesSpec.kotlinMultiplatform(): PluginDependencySpec =
     id("org.jetbrains.kotlin.multiplatform")
 
-
 fun PluginDependenciesSpec.androidApp(): PluginDependencySpec =
     id("com.android.application")
 
@@ -40,10 +39,8 @@ fun PluginDependenciesSpec.androidLibrary(): PluginDependencySpec =
 fun PluginDependenciesSpec.androidKotlin(): PluginDependencySpec =
     id("kotlin-android")
 
-
 fun PluginDependenciesSpec.spotless(apply: Boolean = true): PluginDependencySpec =
     id("com.diffplug.spotless").version(Versions.GradlePlugins.spotless).apply(apply)
-
 
 fun PluginDependenciesSpec.dependencyUpdates(): PluginDependencySpec =
     id("com.github.ben-manes.versions").version(Versions.GradlePlugins.dependencyUpdates)
