@@ -1,37 +1,55 @@
-:util-sdk-version: 1.6.1
+= Data4Life Util SDK
+:util-sdk-version: 1.7.0
+:doctype: article
+:!showtitle:
 :toc: macro
 :toclevels: 2
 :toc-title:
+:icons: font
+:imagesdir: assets/images
 :link-repository: https://github.com/d4l-data4life/hc-util-sdk-kmp
 ifdef::env-github[]
-:imagesdir: https://github.com/d4l-data4life/hc-util-sdk-kmp/blob/main/assets/images/
 :warning-caption: :warning:
 :caution-caption: :fire:
 :important-caption: :exclamation:
 :note-caption: :paperclip:
 :tip-caption: :bulb:
 endif::[]
-ifndef::env-github[]
-:imagesdir: assets/images
-endif::[]
 
+++++
+<div align="center">
+    <p>
+        <a><img src="assets/images/d4l-logo.svg" width="150"/></a>
+    </p>
+    <h1>Data4Life Util SDK</h1>
+    <p>
+        This is the Util SDK that provides basic definition and implementation of e.g. Base64, Sha1-hash, MIME types and data size restriction with relating error codes.
+    </p>
+    <p>
+        <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp"><strong>Explore the docs »</strong></a>
+    </p>
+    <p>
+        <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp/issues">Report Bug</a>
+        ·
+        <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp/issues">Request Feature</a>
+    </p>
+    <p>
+        <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp/releases">
+            <img src="assets/images/version-latest.svg" alt="Latest version"/>
+        </a>
+        <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp/actions">
+            <img src="https://github.com/d4l-data4life/hc-util-sdk-kmp/workflows/D4L%20CI%20-%20Latest%20Version/badge.svg" alt="D4L CI - Latest Version: Build status"/>
+        </a>
+        <a>
+            <img src="assets/images/platform-support-android-jvm.svg" alt="Platform"/>
+        </a>
+        <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp/blob/main/LICENSE">
+            <img src="assets/images/license-private-blue.svg" alt="License"/>
+        </a>
+    </p>
+</div>
+++++
 
-image::d4l-logo.svg[d4l logo, 150]
-
-[discrete]
-= Data4Life Util SDK
-
-This is the Util SDK that provides basic definition and implementation of e.g. Base64, Sha1-hash, MIME types and data size restriction with relating error codes.
-
-link:{link-repository}[*Explore the docs »*]
-
-link:{link-repository}/issues[Report Bug] · link:{link-repository}/issues[Request Feature]
-
-
-image:https://img.shields.io/badge/Latest-{util-sdk-version}-blueviolet.svg[{util-sdk-version}, link={link-repository}/releases]
-image:{link-repository}/workflows/D4L%20CI%20KMP/badge.svg[Build Status, link={link-repository}/actions]
-image:https://img.shields.io/badge/Platform-Android%20•%20JVM%20-blue.svg[Platform]
-image:https://img.shields.io/badge/license-PRIVATE-lightgrey.svg[License, link=LICENSE]
 
 [discrete]
 === Table Of Contents
@@ -127,4 +145,4 @@ Will be added soon.
 
 == Copyright and License
 
-Copyright (c) 2020 D4L data4life gGmbH / All rights reserved. Please refer to our link:LICENSE[License] for further details.
+Copyright (c) 2021 D4L data4life gGmbH / All rights reserved. Please refer to our link:LICENSE[License] for further details.
