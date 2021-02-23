@@ -19,6 +19,22 @@ package scripts
 import LibraryConfig
 import org.gradle.api.publish.maven.MavenPublication
 
+/**
+ * Usage:
+ *
+ * Now just add id("scripts.publishing-config") to your projects build.gradle.kts plugins section
+ *
+ * plugins {
+ *     id("scripts.publishing")
+ * }
+ *
+ * To publish to to https://github.com/d4l-data4life/maven-repository/ just run:
+ * - ./gradlew publishFeature
+ * - ./gradlew publishSnapshot
+ * - ./gradlew publishRelease
+ *
+ * This requires a LibraryConfig as defined here https://github.com/d4l-data4life/hc-gradle-scripts/blob/main/buildSrc/src/main/kotlin/LibraryConfig.kt
+ */
 plugins {
     `maven-publish`
 }

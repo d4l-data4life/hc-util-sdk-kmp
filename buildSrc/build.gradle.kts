@@ -19,15 +19,18 @@ plugins {
 }
 
 repositories {
-    jcenter()
     mavenCentral()
     gradlePluginPortal()
     maven("https://dl.bintray.com/data4life/maven")
 }
 
 dependencies {
-    implementation("com.palantir.gradle.gitversion:gradle-git-version:0.12.3")
+    // publishing
     implementation("care.data4life:gradle-git-publish:3.2.0")
+    // quality
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:5.10.2")
+    // versioning
+    implementation("com.palantir.gradle.gitversion:gradle-git-version:0.12.3")
 }
 
 kotlinDslPluginOptions {

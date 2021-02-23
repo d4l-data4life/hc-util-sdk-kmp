@@ -31,11 +31,14 @@ buildscript {
 plugins {
     kotlinMultiplatform(false)
 
-    spotless()
     dependencyUpdates()
 
     id("scripts.versioning")
     id("scripts.publishing")
+    id("scripts.quality")
+
+    id("de.undercouch.download") version "4.1.1"
+
 }
 
 allprojects {
@@ -56,27 +59,27 @@ tasks.named<Wrapper>("wrapper") {
     distributionType = Wrapper.DistributionType.ALL
 }
 
-spotless {
-    kotlin {
-        target("**/*.kt")
-        targetExclude("buildSrc/build/")
-        ktlint()
-        trimTrailingWhitespace()
-        indentWithSpaces()
-        endWithNewline()
-    }
-    kotlinGradle {
-        target("*.gradle.kts")
-        ktlint()
-        trimTrailingWhitespace()
-        indentWithSpaces()
-        endWithNewline()
-    }
-    format("misc") {
-        target("**/*.adoc", "**/*.md", "**/.gitignore", ".java_version")
+val downloadGradleScripts by tasks.creating(de.undercouch.gradle.tasks.download.Download::class) {
+    group = "download"
+    description = "Downloads the latest version of D4L Gradle scripts"
 
-        trimTrailingWhitespace()
-        indentWithSpaces()
-        endWithNewline()
-    }
+    username(project.findProperty("gpr.user") as String?
+        ?: System.getenv("GITHUB_USERNAME"))
+    // this needs a GitHub personal access token with repo permission
+    password(project.findProperty("gpr.key") as String?
+        ?: System.getenv("GITHUB_REPO_TOKEN"))
+
+    val repository = "https://raw.githubusercontent.com/d4l-data4life/hc-gradle-scripts/"
+    val branch = "main"
+    val path = "buildSrc/src/main/kotlin/scripts"
+    val scriptLink = "$repository/$branch/$path"
+    src(listOf(
+        "$scriptLink/publishing.gradle.kts",
+        "$scriptLink/publishing-config.gradle.kts",
+        "$scriptLink/quality.gradle.kts",
+        "$scriptLink/versioning.gradle.kts"
+    ))
+    dest("${rootProject.rootDir}/buildSrc/src/main/kotlin/scripts/")
+
+    overwrite(true)
 }
