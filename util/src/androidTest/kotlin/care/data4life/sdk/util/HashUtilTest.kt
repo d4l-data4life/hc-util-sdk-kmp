@@ -16,8 +16,8 @@
 
 package care.data4life.sdk.util
 
-import kotlin.test.assertEquals
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class HashUtilTest {
 

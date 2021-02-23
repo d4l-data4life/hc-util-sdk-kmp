@@ -38,7 +38,6 @@ plugins {
     id("scripts.quality")
 
     id("de.undercouch.download") version "4.1.1"
-
 }
 
 allprojects {
@@ -63,22 +62,28 @@ val downloadGradleScripts by tasks.creating(de.undercouch.gradle.tasks.download.
     group = "download"
     description = "Downloads the latest version of D4L Gradle scripts"
 
-    username(project.findProperty("gpr.user") as String?
-        ?: System.getenv("GITHUB_USERNAME"))
+    username(
+        project.findProperty("gpr.user") as String?
+            ?: System.getenv("GITHUB_USERNAME")
+    )
     // this needs a GitHub personal access token with repo permission
-    password(project.findProperty("gpr.key") as String?
-        ?: System.getenv("GITHUB_REPO_TOKEN"))
+    password(
+        project.findProperty("gpr.key") as String?
+            ?: System.getenv("GITHUB_REPO_TOKEN")
+    )
 
     val repository = "https://raw.githubusercontent.com/d4l-data4life/hc-gradle-scripts/"
     val branch = "main"
     val path = "buildSrc/src/main/kotlin/scripts"
     val scriptLink = "$repository/$branch/$path"
-    src(listOf(
-        "$scriptLink/publishing.gradle.kts",
-        "$scriptLink/publishing-config.gradle.kts",
-        "$scriptLink/quality.gradle.kts",
-        "$scriptLink/versioning.gradle.kts"
-    ))
+    src(
+        listOf(
+            "$scriptLink/publishing.gradle.kts",
+            "$scriptLink/publishing-config.gradle.kts",
+            "$scriptLink/quality.gradle.kts",
+            "$scriptLink/versioning.gradle.kts"
+        )
+    )
     dest("${rootProject.rootDir}/buildSrc/src/main/kotlin/scripts/")
 
     overwrite(true)
