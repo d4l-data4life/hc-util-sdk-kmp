@@ -141,8 +141,6 @@ Will be added soon.
 
 === Development Guide
 
-The project uses ktlint to ensure code quality. To install you need to use homebrew `brew install ktlint`
-
 More content will be added soon.
 
 == Copyright and License
