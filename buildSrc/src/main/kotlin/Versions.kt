@@ -21,11 +21,6 @@ object Versions {
         const val android = "4.0.1"
 
         /**
-         * [Spotless](https://github.com/diffplug/spotless)
-         */
-        const val spotless = "5.10.2"
-
-        /**
          * [DependencyUpdates](https://github.com/ben-manes/gradle-versions-plugin)
          */
         const val dependencyUpdates = "0.34.0"
