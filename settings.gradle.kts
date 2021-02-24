@@ -16,6 +16,7 @@
 rootProject.name = "hc-util-sdk-kmp"
 
 enableFeaturePreview("GRADLE_METADATA")
+enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
 
 include(
     ":util"

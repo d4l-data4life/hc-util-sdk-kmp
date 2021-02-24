@@ -26,6 +26,9 @@ buildscript {
         classpath(GradlePlugins.android)
         classpath(GradlePlugins.gitPublish)
     }
+    configurations.classpath {
+        resolutionStrategy.activateDependencyLocking()
+    }
 }
 
 plugins {
@@ -46,6 +49,22 @@ allprojects {
         maven("https://kotlin.bintray.com/kotlin")
         maven("https://kotlin.bintray.com/kotlinx")
         maven("https://jitpack.io")
+    }
+
+    dependencyLocking {
+        lockAllConfigurations()
+    }
+    val resolveAndLockAll by tasks.registering {
+        group = "dependencies"
+        doFirst {
+            require(gradle.startParameter.isWriteDependencyLocks)
+        }
+        doLast{
+            configurations.filter {
+                // Add any custom filtering on the configurations to be resolved
+                it.isCanBeResolved
+            }.forEach { it.resolve() }
+        }
     }
 }
 
