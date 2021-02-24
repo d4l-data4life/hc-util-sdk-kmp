@@ -20,6 +20,7 @@ package scripts
  * You need to add following dependencies to the buildSrc/build.gradle.kts
  *
  * - implementation("com.diffplug.spotless:spotless-plugin-gradle:5.10.2")
+ * - implementation("com.pinterest:ktlint:0.40.0")
  *
  */
 plugins {
