@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 D4L data4life gGmbH / All rights reserved.
+ * Copyright (c) 2021 D4L data4life gGmbH / All rights reserved.
  *
  * D4L owns all legal rights, title and interest in and to the Software Development Kit ("SDK"),
  * including any intellectual property rights that subsist in the SDK.
@@ -30,10 +30,14 @@ buildscript {
 
 plugins {
     kotlinMultiplatform(false)
+
     dependencyUpdates()
 
     id("scripts.versioning")
     id("scripts.publishing")
+    id("scripts.quality")
+
+    id("de.undercouch.download") version "4.1.1"
 }
 
 allprojects {
@@ -50,6 +54,37 @@ allprojects {
 }
 
 tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "6.7.1"
+    gradleVersion = "6.8.2"
     distributionType = Wrapper.DistributionType.ALL
+}
+
+val downloadGradleScripts by tasks.creating(de.undercouch.gradle.tasks.download.Download::class) {
+    group = "download"
+    description = "Downloads the latest version of D4L Gradle scripts"
+
+    username(
+        project.findProperty("gpr.user") as String?
+            ?: System.getenv("GITHUB_USERNAME")
+    )
+    // this needs a GitHub personal access token with repo permission
+    password(
+        project.findProperty("gpr.key") as String?
+            ?: System.getenv("GITHUB_REPO_TOKEN")
+    )
+
+    val repository = "https://raw.githubusercontent.com/d4l-data4life/hc-gradle-scripts/"
+    val branch = "main"
+    val path = "buildSrc/src/main/kotlin/scripts"
+    val scriptLink = "$repository/$branch/$path"
+    src(
+        listOf(
+            "$scriptLink/publishing.gradle.kts",
+            "$scriptLink/publishing-config.gradle.kts",
+            "$scriptLink/quality.gradle.kts",
+            "$scriptLink/versioning.gradle.kts"
+        )
+    )
+    dest("${rootProject.rootDir}/buildSrc/src/main/kotlin/scripts/")
+
+    overwrite(true)
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 D4L data4life gGmbH / All rights reserved.
+ * Copyright (c) 2021 D4L data4life gGmbH / All rights reserved.
  *
  * D4L owns all legal rights, title and interest in and to the Software Development Kit ("SDK"),
  * including any intellectual property rights that subsist in the SDK.
@@ -35,5 +35,4 @@ sealed class DataRestrictionException(message: String? = null, cause: Throwable?
 
     class UnsupportedFileType :
         DataRestrictionException(message = "Only this file types are supported: JPEG, PNG, TIFF, PDF and DCM!")
-
 }
