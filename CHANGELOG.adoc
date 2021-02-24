@@ -27,7 +27,7 @@ toc::[]
 
 === Bumped
 
-* Gradle 6.7.1 -> 6.8.2
+* Gradle 6.7.1 -> 6.8.3
 
 === Migration
 
