@@ -17,6 +17,8 @@ toc::[]
 
 === Added
 
+* Gradle link:https://docs.gradle.org/6.8.1/userguide/dependency_locking.html[dependency locking]
+
 === Changed
 
 === Removed

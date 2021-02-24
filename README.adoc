@@ -141,7 +141,11 @@ Will be added soon.
 
 === Development Guide
 
-Will be added soon.
+The project is protected by link:https://docs.gradle.org/6.8.1/userguide/dependency_locking.html[Gradle dependency locking]
+
+To add or update existing dependencies it it necessary to update the lockfile by calling `./gradlew resolveAndLockAll --write-locks`
+
+More content will be added soon.
 
 == Copyright and License
 
