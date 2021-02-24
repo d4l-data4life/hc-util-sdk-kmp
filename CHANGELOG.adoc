@@ -12,11 +12,11 @@ and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioni
 ==== Versions
 toc::[]
 
-
 == https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.6.1...main[Unreleased]
 
 === Added
 
+* Add spotless code style plugin
 * Gradle link:https://docs.gradle.org/6.8.1/userguide/dependency_locking.html[dependency locking]
 
 === Changed
@@ -26,6 +26,8 @@ toc::[]
 === Fixed
 
 === Bumped
+
+* Gradle 6.7.1 -> 6.8.2
 
 === Migration
 

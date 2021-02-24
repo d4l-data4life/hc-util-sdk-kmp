@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 D4L data4life gGmbH / All rights reserved.
+ * Copyright (c) 2021 D4L data4life gGmbH / All rights reserved.
  *
  * D4L owns all legal rights, title and interest in and to the Software Development Kit ("SDK"),
  * including any intellectual property rights that subsist in the SDK.
@@ -24,11 +24,6 @@ object Versions {
          * [DependencyUpdates](https://github.com/ben-manes/gradle-versions-plugin)
          */
         const val dependencyUpdates = "0.34.0"
-
-        /**
-         * [jGitVer](https://github.com/jgitver/gradle-jgitver-plugin)
-         */
-        const val gitVersioning = "0.6.1"
 
         /**
          * [Gradle Git Publish](https://github.com/d4l-data4life/gradle-git-publish)
