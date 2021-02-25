@@ -15,12 +15,6 @@
  */
 
 buildscript {
-    repositories {
-        mavenCentral()
-        google()
-        jcenter()
-        maven("https://dl.bintray.com/data4life/maven")
-    }
     dependencies {
         classpath(GradlePlugins.kotlin)
         classpath(GradlePlugins.android)
@@ -44,17 +38,6 @@ plugins {
 }
 
 allprojects {
-    repositories {
-        gradlePluginPortal()
-        mavenCentral()
-        google()
-        jcenter()
-
-        maven("https://kotlin.bintray.com/kotlin")
-        maven("https://kotlin.bintray.com/kotlinx")
-        maven("https://jitpack.io")
-    }
-
     dependencyLocking {
         lockAllConfigurations()
     }
@@ -81,15 +64,8 @@ val downloadGradleScripts by tasks.creating(de.undercouch.gradle.tasks.download.
     group = "download"
     description = "Downloads the latest version of D4L Gradle scripts"
 
-    username(
-        project.findProperty("gpr.user") as String?
-            ?: System.getenv("GITHUB_USERNAME")
-    )
-    // this needs a GitHub personal access token with repo permission
-    password(
-        project.findProperty("gpr.key") as String?
-            ?: System.getenv("GITHUB_REPO_TOKEN")
-    )
+    username(System.getenv("GITHUB_USERNAME"))
+    password(System.getenv("GITHUB_REPO_TOKEN"))
 
     val repository = "https://raw.githubusercontent.com/d4l-data4life/hc-gradle-scripts/"
     val branch = "main"
