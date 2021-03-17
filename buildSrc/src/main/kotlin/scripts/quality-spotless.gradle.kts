@@ -28,6 +28,8 @@ plugins {
 }
 
 spotless {
+    ratchetFrom("origin/main")
+
     kotlin {
         target("**/*.kt")
         targetExclude("buildSrc/build/")
