@@ -19,12 +19,14 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
     gradlePluginPortal()
+    mavenCentral()
     maven("https://dl.bintray.com/data4life/maven")
 }
 
 dependencies {
+    // download-scripts
+    implementation("de.undercouch:gradle-download-task:4.1.1")
     // publishing
     implementation("care.data4life:gradle-git-publish:3.2.0")
     // quality

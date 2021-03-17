@@ -15,6 +15,10 @@
 */
 rootProject.name = "hc-util-sdk-kmp"
 
+include(
+    ":util"
+)
+
 enableFeaturePreview("GRADLE_METADATA")
 enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
 
@@ -40,6 +44,4 @@ dependencyResolutionManagement {
     }
 }
 
-include(
-    ":util"
-)
+
