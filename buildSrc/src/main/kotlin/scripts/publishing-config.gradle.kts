@@ -43,8 +43,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url =
-                uri("https://maven.pkg.github.com/${LibraryConfig.githubOwner}/${LibraryConfig.githubRepository}")
+            setUrl("https://maven.pkg.github.com/${LibraryConfig.githubOwner}/${LibraryConfig.githubRepository}")
             credentials {
                 username = (project.findProperty("gpr.user")
                     ?: System.getenv("PACKAGE_REGISTRY_USERNAME")).toString()
@@ -57,17 +56,17 @@ publishing {
 
         maven {
             name = "ReleasePackages"
-            url = uri("$target/releases")
+            setUrl("$target/releases")
         }
 
         maven {
             name = "SnapshotPackages"
-            url = uri("$target/snapshots")
+            setUrl("$target/snapshots")
         }
 
         maven {
             name = "FeaturePackages"
-            url = uri("$target/features")
+            setUrl("$target/features")
         }
     }
 
