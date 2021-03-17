@@ -37,7 +37,7 @@ private val path = "buildSrc/src/main/kotlin/scripts"
 private val scriptLink = "$repository/$branch/$path"
 
 val scriptFiles = listOf(
-    "$scriptLink/dependency-check.gradle.kts",
+    "$scriptLink/dependency-updates.gradle.kts",
     "$scriptLink/download-scripts.gradle.kts",
     "$scriptLink/publishing.gradle.kts",
     "$scriptLink/publishing-config.gradle.kts",
