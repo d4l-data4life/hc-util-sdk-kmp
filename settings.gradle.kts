@@ -15,6 +15,10 @@
 */
 rootProject.name = "hc-util-sdk-kmp"
 
+include(
+    ":util"
+)
+
 enableFeaturePreview("GRADLE_METADATA")
 enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
 
@@ -39,7 +43,3 @@ dependencyResolutionManagement {
         maven("https://jitpack.io")
     }
 }
-
-include(
-    ":util"
-)
