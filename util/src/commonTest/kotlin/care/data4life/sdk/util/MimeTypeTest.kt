@@ -27,6 +27,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.JPEG, result)
+        assertEquals(
+            expected = IMAGE_JPG,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -35,6 +39,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.JPEG, result)
+        assertEquals(
+            expected = IMAGE_JPG,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -43,6 +51,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.JPEG, result)
+        assertEquals(
+            expected = IMAGE_JPG,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -51,6 +63,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.JPEG, result)
+        assertEquals(
+            expected = IMAGE_JPG,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -59,6 +75,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.JPEG, result)
+        assertEquals(
+            expected = IMAGE_JPG,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -67,6 +87,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.JPEG, result)
+        assertEquals(
+            expected = IMAGE_JPG,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -75,6 +99,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.JPEG, result)
+        assertEquals(
+            expected = IMAGE_JPG,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -83,6 +111,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.PNG, result)
+        assertEquals(
+            expected = IMAGE_PNG,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -91,11 +123,19 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.TIFF, result)
+        assertEquals(
+            expected = IMAGE_TIFF,
+            actual = result.contentType
+        )
 
         val data2 = byteArrayOf(0x49, 0x49, 0x2A, 0x00)
         val result2 = MimeType.recognizeMimeType(data2)
 
         assertEquals(MimeType.TIFF, result2)
+        assertEquals(
+            expected = IMAGE_TIFF,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -104,6 +144,10 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.PDF, result)
+        assertEquals(
+            expected = APPLICATION_PDF,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -117,6 +161,11 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.DCM, result)
+        assertEquals(MimeType.PDF, result)
+        assertEquals(
+            expected = APPLICATION_DCM,
+            actual = result.contentType
+        )
     }
 
     @Test
@@ -125,5 +174,14 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.UNKNOWN, result)
+        assertTrue(result.contentType.isEmpty())
+    }
+
+    companion object {
+        private const val IMAGE_TIFF = "image/tiff"
+        private const val IMAGE_PNG = "image/png"
+        private const val IMAGE_JPG = "image/jpg"
+        private const val APPLICATION_PDF = "application/pdf"
+        private const val APPLICATION_DCM = "application/dicom"
     }
 }
