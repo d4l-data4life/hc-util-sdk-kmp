@@ -30,16 +30,3 @@ pluginManagement {
         jcenter()
     }
 }
-
-dependencyResolutionManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-        maven("https://dl.bintray.com/data4life/maven")
-        jcenter()
-
-        maven("https://kotlin.bintray.com/kotlin")
-        maven("https://kotlin.bintray.com/kotlinx")
-        maven("https://jitpack.io")
-    }
-}
