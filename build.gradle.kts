@@ -45,7 +45,6 @@ allprojects {
     dependencyLocking {
         lockAllConfigurations()
     }
-    
     val resolveAndLockAll by tasks.registering {
         group = "dependencies"
         doFirst {
