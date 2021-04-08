@@ -18,6 +18,7 @@ package care.data4life.sdk.util
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class MimeTypeTest {
 
@@ -161,7 +162,6 @@ class MimeTypeTest {
         val result = MimeType.recognizeMimeType(data)
 
         assertEquals(MimeType.DCM, result)
-        assertEquals(MimeType.PDF, result)
         assertEquals(
             expected = APPLICATION_DCM,
             actual = result.contentType
