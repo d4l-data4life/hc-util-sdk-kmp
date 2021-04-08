@@ -36,6 +36,12 @@ plugins {
 }
 
 allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        bintray()
+    }
+
     dependencyLocking {
         lockAllConfigurations()
     }
