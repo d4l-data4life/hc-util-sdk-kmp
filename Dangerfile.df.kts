@@ -89,7 +89,9 @@ danger(args) {
 
         // Size
         val changes = (pullRequest.additions ?: 0) - (pullRequest.deletions ?: 0)
-        if (changes > 1000) {
+        if (changes > 2000) {
+            fail("This Pull-Request is way to big, please slice it into smaller pull-requests.")
+        } else if (changes > 1000) {
             warn("Too Big Pull-Request, keep changes smaller")
         } else if (changes > 500) {
             warn("Large Pull-Request, try to keep changes smaller if you can")
