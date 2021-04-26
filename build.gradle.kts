@@ -30,9 +30,9 @@ plugins {
 
     id("scripts.dependency-updates")
     id("scripts.download-scripts")
-    id("scripts.versioning")
     id("scripts.publishing")
     id("scripts.quality-spotless")
+    id("scripts.versioning")
 }
 
 allprojects {
