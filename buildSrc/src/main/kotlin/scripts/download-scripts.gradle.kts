@@ -65,7 +65,7 @@ val downloadGradleScripts by tasks.creating(Download::class) {
 
 val downloadDanger by tasks.creating(Download::class) {
     group = "download"
-    description = "Downloads the latest dangerfile from D4L Gradle scripts"
+    description = "Downloads the latest Dangerfile from D4L Gradle scripts"
 
     username(System.getenv("GITHUB_USERNAME"))
     password(System.getenv("GITHUB_REPO_TOKEN"))
@@ -78,7 +78,7 @@ val downloadDanger by tasks.creating(Download::class) {
 
 val downloadDangerWorkflow by tasks.creating(Download::class) {
     group = "download"
-    description = "Downloads the latest version of D4L Gradle scripts"
+    description = "Downloads the latest version of Danger GitHub Workflow"
 
     username(System.getenv("GITHUB_USERNAME"))
     password(System.getenv("GITHUB_REPO_TOKEN"))
