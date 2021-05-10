@@ -20,7 +20,6 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
-        maven("https://dl.bintray.com/data4life/maven")
     }
 }
 

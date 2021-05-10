@@ -18,7 +18,6 @@ buildscript {
     dependencies {
         classpath(GradlePlugins.kotlin)
         classpath(GradlePlugins.android)
-        classpath(GradlePlugins.gitPublish)
     }
     configurations.classpath {
         resolutionStrategy.activateDependencyLocking()
