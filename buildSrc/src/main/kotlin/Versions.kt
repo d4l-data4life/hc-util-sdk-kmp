@@ -19,11 +19,6 @@ object Versions {
     object GradlePlugins {
         const val kotlin = Versions.kotlin
         const val android = "4.0.1"
-
-        /**
-         * [Gradle Git Publish](https://github.com/d4l-data4life/gradle-git-publish)
-         */
-        const val gitPublish = "3.2.0"
     }
 
     // Kotlin

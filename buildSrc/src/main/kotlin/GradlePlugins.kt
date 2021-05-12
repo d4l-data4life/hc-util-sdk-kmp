@@ -14,14 +14,12 @@
  * contact D4L by email to help@data4life.care.
  */
 
-import org.gradle.kotlin.dsl.version
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
 object GradlePlugins {
     const val android = "com.android.tools.build:gradle:${Versions.GradlePlugins.android}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.GradlePlugins.kotlin}"
-    const val gitPublish = "care.data4life:gradle-git-publish:${Versions.GradlePlugins.gitPublish}"
 }
 
 fun PluginDependenciesSpec.kotlinMultiplatform(apply: Boolean = true): PluginDependencySpec =
