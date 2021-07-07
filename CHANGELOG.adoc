@@ -17,13 +17,10 @@ toc::[]
 === Added
 
 * Add spotless code style plugin
-* Gradle link:https://docs.gradle.org/6.8.1/userguide/dependency_locking.html[dependency locking]
 
 === Changed
 
 === Removed
-
-* Dependency Locking
 
 === Fixed
 
