@@ -16,79 +16,75 @@
 
 package care.data4life.sdk.util
 
+import kotlinx.cinterop.addressOf
+import kotlinx.cinterop.allocArrayOf
+import kotlinx.cinterop.memScoped
+import kotlinx.cinterop.usePinned
+import platform.Foundation.NSData
+import platform.Foundation.NSString
+import platform.Foundation.NSUTF8StringEncoding
+import platform.Foundation.base64EncodedStringWithOptions
+import platform.Foundation.create
+import platform.posix.memcpy
+
 actual object Base64 {
-    private const val BASE64_ALPHABET: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-    private const val BASE64_MASK: Byte = 0x3f
-    private const val BASE64_PAD: Char = '='
-
-    private fun Int.toBase64(): Char = BASE64_ALPHABET[this]
-    private fun ByteArray.getOrZero(index: Int): Int = if (index >= size) 0 else get(index).toInt()
-
-    private fun calcPaddingSize(symbolsLeft: Int): Int {
-        return if (symbolsLeft >= 3) {
-            0
-        } else {
-            (3 - symbolsLeft) * 8 / 6
+    // see: https://github.com/JetBrains/kotlin-native/issues/3172
+    // see: https://stackoverflow.com/questions/58521108/how-to-convert-kotlin-bytearray-to-nsdata-and-viceversa
+    // see: https://gist.github.com/noahsark769/61cfb7a8b7231e2069a9dab94cf74a62
+    private fun NSData.toByteArray(): ByteArray {
+        return ByteArray(this@toByteArray.length.toInt()).apply {
+            usePinned {
+                memcpy(it.addressOf(0), this@toByteArray.bytes, this@toByteArray.length)
+            }
         }
     }
 
-    private fun chopChunk(data: ByteArray, index: Int): Int {
-        return (
-            (data.getOrZero(index) shl 16)
-                or (data.getOrZero(index + 1) shl 8)
-                or data.getOrZero(index + 2)
+    private fun ByteArray.toNSData(): NSData {
+        return memScoped {
+            NSData.create(
+                bytes = allocArrayOf(this@toNSData),
+                length = this@toNSData.size.toULong()
             )
-    }
-
-    @ExperimentalStdlibApi
-    private fun mask(chunk: Int, padSize: Int, encoded: ArrayList<Byte>) {
-        for (i in 3 downTo padSize) {
-            val char = (chunk shr (6 * i)) and BASE64_MASK.toInt()
-            encoded.add(char.toBase64().code.toByte())
         }
     }
 
-    @ExperimentalStdlibApi
-    private fun encodeData(data: ByteArray): ArrayList<Byte> {
-        val encoded = ArrayList<Byte>(4 * data.size / 3)
-        var index = 0
-        while (index < data.size) {
-            val padSize = calcPaddingSize(data.size - index)
-            val chunk = chopChunk(data, index)
-            mask(chunk, padSize, encoded)
-
-            index += 3
-
-            // Fill the pad with '='
-            repeat(padSize) { encoded.add(BASE64_PAD.code.toByte()) }
-        }
-
-        return encoded
+    actual fun encode(data: ByteArray): ByteArray {
+        return encodeToString(data).encodeToByteArray()
     }
 
-    @ExperimentalStdlibApi
-    actual fun encode(data: ByteArray): ByteArray = encodeData(data).toByteArray()
-
-    @ExperimentalStdlibApi
     actual fun encodeToString(data: ByteArray): String {
-        val encoded = encode(data)
-        return buildString(encoded.size) {
-            encoded.forEach { append(it.toChar()) }
-        }
+        val nsData = data.toNSData()
+        return nsData.base64EncodedStringWithOptions(0)
     }
 
-    @ExperimentalStdlibApi
-    actual fun encodeToString(data: String): String = encodeToString(data.encodeToByteArray())
+    actual fun encodeToString(data: String): String {
+        return encodeToString(data.encodeToByteArray())
+    }
+
+    private fun platformDecode(encodedData: String): NSData {
+        return NSData.create(
+            base64EncodedString = encodedData,
+            options = 0
+        )!!
+    }
 
     actual fun decode(encodedData: ByteArray): ByteArray {
-        TODO()
+        val data = NSString.create(
+            encodedData.toNSData(),
+            NSUTF8StringEncoding
+        ) as String
+
+        return decode(data)
     }
 
     actual fun decode(encodedData: String): ByteArray {
-        TODO()
+        return platformDecode(encodedData).toByteArray()
     }
 
     actual fun decodeToString(encodedData: String): String {
-        TODO()
+        return NSString.create(
+            platformDecode(encodedData),
+            NSUTF8StringEncoding
+        ) as String
     }
 }
