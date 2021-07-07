@@ -77,9 +77,8 @@ actual object Base64 {
         }
     }
 
-    actual fun encodeToString(data: String): String {
-        TODO()
-    }
+    @ExperimentalStdlibApi
+    actual fun encodeToString(data: String): String = encodeToString(data.encodeToByteArray())
 
     actual fun decode(encodedData: ByteArray): ByteArray {
         TODO()
