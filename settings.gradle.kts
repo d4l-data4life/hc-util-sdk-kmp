@@ -13,9 +13,6 @@
 * applications and/or if you’d like to contribute to the development of the SDK, please
 * contact D4L by email to help@data4life.care.
 */
-
-enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
