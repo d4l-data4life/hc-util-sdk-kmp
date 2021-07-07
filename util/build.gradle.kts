@@ -28,7 +28,7 @@ group = LibraryConfig.group
 
 kotlin {
     android {
-        publishLibraryVariants("release", "debug")
+        publishLibraryVariants("release")
     }
 
     jvm()
@@ -80,7 +80,6 @@ kotlin {
             }
         }
 
-        /*
         val iosMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibNative)
@@ -95,30 +94,6 @@ kotlin {
                 }
             }
         }
-
-        configure(listOf(targets["iosX64"])) {
-            this as org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
-            binaries.all {
-                linkerOpts(
-                    "-L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator",
-                    "-L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.0/iphonesimulator",
-                    "-rpath", "/usr/lib/swift"
-                )
-            }
-        }
-
-        configure(listOf(targets["iosArm64"])) {
-            this as org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
-            binaries.all {
-                linkerOpts(
-                    "-L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator",
-                    "-L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.0/iphonesimulator",
-                    "-rpath", "/usr/lib/swift"
-                )
-            }
-        }*/
     }
 }
 
