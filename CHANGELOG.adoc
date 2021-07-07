@@ -17,6 +17,7 @@ toc::[]
 === Added
 
 * Add spotless code style plugin
+* iOS Base64#encode and Base64#encodeToString
 
 === Changed
 
