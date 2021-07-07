@@ -18,12 +18,12 @@ object Versions {
 
     object GradlePlugins {
         const val kotlin = Versions.kotlin
-        const val android = "4.0.1"
+        const val android = "4.2.1"
     }
 
     // Kotlin
     // https://github.com/JetBrains/kotlin
-    const val kotlin = "1.4.21"
+    const val kotlin = "1.4.32"
 
     // Android
     // https://developer.android.com/studio/write/java8-support
