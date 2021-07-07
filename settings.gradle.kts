@@ -20,8 +20,20 @@ pluginManagement {
     }
 }
 
+plugins {
+    id("com.gradle.enterprise") version("3.4.1")
+}
+
 rootProject.name = "hc-util-sdk-kmp"
 
 include(
     ":util"
 )
+
+buildCache {
+    local {
+        isEnabled = true
+        directory = File(rootDir, "build-cache")
+        removeUnusedEntriesAfterDays = 30
+    }
+}

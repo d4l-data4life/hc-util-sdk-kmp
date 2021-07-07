@@ -32,7 +32,7 @@ dependencies {
     implementation("org.eclipse.jgit:org.eclipse.jgit:5.11.0.202103091610-r")
     // quality
     implementation("com.diffplug.spotless:spotless-plugin-gradle:5.10.2")
-    implementation("com.pinterest:ktlint:0.40.0")
+    implementation("com.pinterest:ktlint:0.41.0")
     // versioning
     implementation("com.palantir.gradle.gitversion:gradle-git-version:0.12.3")
 }
