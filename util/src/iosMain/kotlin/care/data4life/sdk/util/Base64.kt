@@ -16,6 +16,7 @@
 
 package care.data4life.sdk.util
 
+import kotlinx.cinterop.memScoped
 import platform.Foundation.NSData
 import platform.Foundation.NSString
 import platform.Foundation.NSUTF8StringEncoding
@@ -23,43 +24,59 @@ import platform.Foundation.base64EncodedStringWithOptions
 import platform.Foundation.create
 
 actual object Base64 {
+    private const val OUT_OF_MEMORY = "Out of memory."
+
+    @ExperimentalUnsignedTypes
     actual fun encode(data: ByteArray): ByteArray {
         return encodeToString(data).encodeToByteArray()
     }
 
+    @ExperimentalUnsignedTypes
     actual fun encodeToString(data: ByteArray): String {
         val nsData = NSDataMapper.toNSData(data)
         return nsData.base64EncodedStringWithOptions(0)
     }
 
+    @ExperimentalUnsignedTypes
     actual fun encodeToString(data: String): String {
         return encodeToString(data.encodeToByteArray())
     }
 
+    @Throws(NullPointerException::class)
     private fun platformDecode(encodedData: String): NSData {
-        return NSData.create(
-            base64EncodedString = encodedData,
-            options = 0
-        )!!
+        return memScoped {
+            NSData.create(
+                base64EncodedString = encodedData,
+                options = 0
+            ) ?: throw NullPointerException(OUT_OF_MEMORY)
+        }
     }
 
+    @ExperimentalUnsignedTypes
+    @Throws(NullPointerException::class)
     actual fun decode(encodedData: ByteArray): ByteArray {
-        val data = NSString.create(
-            NSDataMapper.toNSData(encodedData),
-            NSUTF8StringEncoding
-        ) as String
+        val data = memScoped {
+            NSString.create(
+                NSDataMapper.toNSData(encodedData),
+                NSUTF8StringEncoding
+            ) ?: throw NullPointerException(OUT_OF_MEMORY)
+        }
 
-        return decode(data)
+        return decode(data as String)
     }
 
+    @Throws(NullPointerException::class)
     actual fun decode(encodedData: String): ByteArray {
         return NSDataMapper.toByteArray(platformDecode(encodedData))
     }
 
+    @Throws(NullPointerException::class)
     actual fun decodeToString(encodedData: String): String {
-        return NSString.create(
-            platformDecode(encodedData),
-            NSUTF8StringEncoding
-        ) as String
+        return memScoped {
+            NSString.create(
+                platformDecode(encodedData),
+                NSUTF8StringEncoding
+            ) ?: throw NullPointerException(OUT_OF_MEMORY)
+        } as String
     }
 }

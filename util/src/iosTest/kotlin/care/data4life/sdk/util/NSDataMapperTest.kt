@@ -16,12 +16,14 @@
 
 package care.data4life.sdk.util
 
+import kotlinx.cinterop.memScoped
 import platform.Foundation.NSData
 import platform.Foundation.create
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
 class NSDataMapperTest {
+    @ExperimentalUnsignedTypes
     @Test
     fun `Given a toNSData is called with ByteArray converts to NSData`() {
         // Given
@@ -37,10 +39,12 @@ class NSDataMapperTest {
     @Test
     fun `Given a toByteArray is called with NSData converts to ByteArray`() {
         // Given
-        val payload = NSData.create(
-            base64EncodedString = "U3RyaW5nIHRvIGVuY29kZQ==",
-            options = 0
-        )!!
+        val payload = memScoped {
+            NSData.create(
+                base64EncodedString = "U3RyaW5nIHRvIGVuY29kZQ==",
+                options = 0
+            ) ?: throw NullPointerException("Out of memory.")
+        }
 
         // When
         val result: Any = NSDataMapper.toByteArray(payload)
@@ -49,6 +53,7 @@ class NSDataMapperTest {
         assertTrue(result is ByteArray)
     }
 
+    @ExperimentalUnsignedTypes
     @Test
     fun `Given a toNSData is called with a ByteArray and the result calls toByteArray, it transforms it to is orginal state`() {
         // Given
