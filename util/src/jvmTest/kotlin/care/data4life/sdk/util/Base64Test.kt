@@ -21,12 +21,11 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class Base64Test {
-
     @Test
     fun encode_shouldReturnEncodedByteArray_whenInputByteArray() {
         // given
-        val expected = ENCODED.toByteArray(CHARSET)
-        val input = DECODED.toByteArray(CHARSET)
+        val expected = ENCODED.encodeToByteArray()
+        val input = DECODED.encodeToByteArray()
 
         // when
         val actual = Base64.encode(input)
@@ -38,8 +37,8 @@ class Base64Test {
     @Test
     fun encode_shouldReturnEncodedByteArray_whenInputByteArrayLong() {
         // given
-        val expected = ENCODED_LONG.toByteArray(CHARSET)
-        val input = DECODED_LONG.toByteArray(CHARSET)
+        val expected = ENCODED_LONG.encodeToByteArray()
+        val input = DECODED_LONG.encodeToByteArray()
 
         // when
         val actual = Base64.encode(input)
@@ -53,6 +52,19 @@ class Base64Test {
         // given
         val expected = ENCODED
         val input = DECODED
+
+        // when
+        val actual = Base64.encodeToString(input)
+
+        // then
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun encodeToString_shouldReturnEncodedString_whenInputNonAsciiString() {
+        // given
+        val expected = ENCODED_NON_ASCII
+        val input = DECODED_NON_ASCII
 
         // when
         val actual = Base64.encodeToString(input)
@@ -78,7 +90,7 @@ class Base64Test {
     fun encodeToString_shouldReturnEncodedString_whenInputByteArray() {
         // given
         val expected = ENCODED
-        val input = DECODED.toByteArray(CHARSET)
+        val input = DECODED.encodeToByteArray()
 
         // when
         val actual = Base64.encodeToString(input)
@@ -91,7 +103,7 @@ class Base64Test {
     fun encodeToString_shouldReturnEncodedString_whenInputByteArrayLong() {
         // given
         val expected = ENCODED_LONG
-        val input = DECODED_LONG.toByteArray(CHARSET)
+        val input = DECODED_LONG.encodeToByteArray()
 
         // when
         val actual = Base64.encodeToString(input)
@@ -103,8 +115,8 @@ class Base64Test {
     @Test
     fun decode_shouldReturnDecodedByteArray_whenInputByteArray() {
         // given
-        val expected = DECODED.toByteArray(CHARSET)
-        val input = ENCODED.toByteArray(CHARSET)
+        val expected = DECODED.encodeToByteArray()
+        val input = ENCODED.encodeToByteArray()
 
         // when
         val actual = Base64.decode(input)
@@ -116,8 +128,8 @@ class Base64Test {
     @Test
     fun decode_shouldReturnDecodedByteArray_whenInputByteArrayLong() {
         // given
-        val expected = DECODED_LONG.toByteArray(CHARSET)
-        val input = ENCODED_LONG.toByteArray(CHARSET)
+        val expected = DECODED_LONG.encodeToByteArray()
+        val input = ENCODED_LONG.encodeToByteArray()
 
         // when
         val actual = Base64.decode(input)
@@ -129,7 +141,7 @@ class Base64Test {
     @Test
     fun decode_shouldReturnDecodedByteArray_whenInputString() {
         // given
-        val expected = DECODED.toByteArray(CHARSET)
+        val expected = DECODED.encodeToByteArray()
         val input = ENCODED
 
         // when
@@ -142,7 +154,7 @@ class Base64Test {
     @Test
     fun decode_shouldReturnDecodedByteArray_whenInputStringLong() {
         // given
-        val expected = DECODED_LONG.toByteArray(CHARSET)
+        val expected = DECODED_LONG.encodeToByteArray()
         val input = ENCODED_LONG
 
         // when
@@ -166,6 +178,19 @@ class Base64Test {
     }
 
     @Test
+    fun decodeToString_shouldReturnDecodedString_whenInputNonAsciiString() {
+        // given
+        val expected = DECODED_NON_ASCII
+        val input = ENCODED_NON_ASCII
+
+        // when
+        val actual = Base64.decodeToString(input)
+
+        // then
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun decodeToString_shouldReturnDecodedString_whenInputStringLong() {
         // given
         val expected = DECODED_LONG
@@ -179,12 +204,11 @@ class Base64Test {
     }
 
     companion object {
-        private val CHARSET = charset("UTF-8")
-
         private const val DECODED = "String to encode"
         private const val ENCODED = "U3RyaW5nIHRvIGVuY29kZQ=="
 
-        private const val DECODED_NON_ASCII = ""
+        private const val DECODED_NON_ASCII = "要屏蔽的字符串"
+        private const val ENCODED_NON_ASCII = "6KaB5bGP6JS955qE5a2X56ym5Liy"
 
         private const val DECODED_LONG =
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n" +

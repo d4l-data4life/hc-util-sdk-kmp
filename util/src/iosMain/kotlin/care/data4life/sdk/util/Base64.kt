@@ -16,44 +16,19 @@
 
 package care.data4life.sdk.util
 
-import kotlinx.cinterop.addressOf
-import kotlinx.cinterop.allocArrayOf
-import kotlinx.cinterop.memScoped
-import kotlinx.cinterop.usePinned
 import platform.Foundation.NSData
 import platform.Foundation.NSString
 import platform.Foundation.NSUTF8StringEncoding
 import platform.Foundation.base64EncodedStringWithOptions
 import platform.Foundation.create
-import platform.posix.memcpy
 
 actual object Base64 {
-    // see: https://github.com/JetBrains/kotlin-native/issues/3172
-    // see: https://stackoverflow.com/questions/58521108/how-to-convert-kotlin-bytearray-to-nsdata-and-viceversa
-    // see: https://gist.github.com/noahsark769/61cfb7a8b7231e2069a9dab94cf74a62
-    private fun NSData.toByteArray(): ByteArray {
-        return ByteArray(this@toByteArray.length.toInt()).apply {
-            usePinned {
-                memcpy(it.addressOf(0), this@toByteArray.bytes, this@toByteArray.length)
-            }
-        }
-    }
-
-    private fun ByteArray.toNSData(): NSData {
-        return memScoped {
-            NSData.create(
-                bytes = allocArrayOf(this@toNSData),
-                length = this@toNSData.size.toULong()
-            )
-        }
-    }
-
     actual fun encode(data: ByteArray): ByteArray {
         return encodeToString(data).encodeToByteArray()
     }
 
     actual fun encodeToString(data: ByteArray): String {
-        val nsData = data.toNSData()
+        val nsData = NSDataMapper.toNSData(data)
         return nsData.base64EncodedStringWithOptions(0)
     }
 
@@ -70,7 +45,7 @@ actual object Base64 {
 
     actual fun decode(encodedData: ByteArray): ByteArray {
         val data = NSString.create(
-            encodedData.toNSData(),
+            NSDataMapper.toNSData(encodedData),
             NSUTF8StringEncoding
         ) as String
 
@@ -78,7 +53,7 @@ actual object Base64 {
     }
 
     actual fun decode(encodedData: String): ByteArray {
-        return platformDecode(encodedData).toByteArray()
+        return NSDataMapper.toByteArray(platformDecode(encodedData))
     }
 
     actual fun decodeToString(encodedData: String): String {
