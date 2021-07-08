@@ -17,7 +17,6 @@ toc::[]
 === Added
 
 * Add spotless code style plugin
-* Gradle link:https://docs.gradle.org/6.8.1/userguide/dependency_locking.html[dependency locking]
 
 === Changed
 
@@ -28,6 +27,9 @@ toc::[]
 === Bumped
 
 * Gradle 6.7.1 -> 6.8.3
+* AndroidGradle 4.0.1 -> 4.2.1
+* Kotlin 1.4.21 -> 1.4.32
+* ktlint 0.40 -> 0.41
 
 === Migration
 

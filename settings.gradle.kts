@@ -13,9 +13,6 @@
 * applications and/or if you’d like to contribute to the development of the SDK, please
 * contact D4L by email to help@data4life.care.
 */
-
-enableFeaturePreview("ONE_LOCKFILE_PER_PROJECT")
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -23,8 +20,20 @@ pluginManagement {
     }
 }
 
+plugins {
+    id("com.gradle.enterprise") version("3.4.1")
+}
+
 rootProject.name = "hc-util-sdk-kmp"
 
 include(
     ":util"
 )
+
+buildCache {
+    local {
+        isEnabled = true
+        directory = File(rootDir, "build-cache")
+        removeUnusedEntriesAfterDays = 30
+    }
+}
