@@ -17,9 +17,11 @@
 package care.data4life.sdk.log
 
 import kotlin.jvm.JvmStatic
+import kotlin.native.concurrent.ThreadLocal
 
 class Log {
 
+    @ThreadLocal
     companion object {
         @JvmStatic
         var logger: Logger = EmptyLogger()

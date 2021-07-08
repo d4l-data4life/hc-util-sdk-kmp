@@ -17,10 +17,13 @@ toc::[]
 === Added
 
 * Add spotless code style plugin
+* iOS Base64 support
 
 === Changed
 
 === Removed
+
+* Serializable
 
 === Fixed
 

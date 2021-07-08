@@ -33,6 +33,14 @@ kotlin {
 
     jvm()
 
+    ios {
+        binaries {
+            framework {
+                baseName = LibraryConfig.name
+            }
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -72,6 +80,20 @@ kotlin {
             }
         }
 
+        val iosMain by getting {
+            dependencies {
+                implementation(Dependencies.multiplatform.kotlin.stdlibNative)
+            }
+        }
+
+        val iosTest by getting {
+            dependencies {
+                dependencies {
+                    implementation(Dependencies.multiplatform.kotlin.testCommon)
+                    implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
+                }
+            }
+        }
     }
 }
 

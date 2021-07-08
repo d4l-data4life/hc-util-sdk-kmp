@@ -16,4 +16,12 @@
 
 package care.data4life.sdk.util
 
-expect interface Serializable
+actual object HashUtil {
+    actual fun sha1(data: ByteArray?): ByteArray {
+        TODO()
+    }
+
+    actual fun sha1String(data: ByteArray?): String {
+        TODO()
+    }
+}
