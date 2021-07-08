@@ -16,12 +16,47 @@
 
 package care.data4life.sdk.util
 
+import kotlinx.cinterop.allocArray
+import kotlinx.cinterop.memScoped
+import kotlinx.cinterop.readBytes
+import platform.CoreCrypto.CC_LONG
+import platform.CoreCrypto.CC_SHA1
+import platform.CoreCrypto.CC_SHA1_DIGEST_LENGTH
+import platform.Foundation.NSString
+import platform.Foundation.stringByAppendingFormat
+import platform.posix.uint8_tVar
+
 actual object HashUtil {
+    private const val HEX_FORMAT = "%02hhx" // see: https://stackoverflow.com/questions/39075043/how-to-convert-data-to-hex-string-in-swift
+    private const val OUT_OF_MEM = "Cannot perform sha1."
+
+    @ExperimentalUnsignedTypes
     actual fun sha1(data: ByteArray?): ByteArray {
-        TODO()
+        check(data is ByteArray && data.isNotEmpty()) { DATA_IS_REQUIRED }
+
+        val nsData = NSDataMapper.toNSData(data)
+        return memScoped {
+            val digest = allocArray<uint8_tVar>(CC_SHA1_DIGEST_LENGTH)
+
+            CC_SHA1(
+                nsData.bytes,
+                nsData.length.toUInt() as CC_LONG,
+                digest
+            ) ?: throw RuntimeException(OUT_OF_MEM)
+
+            return@memScoped digest.readBytes(CC_SHA1_DIGEST_LENGTH)
+        }
     }
 
+    @ExperimentalUnsignedTypes
+    @Throws(RuntimeException::class)
     actual fun sha1String(data: ByteArray?): String {
-        TODO()
+        val bytes = sha1(data)
+        val sha1String = StringBuilder(bytes.size * 2)
+        for (byte in bytes) {
+            sha1String.append(("" as NSString).stringByAppendingFormat(HEX_FORMAT, byte))
+        }
+
+        return sha1String.toString()
     }
 }

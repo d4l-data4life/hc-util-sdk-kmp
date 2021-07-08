@@ -18,6 +18,7 @@ toc::[]
 
 * Add spotless code style plugin
 * iOS Base64 support
+* iOS sha1
 
 === Changed
 
