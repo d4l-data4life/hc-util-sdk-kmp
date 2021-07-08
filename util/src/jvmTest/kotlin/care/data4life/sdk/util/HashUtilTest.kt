@@ -18,6 +18,7 @@ package care.data4life.sdk.util
 
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class HashUtilTest {
 
@@ -25,6 +26,14 @@ class HashUtilTest {
     fun sha1_NoData_ShouldThrowException() {
         // when
         HashUtil.sha1(null)
+    }
+
+    @Test
+    fun sha1_emptyData_ShouldThrowException() {
+        // when
+        assertFailsWith<IllegalStateException> {
+            HashUtil.sha1(ByteArray(0))
+        }
     }
 
     @Test
@@ -50,6 +59,14 @@ class HashUtilTest {
     fun sha1String_NoData_ShouldThrowException() {
         // when
         HashUtil.sha1String(null)
+    }
+
+    @Test
+    fun sha1String_emptyData_ShouldThrowException() {
+        // when
+        assertFailsWith<IllegalStateException> {
+            HashUtil.sha1String(ByteArray(0))
+        }
     }
 
     @Test

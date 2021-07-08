@@ -36,6 +36,7 @@ object NSDataMapper {
         }
     }
 
+    @ExperimentalUnsignedTypes
     fun toNSData(data: ByteArray): NSData {
         return memScoped {
             NSData.create(
