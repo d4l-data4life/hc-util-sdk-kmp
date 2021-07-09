@@ -28,8 +28,7 @@ group = LibraryConfig.group
 
 kotlin {
     android {
-        publishAllLibraryVariants()
-        publishLibraryVariantsGroupedByFlavor = true
+        publishLibraryVariants("release", "debug")
     }
 
     jvm()
