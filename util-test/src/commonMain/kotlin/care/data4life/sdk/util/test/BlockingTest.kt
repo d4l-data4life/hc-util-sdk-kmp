@@ -29,22 +29,16 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package care.data4life.sdk.util
+package care.data4life.sdk.util.test
 
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
 import kotlin.coroutines.CoroutineContext
 
-actual val testCoroutineContext: CoroutineContext = newSingleThreadContext("testRunner")
-
-actual fun runBlockingTest(block: suspend CoroutineScope.() -> Unit) {
-    runBlocking(testCoroutineContext) { this.block() }
-}
-
-actual fun runWithContextBlockingTest(
+// see:https://github.com/Kotlin/kotlinx.coroutines/issues/1996
+expect val testCoroutineContext: CoroutineContext
+expect fun runBlockingTest(block: suspend CoroutineScope.() -> Unit)
+// Please note: this solves a specific iOS with shared immutable states while running in async Context
+expect fun runWithContextBlockingTest(
     context: CoroutineContext,
     block: suspend CoroutineScope.() -> Unit
-) {
-    runBlocking(context) { this.block() }
-}
+)

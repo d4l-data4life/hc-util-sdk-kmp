@@ -14,7 +14,7 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.util
+package care.data4life.sdk.util.test
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
