@@ -27,7 +27,8 @@ plugins {
 rootProject.name = "hc-util-sdk-kmp"
 
 include(
-    ":util"
+    ":util",
+    ":util-test"
 )
 
 buildCache {

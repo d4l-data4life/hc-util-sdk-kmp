@@ -39,6 +39,17 @@ object Dependencies {
             const val testJvm = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
             const val testJvmJunit = "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}"
         }
+
+        val coroutines = Coroutines
+
+        object Coroutines {
+            // https://github.com/Kotlin/kotlinx.coroutines
+            val common =
+                "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
+            val android =
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
+            val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
+        }
     }
 
     val test = Test

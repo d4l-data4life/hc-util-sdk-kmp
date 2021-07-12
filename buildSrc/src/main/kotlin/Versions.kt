@@ -25,6 +25,9 @@ object Versions {
     // https://github.com/JetBrains/kotlin
     const val kotlin = "1.4.32"
 
+    // https://github.com/Kotlin/kotlinx.coroutines
+    const val kotlinCoroutines = "1.4.3-native-mt"
+
     // Android
     // https://developer.android.com/studio/write/java8-support
     const val androidDesugar = "1.0.4"

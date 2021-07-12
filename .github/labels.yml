@@ -56,9 +56,13 @@
   color: e56992
 
 # Library
-- name: library
+- name: util-library
   description: Library changes
   color: 000080
+
+- name: util-test-library
+  description: Library changes
+  color: a41abd
 
 # Sample Apps
 - name: sample-android
