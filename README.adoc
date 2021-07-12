@@ -109,21 +109,21 @@ gpr.user=github-username
 gpr.key=github-token
 ----
 
-=== Java
+=== util
 
 Add following dependencies to your app build.gradle.
 
 ----
 dependencies {
-    implementation "care.data4life.hc-util-sdk-kmp:util-jvm:$version"
+    implementation "care.data4life.hc-util-sdk-kmp:util:$version"
 }
 ----
 
-=== Android
+=== util-test
 
 ----
 dependencies {
-    implementation "care.data4life.hc-util-sdk-kmp:util-android:$version"
+    implementation "care.data4life.hc-util-sdk-kmp:util-test:$version"
 }
 ----
 
