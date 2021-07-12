@@ -31,7 +31,6 @@ class BlockingTestTest {
         val channel = Channel<String>()
 
         // When
-
         launch {
             channel.send(sample)
         }
@@ -50,7 +49,6 @@ class BlockingTestTest {
         val channel = Channel<String>()
 
         // When
-
         launch {
             CoroutineScope(testCoroutineContext).launch {
                 channel.send(sample)
