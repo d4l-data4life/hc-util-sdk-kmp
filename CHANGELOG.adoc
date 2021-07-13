@@ -12,22 +12,32 @@ and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioni
 ==== Versions
 toc::[]
 
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.6.1...main[Unreleased]
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.8.0...main[Unreleased]
 
 === Added
-
-* Add spotless code style plugin
-* iOS Base64 support
-* iOS sha1
-* KMP Coroutine runBlockingTest and runWithContextBlockingTest (util-test)
 
 === Changed
 
 === Removed
 
-* Serializable
-
 === Fixed
+
+=== Bumped
+
+=== Migration
+
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.7.0...v1.8.0[1.8.0]
+
+=== Added
+
+* Add spotless code style plugin
+* iOS Base64 and sha1 support
+* Coroutine runBlockingTest and runWithContextBlockingTest (util-test) for Android, JVM and iOS
+* NSDataMapper for iOS
+
+=== Removed
+
+* Serializable
 
 === Bumped
 
@@ -35,8 +45,6 @@ toc::[]
 * AndroidGradle 4.0.1 -> 4.2.1
 * Kotlin 1.4.21 -> 1.4.32
 * ktlint 0.40 -> 0.41
-
-=== Migration
 
 
 == https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.6.1...v1.7.0[1.7.0]
