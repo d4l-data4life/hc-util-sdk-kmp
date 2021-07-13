@@ -15,8 +15,11 @@ documentation:
   - readmeOSS.adoc
 
 # Platform
-library:
+util-library:
   - util/**/*
+
+util-test-library:
+  - util-test/**/+
 
 # Sample
 sample-android:

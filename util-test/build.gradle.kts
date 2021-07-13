@@ -45,6 +45,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibCommon)
+                implementation(Dependencies.multiplatform.coroutines.common)
             }
         }
         val commonTest by getting {
@@ -57,6 +58,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibAndroid)
+                implementation(Dependencies.multiplatform.coroutines.android)
             }
         }
         val androidTest by getting {
@@ -71,6 +73,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibJdk8)
+                implementation(Dependencies.multiplatform.coroutines.common)
             }
         }
         val jvmTest by getting {
@@ -83,6 +86,11 @@ kotlin {
         val iosMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibNative)
+                implementation(Dependencies.multiplatform.coroutines.common) {
+                    version {
+                        strictly(Versions.kotlinCoroutines)
+                    }
+                }
             }
         }
 
