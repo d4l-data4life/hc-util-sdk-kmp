@@ -18,7 +18,7 @@ package care.data4life.sdk.util.test
 import kotlinx.coroutines.CoroutineScope
 import kotlin.coroutines.CoroutineContext
 
-// see:https://github.com/Kotlin/kotlinx.coroutines/issues/1996
+// see: https://github.com/Kotlin/kotlinx.coroutines/issues/1996
 expect val testCoroutineContext: CoroutineContext
 expect fun runBlockingTest(block: suspend CoroutineScope.() -> Unit)
 // Please note: this solves a specific iOS with shared immutable states while running in async Context
