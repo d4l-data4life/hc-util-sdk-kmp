@@ -16,6 +16,8 @@ toc::[]
 
 === Added
 
+* Pin iOS min Version (v13)
+
 === Changed
 
 === Removed
