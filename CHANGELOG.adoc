@@ -12,11 +12,9 @@ and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioni
 ==== Versions
 toc::[]
 
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.8.0...main[Unreleased]
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.8.1...main[Unreleased]
 
 === Added
-
-* Pin iOS min Version (v13)
 
 === Changed
 
@@ -27,6 +25,12 @@ toc::[]
 === Bumped
 
 === Migration
+
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.8.0...v1.8.1[1.8.1]
+
+=== Added
+
+* Pin iOS min version (v13)
 
 == https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.7.0...v1.8.0[1.8.0]
 
