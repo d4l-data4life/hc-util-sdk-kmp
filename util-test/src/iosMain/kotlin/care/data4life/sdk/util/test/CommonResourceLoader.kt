@@ -17,10 +17,24 @@
 package care.data4life.sdk.util.test
 
 import care.data4life.sdk.util.test.lang.FileNotFoundError
+import platform.posix.F_OK
+import platform.posix.access
 
-actual class CommonResourceLoader actual constructor(projectDir: AbsolutePath) {
+actual class CommonResourceLoader actual constructor(
+    projectDir: AbsolutePath
+) {
+    private val projectPath = projectDir
 
-    actual fun exists(path: Path, root: Path?): Boolean = TODO()
+    actual fun exists(path: Path, root: Path?): Boolean {
+        return access(
+            CommonPathResolver.resolvePath(
+                projectPath,
+                root,
+                path
+            ),
+            F_OK
+        ) == 0
+    }
 
     @Throws(FileNotFoundError::class)
     actual fun load(path: Path, root: Path?): String = TODO()
