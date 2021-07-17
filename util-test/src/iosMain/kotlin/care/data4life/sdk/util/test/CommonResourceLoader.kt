@@ -38,4 +38,7 @@ actual class CommonResourceLoader actual constructor(
 
     @Throws(FileNotFoundError::class)
     actual fun load(path: Path, root: Path?): String = TODO()
+
+    @Throws(FileNotFoundError::class)
+    actual fun loadBytes(path: Path, root: Path?): ByteArray = TODO()
 }

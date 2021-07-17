@@ -17,13 +17,16 @@
 package care.data4life.sdk.util.test
 
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 import care.data4life.sdk.config.TestConfig
+import care.data4life.sdk.util.test.lang.FileNotFoundError
 
 class CommonResourceLoaderTest {
     @Test
-    fun `Given exists is called, with a Path to a Fixture, returns false if the Fixture in Common does not exists`() {
+    fun `Given exists is called with a Path to a Fixture, returns false if the Fixture in Common does not exists`() {
         // Given
         val path = "/somthing.json"
 
@@ -35,9 +38,9 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given exists is called, with a Path to a Fixture and a RootPath, returns false if the Fixture in the given Path does not exists`() {
+    fun `Given exists is called with a Path to a Fixture and a RootPath, returns false if the Fixture in the given Path does not exists`() {
         // Given
-        val path = "/somthing.json"
+        val path = "/somthingElse.json"
         val root = "/ROOT/"
 
         // When
@@ -48,7 +51,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given exists is called, with a Path to a Fixture, returns true if the Fixture in CommonTest exists`() {
+    fun `Given exists is called with a Path to a Fixture, returns true if the Fixture in CommonTest exists`() {
         // Given
         val path = "/somethingElse.json"
 
@@ -60,7 +63,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given exists is called, with a Path to a Fixture and a RootPath, returns true if the Fixture in the given Path exists`() {
+    fun `Given exists is called with a Path to a Fixture and a RootPath, returns true if the Fixture in the given Path exists`() {
         // Given
         val root = "./src/jvmTest/resources/"
         val path = "/example.json"
@@ -70,5 +73,118 @@ class CommonResourceLoaderTest {
 
         // Then
         assertTrue(result)
+    }
+
+    // load
+
+    @Test
+    fun `Given load is called with a Path to a Fixture, throws an error if the Fixture in Common does not exists`() {
+        // Given
+        val path = "/somthing.json"
+
+        // Then
+        assertFailsWith<FileNotFoundError> {
+            // When
+            CommonResourceLoader(TestConfig.projectDir).load(path)
+        }
+    }
+
+    @Test
+    fun `Given load is called with a Path to a Fixture, returns the value of the File as String`() {
+        // Given
+        val path = "/somethingElse.json"
+
+        // When
+        val result = CommonResourceLoader(TestConfig.projectDir).load(path).trim()
+
+        // Then
+        assertEquals(
+            actual = result,
+            expected = "{ \"id\": \"somethingElse\" }"
+        )
+    }
+
+    @Test
+    fun `Given load is called with a Path to a Fixture and a RootPath, throws an error if the Fixture in Common does not exists`() {
+        // Given
+        val path = "/somthingElse.json"
+        val root = "/ROOT/"
+
+        // Then
+        assertFailsWith<FileNotFoundError> {
+            // When
+            CommonResourceLoader(TestConfig.projectDir).load(path, root)
+        }
+    }
+
+    @Test
+    fun `Given load is called with a Path to a Fixture and a RootPath, returns the value of the File as String`() {
+        // Given
+        val root = "./src/jvmTest/resources/"
+        val path = "/example.json"
+
+        // When
+        val result = CommonResourceLoader(TestConfig.projectDir).load(path, root).trim()
+
+        // Then
+        assertEquals(
+            actual = result,
+            expected = "{ \"id\": \"example\" }"
+        )
+    }
+
+    // loadBytes
+    @Test
+    fun `Given loadBytes is called with a Path to a Fixture, throws an error if the Fixture in Common does not exists`() {
+        // Given
+        val path = "/somthing.json"
+
+        // Then
+        assertFailsWith<FileNotFoundError> {
+            // When
+            CommonResourceLoader(TestConfig.projectDir).loadBytes(path)
+        }
+    }
+
+    @Test
+    fun `Given loadBytes is called with a Path to a Fixture, returns the value of the File as String`() {
+        // Given
+        val path = "/somethingElse.json"
+
+        // When
+        val result = CommonResourceLoader(TestConfig.projectDir).loadBytes(path)
+
+        // Then
+        assertTrue(
+            result.contentEquals("{ \"id\": \"somethingElse\" }\n".encodeToByteArray())
+        )
+    }
+
+    @Test
+    fun `Given loadBytes is called with a Path to a Fixture and a RootPath, throws an error if the Fixture in Common does not exists`() {
+        // Given
+        val path = "/somthingElse.json"
+        val root = "/ROOT/"
+
+        // Then
+        assertFailsWith<FileNotFoundError> {
+            // When
+            CommonResourceLoader(TestConfig.projectDir).load(path, root)
+        }
+    }
+
+    @Test
+    fun `Given loadBytes is called with a Path to a Fixture and a RootPath, returns the value of the File as String`() {
+        // Given
+        val root = "./src/jvmTest/resources/"
+        val path = "/example.json"
+
+        // When
+        val result = CommonResourceLoader(TestConfig.projectDir).loadBytes(path, root)
+
+        // Then
+        assertTrue(
+            result.contentEquals("{ \"id\": \"example\" }\n".encodeToByteArray())
+        )
     }
 }

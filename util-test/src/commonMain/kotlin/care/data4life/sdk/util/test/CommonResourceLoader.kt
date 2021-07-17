@@ -28,6 +28,9 @@ expect class CommonResourceLoader(
 
     @Throws(FileNotFoundError::class)
     fun load(path: Path, root: Path? = null): String
+
+    @Throws(FileNotFoundError::class)
+    fun loadBytes(path: Path, root: Path? = null): ByteArray
 }
 
 // This should be scoped in the ResourceLoader and be private, however this is currently not supported by Kotlin

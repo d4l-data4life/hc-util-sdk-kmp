@@ -38,5 +38,27 @@ actual class CommonResourceLoader actual constructor(
     }
 
     @Throws(FileNotFoundError::class)
-    actual fun load(path: Path, root: Path?): String = TODO()
+    private fun resolveFile(path: Path, root: Path?) : File {
+        return if(!exists(path, root)) {
+            throw FileNotFoundError()
+        } else {
+            File(
+                CommonPathResolver.resolvePath(
+                    projectPath,
+                    root,
+                    path
+                )
+            )
+        }
+    }
+
+    @Throws(FileNotFoundError::class)
+    actual fun load(path: Path, root: Path?): String {
+        return resolveFile(path, root).readText(Charsets.UTF_8)
+    }
+
+    @Throws(FileNotFoundError::class)
+    actual fun loadBytes(path: Path, root: Path?): ByteArray {
+        return resolveFile(path, root).readBytes()
+    }
 }
