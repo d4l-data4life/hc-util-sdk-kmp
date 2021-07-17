@@ -2,6 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
+      <module name="hc-util-sdk-kmp.util-test.commonMain" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-test.commonTest" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-test.jvmMain" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-test.jvmTest" target="1.8" />
       <module name="hc-util-sdk-kmp.util.commonMain" target="1.8" />
       <module name="hc-util-sdk-kmp.util.commonTest" target="1.8" />
       <module name="hc-util-sdk-kmp.util.jvmMain" target="1.8" />
