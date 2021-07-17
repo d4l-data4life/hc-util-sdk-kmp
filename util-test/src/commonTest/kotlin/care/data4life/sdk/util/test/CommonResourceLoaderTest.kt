@@ -19,6 +19,7 @@ package care.data4life.sdk.util.test
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import care.data4life.sdk.config.TestConfig
 
 class CommonResourceLoaderTest {
     @Test
@@ -27,7 +28,7 @@ class CommonResourceLoaderTest {
         val path = "/somthing.json"
 
         // When
-        val result = CommonResourceLoader("").exists(path)
+        val result = CommonResourceLoader(TestConfig.projectDir).exists(path)
 
         // Then
         assertFalse(result)
@@ -40,7 +41,7 @@ class CommonResourceLoaderTest {
         val root = "/ROOT/"
 
         // When
-        val result = CommonResourceLoader("").exists(path, root)
+        val result = CommonResourceLoader(TestConfig.projectDir).exists(path, root)
 
         // Then
         assertFalse(result)
@@ -52,7 +53,7 @@ class CommonResourceLoaderTest {
         val path = "/somethingElse.json"
 
         // When
-        val result = CommonResourceLoader(".").exists(path)
+        val result = CommonResourceLoader(TestConfig.projectDir).exists(path)
 
         // Then
         assertTrue(result)
@@ -61,11 +62,11 @@ class CommonResourceLoaderTest {
     @Test
     fun `Given exists is called, with a Path to a Fixture and a RootPath, returns true if the Fixture in the given Path exists`() {
         // Given
-        val root = "./src/androidTest/resources/"
+        val root = "./src/jvmTest/resources/"
         val path = "/example.json"
 
         // When
-        val result = CommonResourceLoader(".").exists(path, root)
+        val result = CommonResourceLoader(TestConfig.projectDir).exists(path, root)
 
         // Then
         assertTrue(result)
