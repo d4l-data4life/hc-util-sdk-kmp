@@ -16,7 +16,14 @@
 
 package care.data4life.sdk.util.test
 
+import care.data4life.sdk.util.NSDataMapper
 import care.data4life.sdk.util.test.lang.FileNotFoundError
+import kotlinx.cinterop.memScoped
+import platform.Foundation.NSData
+import platform.Foundation.NSFileManager
+import platform.Foundation.NSString
+import platform.Foundation.NSUTF8StringEncoding
+import platform.Foundation.create
 import platform.posix.F_OK
 import platform.posix.access
 
@@ -36,9 +43,48 @@ actual class CommonResourceLoader actual constructor(
         ) == 0
     }
 
-    @Throws(FileNotFoundError::class)
-    actual fun load(path: Path, root: Path?): String = TODO()
+    private fun readBytes(path: String): NSData {
+        return memScoped {
+            NSFileManager.defaultManager().contentsAtPath(
+                path
+            ) ?: RuntimeException("Out of Memory")
+        } as NSData
+    }
 
     @Throws(FileNotFoundError::class)
-    actual fun loadBytes(path: Path, root: Path?): ByteArray = TODO()
+    actual fun load(path: Path, root: Path?): String {
+        return if (!exists(path, root)) {
+            throw FileNotFoundError()
+        } else {
+            memScoped {
+                NSString.create(
+                    readBytes(
+                        CommonPathResolver.resolvePath(
+                            projectPath,
+                            root,
+                            path
+                        )
+                    ),
+                    NSUTF8StringEncoding
+                )
+            } as String
+        }
+    }
+
+    @Throws(FileNotFoundError::class)
+    actual fun loadBytes(path: Path, root: Path?): ByteArray {
+        return if (!exists(path, root)) {
+            throw FileNotFoundError()
+        } else {
+            NSDataMapper.toByteArray(
+                readBytes(
+                    CommonPathResolver.resolvePath(
+                        projectPath,
+                        root,
+                        path
+                    )
+                )
+            )
+        }
+    }
 }

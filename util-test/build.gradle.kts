@@ -87,6 +87,7 @@ kotlin {
 
         val iosMain by getting {
             dependencies {
+                implementation(api(project(":util"))!!)
                 implementation(Dependencies.multiplatform.kotlin.stdlibNative)
                 implementation(Dependencies.multiplatform.coroutines.common) {
                     version {

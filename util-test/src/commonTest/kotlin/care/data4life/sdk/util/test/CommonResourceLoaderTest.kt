@@ -16,13 +16,13 @@
 
 package care.data4life.sdk.util.test
 
+import care.data4life.sdk.config.TestConfig
+import care.data4life.sdk.util.test.lang.FileNotFoundError
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
-import care.data4life.sdk.config.TestConfig
-import care.data4life.sdk.util.test.lang.FileNotFoundError
 
 class CommonResourceLoaderTest {
     @Test
@@ -100,7 +100,7 @@ class CommonResourceLoaderTest {
         // Then
         assertEquals(
             actual = result,
-            expected = "{ \"id\": \"somethingElse\" }"
+            expected = "{ \"id\": \"你好\" }"
         )
     }
 
@@ -156,7 +156,7 @@ class CommonResourceLoaderTest {
 
         // Then
         assertTrue(
-            result.contentEquals("{ \"id\": \"somethingElse\" }\n".encodeToByteArray())
+            result.contentEquals("{ \"id\": \"你好\" }\n".encodeToByteArray())
         )
     }
 

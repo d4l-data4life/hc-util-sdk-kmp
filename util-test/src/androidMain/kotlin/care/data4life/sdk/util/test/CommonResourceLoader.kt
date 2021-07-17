@@ -16,14 +16,13 @@
 
 package care.data4life.sdk.util.test
 
-import java.io.File
 import care.data4life.sdk.util.test.lang.FileNotFoundError
+import java.io.File
 
 actual class CommonResourceLoader actual constructor(
     projectDir: AbsolutePath
 ) {
     private val projectPath = projectDir
-
 
     actual fun exists(path: Path, root: Path?): Boolean {
         val resource = File(
@@ -38,8 +37,8 @@ actual class CommonResourceLoader actual constructor(
     }
 
     @Throws(FileNotFoundError::class)
-    private fun resolveFile(path: Path, root: Path?) : File {
-        return if(!exists(path, root)) {
+    private fun resolveFile(path: Path, root: Path?): File {
+        return if (!exists(path, root)) {
             throw FileNotFoundError()
         } else {
             File(
