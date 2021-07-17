@@ -29,3 +29,18 @@ expect class CommonResourceLoader(
     @Throws(FileNotFoundError::class)
     fun load(path: Path, root: Path? = null): String
 }
+
+// This should be scoped in the ResourceLoader and be private, however this is currently not supported by Kotlin
+internal object CommonPathResolver {
+    fun resolvePath(
+        projectDir: AbsolutePath,
+        moduleDir: Path? = null,
+        target: Path
+    ): AbsolutePath {
+        return if (moduleDir is Path) {
+            "${projectDir.trimEnd('/')}/${moduleDir.trimEnd('/')}/${target.trimStart('/')}"
+        } else {
+            "${projectDir.trimEnd('/')}/${Constants.commonRoot.trim('/')}/${target.trimStart('/')}"
+        }
+    }
+}

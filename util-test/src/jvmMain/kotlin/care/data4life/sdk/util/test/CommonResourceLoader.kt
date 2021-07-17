@@ -19,20 +19,19 @@ package care.data4life.sdk.util.test
 import java.io.File
 import care.data4life.sdk.util.test.lang.FileNotFoundError
 
-actual class CommonResourceLoader actual constructor(projectDir: AbsolutePath) {
+actual class CommonResourceLoader actual constructor(
+    projectDir: AbsolutePath
+) {
     private val projectPath = projectDir
 
-    private fun resolveRoot(root: Path?): Path {
-        return if (root is Path) {
-            root.trimEnd('/')
-        } else {
-            Constants.commonRoot
-        }
-    }
 
     actual fun exists(path: Path, root: Path?): Boolean {
         val resource = File(
-            "${resolveRoot(root)}/${path.trimStart('/')}"
+            CommonPathResolver.resolvePath(
+                projectPath,
+                root,
+                path
+            )
         )
 
         return resource.exists()
