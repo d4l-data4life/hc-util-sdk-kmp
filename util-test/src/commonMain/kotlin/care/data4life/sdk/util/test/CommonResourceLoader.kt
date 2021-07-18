@@ -18,8 +18,8 @@ package care.data4life.sdk.util.test
 
 import care.data4life.sdk.util.test.lang.FileNotFoundError
 
-typealias Path = String
-typealias AbsolutePath = String
+internal typealias Path = String
+internal typealias AbsolutePath = String
 
 expect class CommonResourceLoader(
     projectDir: AbsolutePath
