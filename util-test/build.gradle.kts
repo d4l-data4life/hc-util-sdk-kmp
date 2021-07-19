@@ -46,6 +46,7 @@ kotlin {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibCommon)
                 implementation(Dependencies.multiplatform.coroutines.common)
+                implementation(Dependencies.multiplatform.ktor.common)
             }
         }
         val commonTest by getting {
@@ -54,6 +55,7 @@ kotlin {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.testCommon)
                 implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
+                implementation(Dependencies.multiplatform.ktor.mock)
             }
         }
 

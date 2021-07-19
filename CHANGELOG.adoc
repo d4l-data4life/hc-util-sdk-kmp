@@ -17,6 +17,7 @@ toc::[]
 === Added
 
 * CommonResourceLoad (util-test).
+* HttpMockObjectResponse (util-test).
 
 === Changed
 

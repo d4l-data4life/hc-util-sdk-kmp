@@ -50,6 +50,13 @@ object Dependencies {
                 "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
             val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
         }
+
+        val ktor = Ktor
+
+        object Ktor {
+            val common = "io.ktor:ktor-client-core:${Versions.ktor}"
+            val mock = "io.ktor:ktor-client-mock:${Versions.ktor}"
+        }
     }
 
     val test = Test
