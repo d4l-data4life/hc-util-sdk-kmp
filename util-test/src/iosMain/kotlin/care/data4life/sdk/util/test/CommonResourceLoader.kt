@@ -67,8 +67,8 @@ actual class CommonResourceLoader actual constructor(
                     ),
                     NSUTF8StringEncoding
                 )
-            } as String
-        }
+            }
+        } as String
     }
 
     @Throws(FileNotFoundError::class)

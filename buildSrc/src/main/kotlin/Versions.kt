@@ -28,6 +28,9 @@ object Versions {
     // https://github.com/Kotlin/kotlinx.coroutines
     const val kotlinCoroutines = "1.4.3-native-mt"
 
+    // https://github.com/touchlab/Stately
+    const val stately = "1.1.5"
+
     // Network
     // https://ktor.io/
     const val ktor = "1.5.4"

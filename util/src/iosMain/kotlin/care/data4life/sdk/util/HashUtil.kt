@@ -19,7 +19,6 @@ package care.data4life.sdk.util
 import kotlinx.cinterop.allocArray
 import kotlinx.cinterop.memScoped
 import kotlinx.cinterop.readBytes
-import platform.CoreCrypto.CC_LONG
 import platform.CoreCrypto.CC_SHA1
 import platform.CoreCrypto.CC_SHA1_DIGEST_LENGTH
 import platform.Foundation.NSString
@@ -40,7 +39,7 @@ actual object HashUtil {
 
             CC_SHA1(
                 nsData.bytes,
-                nsData.length.toUInt() as CC_LONG,
+                nsData.length.toUInt(),
                 digest
             ) ?: throw RuntimeException(OUT_OF_MEM)
 

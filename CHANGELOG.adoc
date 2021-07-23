@@ -18,6 +18,8 @@ toc::[]
 
 * CommonResourceLoad (util-test).
 * HttpMockObjectResponse (util-test).
+* util-coroutine module.
+* D4LSDKFlow (util-coroutine).
 
 === Changed
 

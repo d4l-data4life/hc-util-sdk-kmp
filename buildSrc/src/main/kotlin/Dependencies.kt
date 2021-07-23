@@ -49,6 +49,8 @@ object Dependencies {
             val android =
                 "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
             val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
+
+            val stately = "co.touchlab:stately-common:${Versions.stately}"
         }
 
         val ktor = Ktor
