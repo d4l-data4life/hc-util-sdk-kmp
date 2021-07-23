@@ -46,20 +46,19 @@ kotlin {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibCommon)
                 implementation(Dependencies.multiplatform.coroutines.common)
-                implementation(Dependencies.multiplatform.coroutines.stately) // TODO: Remove with Kotlin 1.5.x
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.testCommon)
                 implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
-                api(project(":util-coroutine-test"))
             }
         }
 
         val androidMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibAndroid)
+                implementation(Dependencies.multiplatform.coroutines.android)
             }
         }
         val androidTest by getting {
@@ -74,6 +73,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibJdk8)
+                implementation(Dependencies.multiplatform.coroutines.common)
             }
         }
         val jvmTest by getting {
@@ -86,6 +86,11 @@ kotlin {
         val iosMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibNative)
+                implementation(Dependencies.multiplatform.coroutines.common) {
+                    version {
+                        strictly(Versions.kotlinCoroutines)
+                    }
+                }
             }
         }
 

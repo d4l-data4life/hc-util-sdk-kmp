@@ -2,6 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
+      <module name="hc-util-sdk-kmp.util-coroutine-test.commonMain" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-coroutine-test.commonTest" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-coroutine-test.jvmMain" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-coroutine-test.jvmTest" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-coroutine.commonMain" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-coroutine.commonTest" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-coroutine.jvmMain" target="1.8" />
+      <module name="hc-util-sdk-kmp.util-coroutine.jvmTest" target="1.8" />
       <module name="hc-util-sdk-kmp.util-test.commonMain" target="1.8" />
       <module name="hc-util-sdk-kmp.util-test.commonTest" target="1.8" />
       <module name="hc-util-sdk-kmp.util-test.jvmMain" target="1.8" />
