@@ -27,6 +27,9 @@ util-test-library:
 util-coroutine-test-library:
   - util-coroutine-test/**/*
 
+util-ktor-test-library:
+  - util-ktor-test/**/*
+
 # Sample
 sample-android:
   - sample-android/**/*
