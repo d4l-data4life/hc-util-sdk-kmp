@@ -21,6 +21,8 @@ toc::[]
 * util-coroutine module
 * D4LSDKFlow (util-coroutine)
 * util-coroutine-test module
+* util-ktor-test module
+* HttpMockObjectResponse (util-ktor-test)
 
 === Changed
 
