@@ -46,15 +46,13 @@ kotlin {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibCommon)
                 implementation(Dependencies.multiplatform.ktor.common)
+                implementation(Dependencies.multiplatform.ktor.mock)
             }
         }
         val commonTest by getting {
-            kotlin.srcDir("src-gen/commonTest/kotlin")
-
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.testCommon)
                 implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
-                implementation(Dependencies.multiplatform.ktor.mock)
                 implementation(api(project(":util-coroutine-test"))!!)
             }
         }

@@ -23,6 +23,7 @@ toc::[]
 * util-coroutine-test module
 * util-ktor-test module
 * HttpMockObjectResponse (util-ktor-test)
+* createHelloWorldOkResponse, createHelloWorldMockClient, createErrorMockClient and createMockClientWithResponse (util-ktor-test)
 
 === Changed
 
