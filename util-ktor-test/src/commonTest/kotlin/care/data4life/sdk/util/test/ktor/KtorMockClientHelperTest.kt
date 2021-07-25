@@ -29,6 +29,7 @@ import io.ktor.client.request.put
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
+import io.ktor.http.fullPath
 import io.ktor.http.headersOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -206,7 +207,7 @@ class KtorMockClientHelperTest {
     @Test
     fun `Given createMockClientWithResponse is called with Closure which builds HttpResponseData it creates a MockClient which utilises the given HttpResponseData`() = runBlockingTest {
         // Given
-        val client = createMockClientWithResponse { scope ->
+        val client = createMockClientWithResponse { scope, _ ->
             scope.respond(
                 content = "Not Hello World!"
             )
@@ -248,6 +249,28 @@ class KtorMockClientHelperTest {
     }
 
     @Test
+    fun `Given createMockClientWithResponse is called with Closure which builds HttpResponseData it delegates the HttpRequestData to the Closure`() = runBlockingTest {
+        // Given
+        val url = "example.com"
+
+        val client = createMockClientWithResponse { scope, request ->
+            // Then
+            assertEquals(
+                actual = request.url.fullPath.trim('/'),
+                expected = url
+            )
+
+            scope.respond(
+                content = "Not Hello World!"
+            )
+        }
+
+        // When
+        client.post<String>(url)
+        client.delete<String>(url)
+    }
+
+    @Test
     // see: HttpMockObjectResponse
     fun `Given createMockClientWithResponse is called with List of HttpResponseObjects and a Closure it creates a MockClient which utilises the given HttpResponseObjects`() = runBlockingTest {
         // Given
@@ -255,7 +278,7 @@ class KtorMockClientHelperTest {
         val objects = listOf(
             referenceObject
         )
-        val client = createMockClientWithResponse(objects) { scope ->
+        val client = createMockClientWithResponse(objects) { scope, _ ->
             scope.respond(
                 content = "Not Hello World!"
             )

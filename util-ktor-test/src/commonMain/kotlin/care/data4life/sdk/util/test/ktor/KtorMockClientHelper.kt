@@ -22,6 +22,7 @@ import io.ktor.client.engine.mock.MockRequestHandleScope
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondError
 import io.ktor.client.features.HttpResponseValidator
+import io.ktor.client.request.HttpRequestData
 import io.ktor.client.request.HttpResponseData
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
@@ -70,7 +71,7 @@ fun createErrorMockClient(
 
 fun createMockClientWithResponse(
     httpResponseObjects: List<Any>? = null,
-    httpResponse: (scope: MockRequestHandleScope) -> HttpResponseData,
+    httpResponse: (scope: MockRequestHandleScope, HttpRequestData) -> HttpResponseData,
 ): HttpClient {
     return HttpClient(MockEngine) {
         if (httpResponseObjects != null) {
@@ -81,7 +82,7 @@ fun createMockClientWithResponse(
 
         engine {
             addHandler {
-                httpResponse(this)
+                httpResponse(this, it)
             }
         }
     }
