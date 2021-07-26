@@ -17,8 +17,6 @@
 package care.data4life.sdk.util.test.ktor
 
 import care.data4life.sdk.util.test.coroutine.runBlockingTest
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.request.delete
 import io.ktor.client.request.get
@@ -27,54 +25,18 @@ import io.ktor.client.request.patch
 import io.ktor.client.request.post
 import io.ktor.client.request.put
 import io.ktor.client.statement.HttpResponse
-import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.fullPath
-import io.ktor.http.headersOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertSame
 
-class KtorMockClientHelperTest {
-    @Test
-    fun `Given createHelloWorldOkResponse is called, it creates OkResponse, which contains Hello World`() = runBlockingTest {
-        // Given
-        val client = HttpClient(MockEngine) {
-            engine {
-                addHandler {
-                    createHelloWorldOkResponse(this)
-                }
-            }
-        }
-
-        // When
-        val responsePayload = client.get<String>("potato")
-        val response = (client.engine as MockEngine).responseHistory[0]
-
-        // Then
-        assertEquals(
-            actual = responsePayload,
-            expected = "Hello World!"
-        )
-        assertEquals(
-            actual = response.statusCode,
-            expected = HttpStatusCode.OK
-        )
-        assertEquals(
-            actual = response.headers,
-            expected = headersOf(
-                "Content-Type" to listOf(
-                    ContentType.Text.Plain.toString()
-                )
-            )
-        )
-    }
-
+class HttpMockClientFactoryTest {
     @Test
     fun `Given createHelloWorldMockClient is called it creates a MockClient which sends always a OkResponse`() = runBlockingTest {
         // Given
-        val client = createHelloWorldMockClient()
+        val client = HttpMockClientFactory.createHelloWorldMockClient()
 
         // When
         val response1: HttpResponse = client.get("does not matter")
@@ -114,7 +76,7 @@ class KtorMockClientHelperTest {
     @Test
     fun `Given createHelloWorldMockClient is it creates a MockClient which responds always Hello World`() = runBlockingTest {
         // Given
-        val client = createHelloWorldMockClient()
+        val client = HttpMockClientFactory.createHelloWorldMockClient()
 
         // When
         val response1: String = client.get("does not matter")
@@ -155,7 +117,7 @@ class KtorMockClientHelperTest {
     fun `Given createErrorMockClient is called with a Error it creates a MockClient which propagates always the given Error`() = runBlockingTest {
         // Given
         val error = RuntimeException()
-        val client = createErrorMockClient(error)
+        val client = HttpMockClientFactory.createErrorMockClient(error)
 
         // When
         val response1 = assertFailsWith<RuntimeException> {
@@ -207,7 +169,7 @@ class KtorMockClientHelperTest {
     @Test
     fun `Given createMockClientWithResponse is called with Closure which builds HttpResponseData it creates a MockClient which utilises the given HttpResponseData`() = runBlockingTest {
         // Given
-        val client = createMockClientWithResponse { scope, _ ->
+        val client = HttpMockClientFactory.createMockClientWithResponse { scope, _ ->
             scope.respond(
                 content = "Not Hello World!"
             )
@@ -253,7 +215,7 @@ class KtorMockClientHelperTest {
         // Given
         val url = "example.com"
 
-        val client = createMockClientWithResponse { scope, request ->
+        val client = HttpMockClientFactory.createMockClientWithResponse { scope, request ->
             // Then
             assertEquals(
                 actual = request.url.fullPath.trim('/'),
@@ -278,7 +240,7 @@ class KtorMockClientHelperTest {
         val objects = listOf(
             referenceObject
         )
-        val client = createMockClientWithResponse(objects) { scope, _ ->
+        val client = HttpMockClientFactory.createMockClientWithResponse(objects) { scope, _ ->
             scope.respond(
                 content = "Not Hello World!"
             )
