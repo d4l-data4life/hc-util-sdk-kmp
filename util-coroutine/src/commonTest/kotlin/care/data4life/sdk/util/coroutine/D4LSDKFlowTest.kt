@@ -63,7 +63,6 @@ class D4LSDKFlowTest {
             CoroutineScope(testCoroutineContext),
             {},
             {},
-            {}
         )
 
         // Then
@@ -88,8 +87,32 @@ class D4LSDKFlowTest {
                     expected = item
                 )
             },
-            {},
             {}
+        )
+
+        runBlockingTest {
+            job.join()
+        }
+    }
+
+    @Test
+    fun `Given subscribe is called with a Closure to receive emitted Errors it delegates the emitted Errors to there`() {
+        // Given
+        val error = RuntimeException()
+        val ktFlow = flow<Any> {
+            throw error
+        }
+
+        // When
+        val job = D4LSDKFlow(ktFlow).subscribe(
+            CoroutineScope(testCoroutineContext),
+            {},
+            onError = { delegatedError ->
+                assertSame(
+                    actual = delegatedError,
+                    expected = error
+                )
+            }
         )
 
         runBlockingTest {
@@ -107,12 +130,12 @@ class D4LSDKFlowTest {
         val job = D4LSDKFlow(ktFlow).subscribe(
             CoroutineScope(testCoroutineContext),
             {},
-            {
+            {},
+            onComplete = {
                 GlobalScope.launch {
                     wasCalled.send(true)
                 }
-            },
-            {}
+            }
         )
 
         // Then
@@ -120,32 +143,6 @@ class D4LSDKFlowTest {
             job.join()
 
             assertTrue(wasCalled.receive())
-        }
-    }
-
-    @Test
-    fun `Given subscribe is called with a Closure to receive emitted Errors it delegates the emitted Errors to there`() {
-        // Given
-        val error = RuntimeException()
-        val ktFlow = flow<Any> {
-            throw error
-        }
-
-        // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
-            {},
-            {},
-            { delegatedError ->
-                assertSame(
-                    actual = delegatedError,
-                    expected = error
-                )
-            }
-        )
-
-        runBlockingTest {
-            job.join()
         }
     }
 }
