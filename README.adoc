@@ -82,7 +82,7 @@ Currently we support Android, JVM and iOS and Kotlin-Multiplatform.
 ==== util-ktor-test
 * convenient Factory for MockClient
 * convenient Factory to produce a HelloWorld response
-* Plugin to in order to resolve directly objects in order to avoid integration testing with a MockClient
+* Plugin to to resolve directly objects in order to avoid integration testing with a MockClient
 
 === Built With
 
