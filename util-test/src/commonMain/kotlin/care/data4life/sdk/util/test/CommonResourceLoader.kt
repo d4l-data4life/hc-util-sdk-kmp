@@ -44,7 +44,7 @@ expect class CommonResourceLoader(
 
 // This should be scoped in the ResourceLoader and be private, however this is currently not supported by Kotlin
 internal object CommonPathResolver {
-    const val commonRoot: Path = "src/commonTest/resources"
+    private const val commonRoot: Path = "src/commonTest/resources"
 
     fun resolvePath(
         projectDir: AbsolutePath,
