@@ -39,7 +39,7 @@ class D4LSDKFlowTest {
     }
 
     @Test
-    fun `Given asKtFlow is called it returns the wrapped Flow`() {
+    fun `It exposes its wrapped Flow`() {
         // Given
         val ktFlow = flow<Unit> { }
 
