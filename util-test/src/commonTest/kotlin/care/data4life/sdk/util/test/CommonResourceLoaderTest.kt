@@ -104,6 +104,42 @@ class CommonResourceLoaderTest {
         )
     }
 
+    @ExperimentalStdlibApi
+    @Test
+    fun `Given load is called with a Path and a ResourceEncoding, it uses the UTF8 by default`() {
+        // Given
+        val path = "/exampleEncoding.json"
+
+        // When
+        val result = CommonResourceLoader(
+            TestConfig.projectDir
+        ).load(path, encoding = ResourceEncoding.UTF_8).trim()
+
+        // Then
+        assertEquals(
+            actual = result.substringAfter(':').trim('}').trim().trim('"')[0].code,
+            expected = 92
+        )
+    }
+
+    @ExperimentalStdlibApi
+    @Test
+    fun `Given load is called with a Path and a ResourceEncoding, it uses the ResourceEncoding`() {
+        // Given
+        val path = "/exampleEncoding.json"
+
+        // When
+        val result = CommonResourceLoader(
+            TestConfig.projectDir
+        ).load(path, encoding = ResourceEncoding.UTF_16).trim()
+
+        // Then
+        assertEquals(
+            actual = result.substringAfter(':').trim('}').trim().trim('"')[0].code,
+            expected = 31520
+        )
+    }
+
     @Test
     fun `Given load is called with a Path to a Fixture and a RootPath, throws an error if the Fixture in Common does not exists`() {
         // Given
@@ -113,7 +149,7 @@ class CommonResourceLoaderTest {
         // Then
         assertFailsWith<FileNotFoundError> {
             // When
-            CommonResourceLoader(TestConfig.projectDir).load(path, root)
+            CommonResourceLoader(TestConfig.projectDir).load(path, root = root)
         }
     }
 
@@ -124,7 +160,7 @@ class CommonResourceLoaderTest {
         val path = "/example.json"
 
         // When
-        val result = CommonResourceLoader(TestConfig.projectDir).load(path, root).trim()
+        val result = CommonResourceLoader(TestConfig.projectDir).load(path, root = root).trim()
 
         // Then
         assertEquals(
@@ -169,7 +205,7 @@ class CommonResourceLoaderTest {
         // Then
         assertFailsWith<FileNotFoundError> {
             // When
-            CommonResourceLoader(TestConfig.projectDir).load(path, root)
+            CommonResourceLoader(TestConfig.projectDir).load(path, root = root)
         }
     }
 
@@ -180,7 +216,7 @@ class CommonResourceLoaderTest {
         val path = "/example.json"
 
         // When
-        val result = CommonResourceLoader(TestConfig.projectDir).loadBytes(path, root)
+        val result = CommonResourceLoader(TestConfig.projectDir).loadBytes(path, root = root)
 
         // Then
         assertTrue(
