@@ -18,6 +18,7 @@ package care.data4life.sdk.util.test
 
 import care.data4life.sdk.util.test.lang.FileNotFoundError
 import java.io.File
+import java.nio.charset.Charset
 
 actual class CommonResourceLoader actual constructor(
     projectDir: AbsolutePath
@@ -51,9 +52,21 @@ actual class CommonResourceLoader actual constructor(
         }
     }
 
+    private fun mapEncoding(encoding: ResourceEncoding): Charset {
+        return if (encoding == ResourceEncoding.UTF_16) {
+            Charsets.UTF_16
+        } else {
+            Charsets.UTF_8
+        }
+    }
+
     @Throws(FileNotFoundError::class)
-    actual fun load(path: Path, root: Path?): String {
-        return resolveFile(path, root).readText(Charsets.UTF_8)
+    actual fun load(
+        path: Path,
+        encoding: ResourceEncoding,
+        root: Path?
+    ): String {
+        return resolveFile(path, root).readText(mapEncoding(encoding))
     }
 
     @Throws(FileNotFoundError::class)
