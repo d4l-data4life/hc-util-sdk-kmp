@@ -28,6 +28,10 @@ object Versions {
     // https://github.com/Kotlin/kotlinx.coroutines
     const val kotlinCoroutines = "1.4.3-native-mt"
 
+    // Network
+    // https://ktor.io/
+    const val ktor = "1.5.4"
+
     // Android
     // https://developer.android.com/studio/write/java8-support
     const val androidDesugar = "1.0.4"
