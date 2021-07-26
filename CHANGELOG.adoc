@@ -36,7 +36,8 @@ toc::[]
 * util-coroutine-test module
 * util-ktor-test module
 * HttpMockObjectResponse (util-ktor-test)
-* createHelloWorldOkResponse, createHelloWorldMockClient, createErrorMockClient and createMockClientWithResponse (util-ktor-test)
+* HttpMockClientFactory#createHelloWorldMockClient, HttpMockClientFactory#createErrorMockClient and HttpMockClientFactory#createMockClientWithResponse (util-ktor-test)
+* HttpMockClientResponseFactory#createHelloWorldOkResponse (util-ktor-test)
 * stately (1.1.6)
 
 === Changed
