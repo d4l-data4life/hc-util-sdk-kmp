@@ -60,9 +60,13 @@
   description: Library changes
   color: 000080
 
+- name: util-coroutine-library
+  description: Library changes
+  color: 000080
+
 - name: util-test-library
   description: Library changes
-  color: a41abd
+  color: 000080
 
 # Sample Apps
 - name: sample-android

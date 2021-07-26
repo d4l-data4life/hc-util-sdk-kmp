@@ -80,8 +80,8 @@ actual class CommonResourceLoader actual constructor(
                     ),
                     mapEncoding(encoding)
                 )
-            } as String
-        }
+            }
+        } as String
     }
 
     @Throws(FileNotFoundError::class)
