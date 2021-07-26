@@ -12,22 +12,11 @@ and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioni
 ==== Versions
 toc::[]
 
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.8.1...main[Unreleased]
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.9.0...main[Unreleased]
 
 === Added
 
-* CommonResourceLoad (util-test)
-* HttpMockObjectResponse (util-test)
-* util-coroutine module
-* D4LSDKFlow (util-coroutine)
-* util-coroutine-test module
-* util-ktor-test module
-* HttpMockObjectResponse (util-ktor-test)
-* createHelloWorldOkResponse, createHelloWorldMockClient, createErrorMockClient and createMockClientWithResponse (util-ktor-test)
-
 === Changed
-
-* _**BREAKING**_ runBlockingTest and runWithContextBlockingTest are now part of util-coroutine-test
 
 === Removed
 
@@ -35,9 +24,28 @@ toc::[]
 
 === Bumped
 
-* AndroidGradle 4.0.1 -> 4.2.2
-
 === Migration
+
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.8.1...v1.9.0[1.9.0]
+
+=== Added
+
+* CommonResourceLoad (util-test)
+* util-coroutine module
+* D4LSDKFlow (util-coroutine)
+* util-coroutine-test module
+* util-ktor-test module
+* HttpMockObjectResponse (util-ktor-test)
+* createHelloWorldOkResponse, createHelloWorldMockClient, createErrorMockClient and createMockClientWithResponse (util-ktor-test)
+* stately (1.1.6)
+
+=== Changed
+
+* _**BREAKING**_ runBlockingTest and runWithContextBlockingTest are now part of util-coroutine-test
+
+=== Bumped
+
+* AndroidGradle 4.0.1 -> 4.2.2
 
 == https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.8.0...v1.8.1[1.8.1]
 
