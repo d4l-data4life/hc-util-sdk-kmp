@@ -96,10 +96,8 @@ kotlin {
 
         val iosTest by getting {
             dependencies {
-                dependencies {
-                    implementation(Dependencies.multiplatform.kotlin.testCommon)
-                    implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
-                }
+                implementation(Dependencies.multiplatform.kotlin.testCommon)
+                implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
             }
         }
     }

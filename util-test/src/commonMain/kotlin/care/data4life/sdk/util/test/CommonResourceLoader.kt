@@ -21,13 +21,22 @@ import care.data4life.sdk.util.test.lang.FileNotFoundError
 internal typealias Path = String
 internal typealias AbsolutePath = String
 
+enum class ResourceEncoding(val id: String) {
+    UTF_8("utf-8"),
+    UTF_16("utf-16")
+}
+
 expect class CommonResourceLoader(
     projectDir: AbsolutePath
 ) {
     fun exists(path: Path, root: Path? = null): Boolean
 
     @Throws(FileNotFoundError::class)
-    fun load(path: Path, root: Path? = null): String
+    fun load(
+        path: Path,
+        encoding: ResourceEncoding = ResourceEncoding.UTF_8,
+        root: Path? = null
+    ): String
 
     @Throws(FileNotFoundError::class)
     fun loadBytes(path: Path, root: Path? = null): ByteArray
@@ -35,7 +44,7 @@ expect class CommonResourceLoader(
 
 // This should be scoped in the ResourceLoader and be private, however this is currently not supported by Kotlin
 internal object CommonPathResolver {
-    const val commonRoot: Path = "src/commonTest/resources"
+    private const val commonRoot: Path = "src/commonTest/resources"
 
     fun resolvePath(
         projectDir: AbsolutePath,

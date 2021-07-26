@@ -26,7 +26,7 @@ interface D4LSDKFlowContract<T> {
     fun subscribe(
         scope: CoroutineScope,
         onEach: (item: T) -> Unit,
-        onComplete: () -> Unit,
-        onThrow: (error: Throwable) -> Unit
+        onError: (error: Throwable) -> Unit,
+        onComplete: (() -> Unit)? = null,
     ): Job
 }
