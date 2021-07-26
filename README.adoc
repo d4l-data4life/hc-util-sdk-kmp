@@ -59,14 +59,30 @@ toc::[]
 == About The Project
 
 The Util SDK is a collection of tools and definitions that are reused across different projects at Data4Life.
+Currently we support Android, JVM and iOS and Kotlin-Multiplatform.
 
 === Features
 
+==== util
 * Base64 encoding/decoding
 * SHA1-HASH calculation
 * MIME type helpers
 * Logger
 * Platform restrictions and error
+
+==== util-coroutines
+* Compatibility wrapper for Kotlin Flows
+
+==== util-test
+* ResourceLoader for common code
+
+==== util-coroutine-test
+* runBlockingTest and runWithContextBlocking to enable tests with coroutines in common code
+
+==== util-ktor-test
+* convenient Factory for MockClient
+* convenient Factory to produce a HelloWorld response
+* Plugin to to resolve directly objects in order to avoid integration testing with a MockClient
 
 === Built With
 
@@ -119,11 +135,41 @@ dependencies {
 }
 ----
 
+=== util-coroutine
+
+Add following dependencies to your app build.gradle.
+
+----
+dependencies {
+    implementation "care.data4life.hc-util-sdk-kmp:util-coroutine:$version"
+}
+----
+
 === util-test
 
 ----
 dependencies {
     implementation "care.data4life.hc-util-sdk-kmp:util-test:$version"
+}
+----
+
+=== util-coroutine-test
+
+Add following dependencies to your app build.gradle.
+
+----
+dependencies {
+    implementation "care.data4life.hc-util-sdk-kmp:util-coroutine-test:$version"
+}
+----
+
+=== util-ktor-test
+
+Add following dependencies to your app build.gradle.
+
+----
+dependencies {
+    implementation "care.data4life.hc-util-sdk-kmp:util-ktor-test:$version"
 }
 ----
 

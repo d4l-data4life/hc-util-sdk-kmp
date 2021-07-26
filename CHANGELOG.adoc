@@ -46,7 +46,7 @@ toc::[]
 
 === Bumped
 
-* AndroidGradle 4.0.1 -> 4.2.2
+* AndroidGradle 4.2.1 -> 4.2.2
 
 == https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.8.0...v1.8.1[1.8.1]
 
