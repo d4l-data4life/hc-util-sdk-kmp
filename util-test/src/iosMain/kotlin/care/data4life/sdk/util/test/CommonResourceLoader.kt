@@ -22,6 +22,7 @@ import kotlinx.cinterop.memScoped
 import platform.Foundation.NSData
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSString
+import platform.Foundation.NSUTF16StringEncoding
 import platform.Foundation.NSUTF8StringEncoding
 import platform.Foundation.create
 import platform.posix.F_OK
@@ -51,8 +52,20 @@ actual class CommonResourceLoader actual constructor(
         } as NSData
     }
 
+    private fun mapEncoding(encoding: ResourceEncoding): ULong {
+        return if (encoding == ResourceEncoding.UTF_16) {
+            NSUTF16StringEncoding
+        } else {
+            NSUTF8StringEncoding
+        }
+    }
+
     @Throws(FileNotFoundError::class)
-    actual fun load(path: Path, root: Path?): String {
+    actual fun load(
+        path: Path,
+        encoding: ResourceEncoding,
+        root: Path?
+    ): String {
         return if (!exists(path, root)) {
             throw FileNotFoundError()
         } else {
@@ -65,7 +78,7 @@ actual class CommonResourceLoader actual constructor(
                             path
                         )
                     ),
-                    NSUTF8StringEncoding
+                    mapEncoding(encoding)
                 )
             }
         } as String

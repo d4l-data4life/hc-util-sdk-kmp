@@ -14,19 +14,23 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.util.coroutine
+package care.data4life.sdk.util.test.ktor
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
+import io.ktor.client.engine.mock.MockRequestHandleScope
+import io.ktor.client.engine.mock.respond
+import io.ktor.client.request.HttpResponseData
+import io.ktor.http.ContentType
+import io.ktor.http.headersOf
 
-interface D4LSDKFlowContract<T> {
-    val ktFlow: Flow<T>
-
-    fun subscribe(
-        scope: CoroutineScope,
-        onEach: (item: T) -> Unit,
-        onError: (error: Throwable) -> Unit,
-        onComplete: (() -> Unit)? = null,
-    ): Job
+object HttpMockClientResponseFactory {
+    fun createHelloWorldOkResponse(scope: MockRequestHandleScope): HttpResponseData {
+        return scope.respond(
+            "Hello World!",
+            headers = headersOf(
+                "Content-Type" to listOf(
+                    ContentType.Text.Plain.toString()
+                )
+            )
+        )
+    }
 }

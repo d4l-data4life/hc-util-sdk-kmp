@@ -44,20 +44,20 @@ object Dependencies {
 
         object Coroutines {
             // https://github.com/Kotlin/kotlinx.coroutines
-            val common =
+            const val common =
                 "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
-            val android =
+            const val android =
                 "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
-            val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
+            const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
 
-            val stately = "co.touchlab:stately-common:${Versions.stately}"
+            const val stately = "co.touchlab:stately-common:${Versions.stately}"
         }
 
         val ktor = Ktor
 
         object Ktor {
-            val common = "io.ktor:ktor-client-core:${Versions.ktor}"
-            val mock = "io.ktor:ktor-client-mock:${Versions.ktor}"
+            const val common = "io.ktor:ktor-client-core:${Versions.ktor}"
+            const val mock = "io.ktor:ktor-client-mock:${Versions.ktor}"
         }
     }
 

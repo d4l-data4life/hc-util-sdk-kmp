@@ -28,7 +28,7 @@ expect class D4LSDKFlow<T>(
     override fun subscribe(
         scope: CoroutineScope,
         onEach: (item: T) -> Unit,
-        onComplete: () -> Unit,
-        onThrow: (error: Throwable) -> Unit
+        onError: (error: Throwable) -> Unit,
+        onComplete: (() -> Unit)?,
     ): Job
 }
