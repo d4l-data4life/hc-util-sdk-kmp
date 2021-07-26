@@ -13,18 +13,19 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
-package care.data4life.sdk.util.test
+package care.data4life.sdk.util.test.coroutine
 
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.asCoroutineDispatcher
+import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
-import java.util.concurrent.Executors
 import kotlin.coroutines.CoroutineContext
 
-actual val testCoroutineContext: CoroutineContext = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
+actual val testCoroutineContext: CoroutineContext = newSingleThreadContext("testRunner")
+
 actual fun runBlockingTest(block: suspend CoroutineScope.() -> Unit) {
     runBlocking(testCoroutineContext) { this.block() }
 }
+
 actual fun runWithContextBlockingTest(
     context: CoroutineContext,
     block: suspend CoroutineScope.() -> Unit

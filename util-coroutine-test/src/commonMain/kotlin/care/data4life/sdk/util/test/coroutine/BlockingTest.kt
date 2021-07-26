@@ -13,21 +13,16 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
-package care.data4life.sdk.util.test
+package care.data4life.sdk.util.test.coroutine
 
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.runBlocking
-import java.util.concurrent.Executors
 import kotlin.coroutines.CoroutineContext
 
-actual val testCoroutineContext: CoroutineContext = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
-actual fun runBlockingTest(block: suspend CoroutineScope.() -> Unit) {
-    runBlocking(testCoroutineContext) { this.block() }
-}
-actual fun runWithContextBlockingTest(
+// see: https://github.com/Kotlin/kotlinx.coroutines/issues/1996
+expect val testCoroutineContext: CoroutineContext
+expect fun runBlockingTest(block: suspend CoroutineScope.() -> Unit)
+// Please note: this solves a specific iOS with shared immutable states while running in async Context
+expect fun runWithContextBlockingTest(
     context: CoroutineContext,
     block: suspend CoroutineScope.() -> Unit
-) {
-    runBlocking(context) { this.block() }
-}
+)

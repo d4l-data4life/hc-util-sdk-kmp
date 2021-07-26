@@ -45,7 +45,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibCommon)
-                implementation(Dependencies.multiplatform.coroutines.common)
                 implementation(Dependencies.multiplatform.ktor.common)
             }
         }
@@ -56,28 +55,25 @@ kotlin {
                 implementation(Dependencies.multiplatform.kotlin.testCommon)
                 implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
                 implementation(Dependencies.multiplatform.ktor.mock)
+                implementation(api(project(":util-coroutine-test"))!!)
             }
         }
 
         val androidMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibAndroid)
-                implementation(Dependencies.multiplatform.coroutines.android)
             }
         }
         val androidTest by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.testJvm)
                 implementation(Dependencies.multiplatform.kotlin.testJvmJunit)
-
-                implementation(Dependencies.android.robolectric)
             }
         }
 
         val jvmMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibJdk8)
-                implementation(Dependencies.multiplatform.coroutines.common)
             }
         }
         val jvmTest by getting {
@@ -91,11 +87,6 @@ kotlin {
             dependencies {
                 implementation(api(project(":util"))!!)
                 implementation(Dependencies.multiplatform.kotlin.stdlibNative)
-                implementation(Dependencies.multiplatform.coroutines.common) {
-                    version {
-                        strictly(Versions.kotlinCoroutines)
-                    }
-                }
             }
         }
 

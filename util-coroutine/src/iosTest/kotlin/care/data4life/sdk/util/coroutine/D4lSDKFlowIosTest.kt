@@ -16,7 +16,7 @@
 
 package care.data4life.sdk.util.coroutine
 
-import care.data4life.sdk.util.test.testCoroutineContext
+import care.data4life.sdk.util.test.coroutine.testCoroutineContext
 import co.touchlab.stately.isFrozen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi

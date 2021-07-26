@@ -16,12 +16,15 @@ toc::[]
 
 === Added
 
-* CommonResourceLoad (util-test).
-* HttpMockObjectResponse (util-test).
-* util-coroutine module.
-* D4LSDKFlow (util-coroutine).
+* CommonResourceLoad (util-test)
+* HttpMockObjectResponse (util-test)
+* util-coroutine module
+* D4LSDKFlow (util-coroutine)
+* util-coroutine-test module
 
 === Changed
+
+* _**BREAKING**_ runBlockingTest and runWithContextBlockingTest are now part of util-coroutine-test
 
 === Removed
 

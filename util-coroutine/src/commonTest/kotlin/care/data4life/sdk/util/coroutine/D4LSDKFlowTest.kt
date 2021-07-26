@@ -16,8 +16,8 @@
 
 package care.data4life.sdk.util.coroutine
 
-import care.data4life.sdk.util.test.runBlockingTest
-import care.data4life.sdk.util.test.testCoroutineContext
+import care.data4life.sdk.util.test.coroutine.runBlockingTest
+import care.data4life.sdk.util.test.coroutine.testCoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job

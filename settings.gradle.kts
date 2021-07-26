@@ -29,7 +29,8 @@ rootProject.name = "hc-util-sdk-kmp"
 include(
     ":util",
     ":util-coroutine",
-    ":util-test"
+    ":util-test",
+    ":util-coroutine-test"
 )
 
 buildCache {
