@@ -16,7 +16,7 @@
 
 package care.data4life.sdk.util.test
 
-import care.data4life.sdk.config.TestConfig
+import care.data4life.sdk.util.test.config.TestConfig
 import care.data4life.sdk.util.test.lang.FileNotFoundError
 import kotlin.test.Test
 import kotlin.test.assertEquals
