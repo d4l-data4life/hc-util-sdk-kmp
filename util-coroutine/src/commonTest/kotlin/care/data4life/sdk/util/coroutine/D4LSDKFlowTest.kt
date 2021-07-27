@@ -77,21 +77,27 @@ class D4LSDKFlowTest {
             emit(item)
         }
 
+        val capturedItem = Channel<Any>()
+
         // When
         val job = D4LSDKFlow(ktFlow).subscribe(
             CoroutineScope(testCoroutineContext),
             { delegatedItem ->
-                // Then
-                assertSame(
-                    actual = delegatedItem,
-                    expected = item
-                )
+                GlobalScope.launch {
+                    capturedItem.send(delegatedItem)
+                }
             },
             {}
         )
 
+        // Then
         runBlockingTest {
             job.join()
+
+            assertSame(
+                actual = capturedItem.receive(),
+                expected = item
+            )
         }
     }
 
@@ -103,20 +109,27 @@ class D4LSDKFlowTest {
             throw error
         }
 
+        val capturedError = Channel<Throwable>()
+
         // When
         val job = D4LSDKFlow(ktFlow).subscribe(
             CoroutineScope(testCoroutineContext),
             {},
             onError = { delegatedError ->
-                assertSame(
-                    actual = delegatedError,
-                    expected = error
-                )
+                GlobalScope.launch {
+                    capturedError.send(delegatedError)
+                }
             }
         )
 
+        // Then
         runBlockingTest {
             job.join()
+
+            assertSame(
+                actual = capturedError.receive(),
+                expected = error
+            )
         }
     }
 
