@@ -35,10 +35,10 @@ class D4lSDKFlowAndroidTest {
         val ktFlow = flow<Unit> {}
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
+        val job = D4LSDKFlow(scope, ktFlow).subscribe(
             {},
             {},
-            scope = scope,
+            {}
         )
         // Then
         assertTrue(job.isActive)

@@ -20,7 +20,7 @@ toc::[]
 
 === Changed
 
-* _**BREAKING**_ `scope` is now optional on the D4LSDKFlow, this means also order of parameter had changed.
+* _**BREAKING**_ `scope` had been removed as parameter on the D4LSDKFlow and needs to be injected via the constructor.
 
 === Removed
 

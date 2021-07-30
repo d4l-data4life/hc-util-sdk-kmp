@@ -32,45 +32,11 @@
 
 package care.data4life.sdk.util.coroutine
 
-import care.data4life.sdk.util.test.coroutine.runBlockingTest
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlin.native.concurrent.ThreadLocal
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.newSingleThreadContext
 
-class IOSCoroutineHelperTest {
-    @ExperimentalCoroutinesApi
-    @Test
-    fun `Given createCoroutineScope is called with a CoroutineContextName, creates a runnable CoroutineScope`() {
-        // Given
-        val name = "test"
-        val capturedItem = Channel<Int>()
-
-        // When
-        val scope = IOSCoroutineHelper.createCoroutineScope(name)
-
-        // Then
-        runBlockingTest {
-            flowOf(1)
-                .onEach { item ->
-                    capturedItem.send(item)
-                }.launchIn(scope)
-                .start()
-
-            assertEquals(
-                actual = capturedItem.receive(),
-                expected = 1
-            )
-        }
-    }
-
-    @ThreadLocal
-    object IosJob {
-        lateinit var job: Job
+actual object CoroutineHelper : CoroutineHelperContract {
+    actual override fun createCoroutineScope(contextName: String): CoroutineScope {
+        return CoroutineScope(newSingleThreadContext(contextName))
     }
 }

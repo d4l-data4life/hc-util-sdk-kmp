@@ -28,21 +28,15 @@ import kotlin.test.assertTrue
 
 class D4LSDKFlowTest {
     @Test
-    fun `It fulfils the D4LSDKFlowContract`() {
-        // Given
-        val flow: Any = D4LSDKFlow(flow<Unit> { })
-
-        // Then
-        assertTrue(flow is D4LSDKFlowContract<*>)
-    }
-
-    @Test
     fun `It exposes its wrapped Flow`() {
         // Given
         val ktFlow = flow<Unit> { }
 
         // When
-        val result = D4LSDKFlow(ktFlow).ktFlow
+        val result = D4LSDKFlow(
+            GlobalScope,
+            ktFlow
+        ).ktFlow
 
         // Then
         assertSame(
@@ -57,9 +51,13 @@ class D4LSDKFlowTest {
         val ktFlow = flow<Unit> { }
 
         // When
-        val job: Any = D4LSDKFlow(ktFlow).subscribe(
+        val job: Any = D4LSDKFlow(
+            GlobalScope,
+            ktFlow
+        ).subscribe(
             {},
             {},
+            {}
         )
 
         // Then
@@ -75,7 +73,10 @@ class D4LSDKFlowTest {
         }
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
+        val job = D4LSDKFlow(
+            GlobalScope,
+            ktFlow
+        ).subscribe(
             { delegatedItem ->
                 // Then
                 assertSame(
@@ -83,6 +84,7 @@ class D4LSDKFlowTest {
                     expected = item
                 )
             },
+            {},
             {}
         )
 
@@ -100,14 +102,18 @@ class D4LSDKFlowTest {
         }
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
+        val job = D4LSDKFlow(
+            GlobalScope,
+            ktFlow
+        ).subscribe(
             {},
             onError = { delegatedError ->
                 assertSame(
                     actual = delegatedError,
                     expected = error
                 )
-            }
+            },
+            {}
         )
 
         runBlockingTest {
@@ -122,7 +128,10 @@ class D4LSDKFlowTest {
         val ktFlow = flow<Unit> {}
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
+        val job = D4LSDKFlow(
+            GlobalScope,
+            ktFlow
+        ).subscribe(
             {},
             {},
             onComplete = {

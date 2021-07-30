@@ -19,6 +19,7 @@ package care.data4life.sdk.util.coroutine
 import co.touchlab.stately.isFrozen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.newSingleThreadContext
@@ -31,7 +32,7 @@ class D4lSDKFlowIosTest {
     @Test
     fun `Given a Flow had been initialized it is frozen`() {
         // Given
-        val flow = D4LSDKFlow(flow<Unit> { })
+        val flow = D4LSDKFlow(GlobalScope, flow<Unit> { })
 
         // Then
         assertTrue(flow.isFrozen)
@@ -40,7 +41,7 @@ class D4lSDKFlowIosTest {
     @Test
     fun `Its KtFlow  is frozen`() {
         // Given
-        val flow = D4LSDKFlow(flow<Unit> { })
+        val flow = D4LSDKFlow(GlobalScope, flow<Unit> { })
 
         // Then
         assertTrue(flow.ktFlow.isFrozen)
@@ -52,7 +53,8 @@ class D4lSDKFlowIosTest {
         val ktFlow = flow<Unit> { }
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
+        val job = D4LSDKFlow(GlobalScope, ktFlow).subscribe(
+            {},
             {},
             {}
         )
@@ -70,10 +72,10 @@ class D4lSDKFlowIosTest {
         val ktFlow = flow<Unit> {}
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
+        val job = D4LSDKFlow(scope, ktFlow).subscribe(
             {},
             {},
-            scope = scope,
+            {}
         )
         // Then
         assertTrue(job.isActive)

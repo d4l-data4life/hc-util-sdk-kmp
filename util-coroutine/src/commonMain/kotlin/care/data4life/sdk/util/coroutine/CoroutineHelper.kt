@@ -17,32 +17,7 @@
 package care.data4life.sdk.util.coroutine
 
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onEach
 
-actual class D4LSDKFlow<T> actual constructor(
-    defaultScope: CoroutineScope,
-    internalFlow: Flow<T>
-) {
-    private val flow = internalFlow
-    private val scope = defaultScope
-
-    actual val ktFlow: Flow<T>
-        get() = flow
-
-    actual fun subscribe(
-        onEach: (item: T) -> Unit,
-        onError: (error: Throwable) -> Unit,
-        onComplete: (() -> Unit)
-    ): Job {
-        return flow
-            .onEach { item -> onEach(item) }
-            .catch { error -> onError(error) }
-            .onCompletion { onComplete.invoke() }
-            .launchIn(scope)
-    }
+expect object CoroutineHelper : CoroutineHelperContract {
+    override fun createCoroutineScope(contextName: String): CoroutineScope
 }

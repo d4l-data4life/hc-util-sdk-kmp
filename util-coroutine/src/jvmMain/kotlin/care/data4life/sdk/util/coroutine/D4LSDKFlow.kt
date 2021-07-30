@@ -25,23 +25,24 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 
 actual class D4LSDKFlow<T> actual constructor(
+    defaultScope: CoroutineScope,
     internalFlow: Flow<T>
-) : D4LSDKFlowContract<T> {
+) {
     private val flow = internalFlow
+    private val scope = defaultScope
 
-    actual override val ktFlow: Flow<T>
+    actual val ktFlow: Flow<T>
         get() = flow
 
-    actual override fun subscribe(
+    actual fun subscribe(
         onEach: (item: T) -> Unit,
         onError: (error: Throwable) -> Unit,
-        onComplete: (() -> Unit)?,
-        scope: CoroutineScope,
+        onComplete: (() -> Unit)
     ): Job {
         return flow
             .onEach { item -> onEach(item) }
             .catch { error -> onError(error) }
-            .onCompletion { onComplete?.invoke() }
+            .onCompletion { onComplete.invoke() }
             .launchIn(scope)
     }
 }
