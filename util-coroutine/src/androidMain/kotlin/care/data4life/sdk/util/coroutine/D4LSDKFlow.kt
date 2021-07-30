@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 
-actual class D4LSDKFlow<T> actual constructor(
+actual class D4LSDKFlow<T : Any> actual constructor(
     defaultScope: CoroutineScope,
     internalFlow: Flow<T>
 ) {

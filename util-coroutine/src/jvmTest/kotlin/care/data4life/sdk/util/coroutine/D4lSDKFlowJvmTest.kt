@@ -41,8 +41,8 @@ class D4lSDKFlowJvmTest {
             {}
         )
         // Then
-        assertFalse(job.isCompleted)
+        assertTrue(job.isActive)
         scope.cancel()
-        assertTrue(job.isCompleted)
+        assertFalse(job.isActive)
     }
 }

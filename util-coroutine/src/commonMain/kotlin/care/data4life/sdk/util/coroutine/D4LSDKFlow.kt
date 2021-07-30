@@ -20,7 +20,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 
-expect class D4LSDKFlow<T>(
+expect class D4LSDKFlow<T : Any>(
     defaultScope: CoroutineScope,
     internalFlow: Flow<T>
 ) {
@@ -29,6 +29,6 @@ expect class D4LSDKFlow<T>(
     fun subscribe(
         onEach: (item: T) -> Unit,
         onError: (error: Throwable) -> Unit,
-        onComplete: (() -> Unit),
+        onComplete: (() -> Unit)
     ): Job
 }

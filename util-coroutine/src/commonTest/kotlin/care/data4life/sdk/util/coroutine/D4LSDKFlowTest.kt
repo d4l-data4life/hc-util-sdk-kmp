@@ -127,7 +127,7 @@ class D4LSDKFlowTest {
         runBlockingTest {
             job.join()
 
-            assertSame(
+            assertSame<Any>(
                 actual = capturedError.receive(),
                 expected = error
             )
