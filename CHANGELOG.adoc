@@ -16,7 +16,11 @@ toc::[]
 
 === Added
 
+* IOSCoroutineHelper
+
 === Changed
+
+* _**BREAKING**_ `scope` is now optional on the D4LSDKFlow, this means also order of parameter had changed.
 
 === Removed
 
