@@ -119,7 +119,8 @@ class D4LSDKFlowTest {
                 GlobalScope.launch {
                     capturedError.send(delegatedError)
                 }
-            }
+            },
+            {}
         )
 
         // Then
