@@ -16,7 +16,7 @@ toc::[]
 
 === Added
 
-* IOSCoroutineHelper
+* CoroutineHelper for KMP
 
 === Changed
 
