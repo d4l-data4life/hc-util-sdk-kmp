@@ -17,16 +17,18 @@
 package care.data4life.sdk.util.coroutine
 
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
 
 interface D4LSDKFlowContract<T> {
     val ktFlow: Flow<T>
 
     fun subscribe(
-        scope: CoroutineScope,
         onEach: (item: T) -> Unit,
         onError: (error: Throwable) -> Unit,
         onComplete: (() -> Unit)? = null,
+        scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default),
     ): Job
 }

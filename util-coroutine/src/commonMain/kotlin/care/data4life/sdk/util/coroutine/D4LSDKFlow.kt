@@ -26,9 +26,9 @@ expect class D4LSDKFlow<T>(
     override val ktFlow: Flow<T>
 
     override fun subscribe(
-        scope: CoroutineScope,
         onEach: (item: T) -> Unit,
         onError: (error: Throwable) -> Unit,
         onComplete: (() -> Unit)?,
+        scope: CoroutineScope,
     ): Job
 }

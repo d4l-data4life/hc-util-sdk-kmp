@@ -36,10 +36,9 @@ class D4lSDKFlowJvmTest {
 
         // When
         val job = D4LSDKFlow(ktFlow).subscribe(
-            scope,
             {},
             {},
-            {}
+            scope = scope,
         )
         // Then
         assertFalse(job.isCompleted)

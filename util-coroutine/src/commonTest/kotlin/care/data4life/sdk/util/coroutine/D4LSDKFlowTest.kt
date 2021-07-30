@@ -17,8 +17,6 @@
 package care.data4life.sdk.util.coroutine
 
 import care.data4life.sdk.util.test.coroutine.runBlockingTest
-import care.data4life.sdk.util.test.coroutine.testCoroutineContext
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -60,7 +58,6 @@ class D4LSDKFlowTest {
 
         // When
         val job: Any = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
             {},
             {},
         )
@@ -79,7 +76,6 @@ class D4LSDKFlowTest {
 
         // When
         val job = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
             { delegatedItem ->
                 // Then
                 assertSame(
@@ -105,7 +101,6 @@ class D4LSDKFlowTest {
 
         // When
         val job = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
             {},
             onError = { delegatedError ->
                 assertSame(
@@ -128,7 +123,6 @@ class D4LSDKFlowTest {
 
         // When
         val job = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
             {},
             {},
             onComplete = {

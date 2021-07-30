@@ -16,7 +16,6 @@
 
 package care.data4life.sdk.util.coroutine
 
-import care.data4life.sdk.util.test.coroutine.testCoroutineContext
 import co.touchlab.stately.isFrozen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -54,8 +53,6 @@ class D4lSDKFlowIosTest {
 
         // When
         val job = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
-            {},
             {},
             {}
         )
@@ -74,10 +71,9 @@ class D4lSDKFlowIosTest {
 
         // When
         val job = D4LSDKFlow(ktFlow).subscribe(
-            scope,
             {},
             {},
-            {}
+            scope = scope,
         )
         // Then
         assertTrue(job.isActive)

@@ -33,10 +33,10 @@ actual class D4LSDKFlow<T> actual constructor(
         get() = flow
 
     actual override fun subscribe(
-        scope: CoroutineScope,
         onEach: (item: T) -> Unit,
         onError: (error: Throwable) -> Unit,
         onComplete: (() -> Unit)?,
+        scope: CoroutineScope,
     ): Job {
         return flow
             .onEach { item -> onEach(item) }
