@@ -18,6 +18,7 @@ package care.data4life.sdk.util
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertSame
 
 class NSErrorFactoryTest {
     @Test
@@ -26,9 +27,10 @@ class NSErrorFactoryTest {
         val code: Long = 23
         val domain = "potato"
         val localized = "soup"
+        val kotlinError = RuntimeException()
 
         // When
-        val error = NSErrorFactory.create(code, domain, localized)
+        val error = NSErrorFactory.create(code, domain, localized, kotlinError)
 
         // Then
         assertEquals(
@@ -42,6 +44,10 @@ class NSErrorFactoryTest {
         assertEquals(
             actual = error.localizedDescription,
             expected = localized
+        )
+        assertSame(
+            actual = error.userInfo["kotlinError"],
+            expected = kotlinError
         )
     }
 }

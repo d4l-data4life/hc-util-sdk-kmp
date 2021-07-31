@@ -24,10 +24,16 @@ object NSErrorFactory {
     fun create(
         code: Long,
         domain: String,
-        localizedDescription: String
+        localizedDescription: String,
+        kotlinError: Throwable
     ): NSError {
         return autoreleasepool {
-            Data4LifeSDKUtil.createNSErrorWithCode(code, domain, localizedDescription)
+            Data4LifeSDKUtil.createNSErrorWithCode(
+                code = code,
+                domain = domain,
+                localizedDescription = localizedDescription,
+                kotlinError = kotlinError
+            )
         }
     }
 }

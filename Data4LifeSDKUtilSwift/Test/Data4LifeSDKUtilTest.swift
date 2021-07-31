@@ -31,17 +31,20 @@ class Test: XCTestCase {
         let code = 23;
         let domain = "potato";
         let local = "soup";
+        let kotlinError = "tomato"
         
         // When
         let error = Data4LifeSDKUtil.createNSError(
             code: code,
             domain: domain,
-            localizedDescription: local
+            localizedDescription: local,
+            kotlinError : kotlinError
         );
         
         // Then
         assert(error.code == code)
         assert(error.domain == domain)
         assert(error.localizedDescription == local)
+        assert(error.userInfo["kotlinError"] as! String? == kotlinError)
     }
 }

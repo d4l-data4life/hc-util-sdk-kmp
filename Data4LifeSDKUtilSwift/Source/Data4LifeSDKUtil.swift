@@ -20,12 +20,16 @@ import Foundation
     @objc public class func createNSError(
         code: Int,
         domain: String,
-        localizedDescription: String
+        localizedDescription: String,
+        kotlinError: Any
     ) -> NSError {
         NSError(
             domain: domain,
             code: code,
-            userInfo: [NSLocalizedDescriptionKey : localizedDescription]
+            userInfo: [
+                NSLocalizedDescriptionKey : localizedDescription,
+                "kotlinError" : kotlinError
+            ]
         );
     }
 }
