@@ -16,8 +16,13 @@
 
 package care.data4life.sdk.util.coroutine
 
-import care.data4life.sdk.util.lang.PlatformError
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
 
-fun interface ErrorMapperContract {
-    fun mapError(error: Throwable): PlatformError
+interface D4LSDKFlowFactoryContract {
+    fun <T : Any> getInstance(
+        defaultScope: CoroutineScope,
+        internalFlow: Flow<T>,
+        domainErrorMapper: DomainErrorMapperContract,
+    ): D4LSDKFlow<T>
 }

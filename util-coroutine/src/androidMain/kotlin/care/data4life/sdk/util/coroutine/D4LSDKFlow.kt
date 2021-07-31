@@ -25,10 +25,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 
-actual class D4LSDKFlow<T : Any> actual constructor(
+actual class D4LSDKFlow<T : Any> private actual constructor(
     defaultScope: CoroutineScope,
     internalFlow: Flow<T>,
-    domainErrorMapper: ErrorMapperContract,
+    domainErrorMapper: DomainErrorMapperContract,
 ) {
     private val flow = internalFlow
     private val scope = defaultScope
@@ -46,5 +46,17 @@ actual class D4LSDKFlow<T : Any> actual constructor(
             .catch { error -> onError(error) }
             .onCompletion { onComplete.invoke() }
             .launchIn(scope)
+    }
+
+    actual companion object : D4LSDKFlowFactoryContract {
+        actual override fun <T : Any> getInstance(
+            defaultScope: CoroutineScope,
+            internalFlow: Flow<T>,
+            domainErrorMapper: DomainErrorMapperContract
+        ): D4LSDKFlow<T> {
+            return D4LSDKFlow(
+                defaultScope, internalFlow, domainErrorMapper
+            )
+        }
     }
 }

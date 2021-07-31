@@ -18,9 +18,11 @@ toc::[]
 
 * CoroutineHelper for KMP (util-coroutine)
 * NSErrorFactory (util)
+* Factory with Interface for D4LSDKFlow to ensure testability
 
 === Changed
 
+* _**BREAKING**_ D4LFlow constructor is now private, direct access is prohibited
 * _**BREAKING**_ `domainErrorMapper` had been added to the D4LSDKFlow  constructor in order to map Errors to NSError for iOS (util-coroutine)
 * _**BREAKING**_ `scope` and needs to be injected via the constructor (util-coroutine)
 

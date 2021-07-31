@@ -42,7 +42,7 @@ class D4lSDKFlowTest {
         val ktFlow = flow<Unit> { }
 
         // When
-        val result = D4LSDKFlow(
+        val result = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) },
@@ -61,7 +61,7 @@ class D4lSDKFlowTest {
         val ktFlow = flow<Unit> { }
 
         // When
-        val job: Any = D4LSDKFlow(
+        val job: Any = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) },
@@ -86,7 +86,7 @@ class D4lSDKFlowTest {
         val capturedItem = Channel<Any>()
 
         // When
-        val job = D4LSDKFlow(
+        val job = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) },
@@ -124,7 +124,7 @@ class D4lSDKFlowTest {
         val capturedError = Channel<PlatformError>()
 
         // When
-        val job = D4LSDKFlow(
+        val job = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { delegatedDomainError ->
@@ -166,7 +166,7 @@ class D4lSDKFlowTest {
         val ktFlow = flow<Unit> {}
 
         // When
-        val job = D4LSDKFlow(
+        val job = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) },
@@ -191,7 +191,7 @@ class D4lSDKFlowTest {
     @Test
     fun `Given a Flow had been initialized it is frozen`() {
         // Given
-        val flow = D4LSDKFlow(
+        val flow = D4LSDKFlow.getInstance(
             GlobalScope,
             flow<Unit> { },
         ) { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) }
@@ -203,7 +203,7 @@ class D4lSDKFlowTest {
     @Test
     fun `Its KtFlow  is frozen`() {
         // Given
-        val flow = D4LSDKFlow(GlobalScope, flow<Unit> {}) { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) }
+        val flow = D4LSDKFlow.getInstance(GlobalScope, flow<Unit> {}) { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) }
 
         // Then
         assertTrue(flow.ktFlow.isFrozen)
@@ -215,7 +215,7 @@ class D4lSDKFlowTest {
         val ktFlow = flow<Unit> { }
 
         // When
-        val job = D4LSDKFlow(GlobalScope, ktFlow, { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) })
+        val job = D4LSDKFlow.getInstance(GlobalScope, ktFlow, { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) })
             .subscribe(
                 {},
                 {},
@@ -235,7 +235,7 @@ class D4lSDKFlowTest {
         val ktFlow = flow<Unit> {}
 
         // When
-        val job = D4LSDKFlow(scope, ktFlow, { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) })
+        val job = D4LSDKFlow.getInstance(scope, ktFlow, { NSErrorFactory.create(23, "domain", "localized", RuntimeException()) })
             .subscribe(
                 {},
                 {},

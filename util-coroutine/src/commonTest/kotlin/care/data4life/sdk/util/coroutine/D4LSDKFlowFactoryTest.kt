@@ -17,28 +17,29 @@
 package care.data4life.sdk.util.coroutine
 
 import care.data4life.sdk.util.lang.PlatformError
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.flow
+import kotlin.test.Test
+import kotlin.test.assertTrue
 
-expect class D4LSDKFlow<T : Any> private constructor(
-    defaultScope: CoroutineScope,
-    internalFlow: Flow<T>,
-    domainErrorMapper: DomainErrorMapperContract,
-) {
-    val ktFlow: Flow<T>
+class D4LSDKFlowFactoryTest {
+    @Test
+    fun `It fulfils D4LSDKFlowFactory`() {
+        val factory: Any = D4LSDKFlow
 
-    fun subscribe(
-        onEach: (item: T) -> Unit,
-        onError: (error: PlatformError) -> Unit,
-        onComplete: (() -> Unit)
-    ): Job
+        assertTrue(factory is D4LSDKFlowFactoryContract)
+    }
 
-    companion object : D4LSDKFlowFactoryContract {
-        override fun <T : Any> getInstance(
-            defaultScope: CoroutineScope,
-            internalFlow: Flow<T>,
-            domainErrorMapper: DomainErrorMapperContract
-        ): D4LSDKFlow<T>
+    @Test
+    fun `Given getInstance is called with a Scope, Flow and DomainErrorMapper it creates a instance of D4LSDKFlow`() {
+        // Given
+        val scope = GlobalScope
+        val flow = flow<Int> { }
+
+        // When
+        val result: Any = D4LSDKFlow.getInstance(scope, flow) { it as PlatformError }
+
+        // Then
+        assertTrue(result is D4LSDKFlow<*>)
     }
 }

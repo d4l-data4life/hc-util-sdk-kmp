@@ -17,28 +17,7 @@
 package care.data4life.sdk.util.coroutine
 
 import care.data4life.sdk.util.lang.PlatformError
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
 
-expect class D4LSDKFlow<T : Any> private constructor(
-    defaultScope: CoroutineScope,
-    internalFlow: Flow<T>,
-    domainErrorMapper: DomainErrorMapperContract,
-) {
-    val ktFlow: Flow<T>
-
-    fun subscribe(
-        onEach: (item: T) -> Unit,
-        onError: (error: PlatformError) -> Unit,
-        onComplete: (() -> Unit)
-    ): Job
-
-    companion object : D4LSDKFlowFactoryContract {
-        override fun <T : Any> getInstance(
-            defaultScope: CoroutineScope,
-            internalFlow: Flow<T>,
-            domainErrorMapper: DomainErrorMapperContract
-        ): D4LSDKFlow<T>
-    }
+fun interface DomainErrorMapperContract {
+    fun mapError(error: Throwable): PlatformError
 }

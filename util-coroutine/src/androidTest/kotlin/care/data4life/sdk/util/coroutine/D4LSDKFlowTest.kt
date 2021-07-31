@@ -39,7 +39,7 @@ class D4LSDKFlowTest {
         val ktFlow = flow<Unit> { }
 
         // When
-        val result = D4LSDKFlow(
+        val result = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { it }
@@ -58,7 +58,7 @@ class D4LSDKFlowTest {
         val ktFlow = flow<Unit> { }
 
         // When
-        val job: Any = D4LSDKFlow(
+        val job: Any = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { it }
@@ -83,7 +83,7 @@ class D4LSDKFlowTest {
         val capturedItem = Channel<Any>()
 
         // When
-        val job = D4LSDKFlow(
+        val job = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { it }
@@ -119,7 +119,7 @@ class D4LSDKFlowTest {
         val capturedError = Channel<Throwable>()
 
         // When
-        val job = D4LSDKFlow(
+        val job = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { NullPointerException() }
@@ -151,7 +151,7 @@ class D4LSDKFlowTest {
         val ktFlow = flow<Unit> {}
 
         // When
-        val job = D4LSDKFlow(
+        val job = D4LSDKFlow.getInstance(
             GlobalScope,
             ktFlow,
             { it }
@@ -181,7 +181,7 @@ class D4LSDKFlowTest {
         val ktFlow = flow<Unit> {}
 
         // When
-        val job = D4LSDKFlow(scope, ktFlow, { it }).subscribe(
+        val job = D4LSDKFlow.getInstance(scope, ktFlow, { it }).subscribe(
             {},
             {},
             {}
