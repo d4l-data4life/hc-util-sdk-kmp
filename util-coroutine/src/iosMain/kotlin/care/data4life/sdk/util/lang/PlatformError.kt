@@ -14,6 +14,8 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.lang
+package care.data4life.sdk.util.lang
 
-expect class PlatformError
+import platform.Foundation.NSError
+
+actual typealias PlatformError = NSError

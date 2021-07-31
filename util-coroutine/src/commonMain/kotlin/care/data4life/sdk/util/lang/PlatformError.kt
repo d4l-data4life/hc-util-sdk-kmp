@@ -14,6 +14,6 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.lang
+package care.data4life.sdk.util.lang
 
-actual typealias PlatformError = Throwable
+expect class PlatformError

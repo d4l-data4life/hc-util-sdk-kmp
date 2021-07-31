@@ -16,17 +16,26 @@
 
 package care.data4life.sdk.util.coroutine
 
+import care.data4life.sdk.util.NSErrorFactory
+import care.data4life.sdk.util.lang.PlatformError
 import care.data4life.sdk.util.test.coroutine.runBlockingTest
+import co.touchlab.stately.isFrozen
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.newSingleThreadContext
+import kotlin.coroutines.CoroutineContext
 import kotlin.test.Test
+import kotlin.test.assertFalse
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
-class D4LSDKFlowTest {
+class D4lSDKFlowTest {
     @Test
     fun `It exposes its wrapped Flow`() {
         // Given
@@ -35,7 +44,8 @@ class D4LSDKFlowTest {
         // When
         val result = D4LSDKFlow(
             GlobalScope,
-            ktFlow
+            ktFlow,
+            { NSErrorFactory.create(23, "domain", "localized") },
         ).ktFlow
 
         // Then
@@ -53,7 +63,8 @@ class D4LSDKFlowTest {
         // When
         val job: Any = D4LSDKFlow(
             GlobalScope,
-            ktFlow
+            ktFlow,
+            { NSErrorFactory.create(23, "domain", "localized") },
         ).subscribe(
             {},
             {},
@@ -77,7 +88,8 @@ class D4LSDKFlowTest {
         // When
         val job = D4LSDKFlow(
             GlobalScope,
-            ktFlow
+            ktFlow,
+            { NSErrorFactory.create(23, "domain", "localized") },
         ).subscribe(
             { delegatedItem ->
                 GlobalScope.launch {
@@ -100,19 +112,27 @@ class D4LSDKFlowTest {
     }
 
     @Test
-    fun `Given subscribe is called with a Closure to receive emitted Errors it delegates the emitted Errors to there`() {
+    fun `Given subscribe is called with a Closure to receive emitted Errors it maps then to PlatformError and delegates the emitted Errors to there`() {
         // Given
-        val error = RuntimeException()
+        val domainError = RuntimeException()
+        val error = NSErrorFactory.create(23, "domain", "localized")
         val ktFlow = flow<Any> {
-            throw error
+            throw domainError
         }
 
-        val capturedError = Channel<Throwable>()
+        val capturedDomainError = Channel<Throwable>()
+        val capturedError = Channel<PlatformError>()
 
         // When
         val job = D4LSDKFlow(
             GlobalScope,
-            ktFlow
+            ktFlow,
+            { delegatedDomainError ->
+                GlobalScope.launch {
+                    capturedDomainError.send(delegatedDomainError)
+                }
+                error
+            },
         ).subscribe(
             {},
             onError = { delegatedError ->
@@ -126,6 +146,11 @@ class D4LSDKFlowTest {
         // Then
         runBlockingTest {
             job.join()
+
+            assertSame<Any>(
+                actual = capturedDomainError.receive(),
+                expected = domainError
+            )
 
             assertSame<Any>(
                 actual = capturedError.receive(),
@@ -143,7 +168,8 @@ class D4LSDKFlowTest {
         // When
         val job = D4LSDKFlow(
             GlobalScope,
-            ktFlow
+            ktFlow,
+            { NSErrorFactory.create(23, "domain", "localized") },
         ).subscribe(
             {},
             {},
@@ -160,5 +186,64 @@ class D4LSDKFlowTest {
 
             assertTrue(wasCalled.receive())
         }
+    }
+
+    @Test
+    fun `Given a Flow had been initialized it is frozen`() {
+        // Given
+        val flow = D4LSDKFlow(
+            GlobalScope,
+            flow<Unit> { },
+        ) { NSErrorFactory.create(23, "domain", "localized") }
+
+        // Then
+        assertTrue(flow.isFrozen)
+    }
+
+    @Test
+    fun `Its KtFlow  is frozen`() {
+        // Given
+        val flow = D4LSDKFlow(GlobalScope, flow<Unit> {}) { NSErrorFactory.create(23, "domain", "localized") }
+
+        // Then
+        assertTrue(flow.ktFlow.isFrozen)
+    }
+
+    @Test
+    fun `Given subscribe is called it returns a Job which is frozen`() {
+        // Given
+        val ktFlow = flow<Unit> { }
+
+        // When
+        val job = D4LSDKFlow(GlobalScope, ktFlow, { NSErrorFactory.create(23, "domain", "localized") })
+            .subscribe(
+                {},
+                {},
+                {}
+            )
+
+        // Then
+        assertTrue(job.isFrozen)
+    }
+
+    @Test
+    @ExperimentalCoroutinesApi
+    fun `Given subscribe is called with a scope it launches it in the given scope`() {
+        // Given
+        val context: CoroutineContext = newSingleThreadContext("testRunner2")
+        val scope = CoroutineScope(context)
+        val ktFlow = flow<Unit> {}
+
+        // When
+        val job = D4LSDKFlow(scope, ktFlow, { NSErrorFactory.create(23, "domain", "localized") })
+            .subscribe(
+                {},
+                {},
+                {}
+            )
+        // Then
+        assertTrue(job.isActive)
+        scope.cancel()
+        assertFalse(job.isActive)
     }
 }

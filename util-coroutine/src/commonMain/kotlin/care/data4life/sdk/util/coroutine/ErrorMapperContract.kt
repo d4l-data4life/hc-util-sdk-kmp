@@ -14,6 +14,10 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.lang
+package care.data4life.sdk.util.coroutine
 
-actual typealias PlatformError = Throwable
+import care.data4life.sdk.util.lang.PlatformError
+
+fun interface ErrorMapperContract {
+    fun mapError(error: Throwable): PlatformError
+}

@@ -17,6 +17,7 @@
 package care.data4life.sdk.util.coroutine
 
 // TODO: use import kotlin.native.concurrent.freeze, with Kotlin 1.5.x
+import care.data4life.sdk.util.lang.PlatformError
 import co.touchlab.stately.freeze
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -28,10 +29,12 @@ import kotlinx.coroutines.flow.onEach
 
 actual class D4LSDKFlow<T : Any> actual constructor(
     defaultScope: CoroutineScope,
-    internalFlow: Flow<T>
+    internalFlow: Flow<T>,
+    domainErrorMapper: ErrorMapperContract,
 ) {
     private val flow = internalFlow
     private val scope = defaultScope
+    private val errorMapper = domainErrorMapper
 
     init {
         freeze()
@@ -42,12 +45,12 @@ actual class D4LSDKFlow<T : Any> actual constructor(
 
     actual fun subscribe(
         onEach: (item: T) -> Unit,
-        onError: (error: Throwable) -> Unit,
+        onError: (error: PlatformError) -> Unit,
         onComplete: (() -> Unit)
     ): Job {
         return flow
             .onEach { item -> onEach(item) }
-            .catch { error -> onError(error) }
+            .catch { error -> onError(errorMapper.mapError(error)) }
             .onCompletion { onComplete.invoke() }
             .launchIn(scope)
             .freeze()

@@ -16,6 +16,7 @@
 
 package care.data4life.sdk.util.coroutine
 
+import care.data4life.sdk.util.lang.PlatformError
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
@@ -26,7 +27,8 @@ import kotlinx.coroutines.flow.onEach
 
 actual class D4LSDKFlow<T : Any> actual constructor(
     defaultScope: CoroutineScope,
-    internalFlow: Flow<T>
+    internalFlow: Flow<T>,
+    domainErrorMapper: ErrorMapperContract,
 ) {
     private val flow = internalFlow
     private val scope = defaultScope
@@ -36,7 +38,7 @@ actual class D4LSDKFlow<T : Any> actual constructor(
 
     actual fun subscribe(
         onEach: (item: T) -> Unit,
-        onError: (error: Throwable) -> Unit,
+        onError: (error: PlatformError) -> Unit,
         onComplete: (() -> Unit)
     ): Job {
         return flow

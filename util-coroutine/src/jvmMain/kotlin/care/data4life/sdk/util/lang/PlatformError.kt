@@ -14,23 +14,6 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.util.coroutine
+package care.data4life.sdk.util.lang
 
-import care.data4life.sdk.util.lang.PlatformError
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
-
-expect class D4LSDKFlow<T : Any>(
-    defaultScope: CoroutineScope,
-    internalFlow: Flow<T>,
-    domainErrorMapper: ErrorMapperContract,
-) {
-    val ktFlow: Flow<T>
-
-    fun subscribe(
-        onEach: (item: T) -> Unit,
-        onError: (error: PlatformError) -> Unit,
-        onComplete: (() -> Unit)
-    ): Job
-}
+actual typealias PlatformError = Throwable

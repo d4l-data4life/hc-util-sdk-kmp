@@ -53,7 +53,7 @@ kotlin {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.testCommon)
                 implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
-                api(project(":util-coroutine-test"))
+                implementation(api(project(":util-coroutine-test"))!!)
             }
         }
 
@@ -94,6 +94,7 @@ kotlin {
                 dependencies {
                     implementation(Dependencies.multiplatform.kotlin.testCommon)
                     implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
+                    implementation(api(project(":util"))!!)
                 }
             }
         }

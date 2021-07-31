@@ -16,14 +16,17 @@ toc::[]
 
 === Added
 
-* CoroutineHelper for KMP
-* NSErrorFactory
+* CoroutineHelper for KMP (util-coroutine)
+* NSErrorFactory (util)
 
 === Changed
 
-* _**BREAKING**_ `scope` had been removed as parameter on the D4LSDKFlow and needs to be injected via the constructor.
+* _**BREAKING**_ `domainErrorMapper` had been added to the D4LSDKFlow  constructor in order to map Errors to NSError for iOS (util-coroutine)
+* _**BREAKING**_ `scope` and needs to be injected via the constructor (util-coroutine)
 
 === Removed
+
+* _**BREAKING**_ `scope` had been removed as parameter on the D4LSDKFlow (util-coroutine)
 
 === Fixed
 
