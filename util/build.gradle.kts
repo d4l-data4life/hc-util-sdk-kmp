@@ -41,6 +41,28 @@ kotlin {
         }
     }
 
+    iosArm64 {
+        val platform = "iphoneos"
+        compilations.getByName("main") {
+            cinterops.create("Data4LifeSDKUtil") {
+                val interopTask = tasks[interopProcessingTaskName]
+                interopTask.dependsOn(":Data4LifeSDKUtilSwift:build${platform.capitalize()}")
+                includeDirs.headerFilterOnly("$rootDir/Data4LifeSDKUtilSwift/build/Release-$platform/include")
+            }
+        }
+    }
+
+    iosX64 {
+        val platform = "iphonesimulator"
+        compilations.getByName("main") {
+            cinterops.create("Data4LifeSDKUtil") {
+                val interopTask = tasks[interopProcessingTaskName]
+                interopTask.dependsOn(":Data4LifeSDKUtilSwift:build${platform.capitalize()}")
+                includeDirs.headerFilterOnly("$rootDir/Data4LifeSDKUtilSwift/build/Release-$platform/include")
+            }
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {

@@ -24,6 +24,8 @@ jobs:
         run: ./gradlew clean
       - name: Version
         run: ./gradlew versionInfo
+      - name: Build xcode util project
+        run: ./gradlew Data4LifeSDKUtilSwift:buildIphoneos Data4LifeSDKUtilSwift:buildIphonesimulator
       - name: Build project
         run: ./gradlew build
       - name: Publish to GitHub Packages

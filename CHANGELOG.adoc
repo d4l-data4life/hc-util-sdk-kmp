@@ -17,6 +17,7 @@ toc::[]
 === Added
 
 * CoroutineHelper for KMP
+* NSErrorFactory
 
 === Changed
 
