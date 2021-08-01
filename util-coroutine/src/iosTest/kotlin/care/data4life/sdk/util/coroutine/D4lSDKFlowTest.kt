@@ -35,7 +35,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
-class D4lSDKFlowTest {
+class D4LSDKFlowTest {
     @Test
     fun `It exposes its wrapped Flow`() {
         // Given
