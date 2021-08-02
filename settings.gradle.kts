@@ -31,8 +31,7 @@ include(
     ":util-coroutine",
     ":util-test",
     ":util-coroutine-test",
-    ":util-ktor-test",
-    ":Data4LifeSDKUtilSwift"
+    ":util-ktor-test"
 )
 
 buildCache {

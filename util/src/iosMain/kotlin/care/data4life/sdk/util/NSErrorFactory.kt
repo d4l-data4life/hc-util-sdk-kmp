@@ -16,9 +16,10 @@
 
 package care.data4life.sdk.util
 
-import kotlinx.cinterop.autoreleasepool
+import co.touchlab.stately.freeze
 import platform.Foundation.NSError
-import swift.d4l.sdk.util.*
+import platform.Foundation.NSErrorUserInfoKey
+import platform.Foundation.NSLocalizedDescriptionKey
 
 object NSErrorFactory {
     fun create(
@@ -27,13 +28,11 @@ object NSErrorFactory {
         localizedDescription: String,
         kotlinError: Throwable
     ): NSError {
-        return autoreleasepool {
-            Data4LifeSDKUtil.createNSErrorWithCode(
-                code = code,
-                domain = domain,
-                localizedDescription = localizedDescription,
-                kotlinError = kotlinError
-            )
-        }
+        val userInfo = mapOf<Any?, Any>(
+            NSLocalizedDescriptionKey to localizedDescription,
+            "kotlinError" as NSErrorUserInfoKey to kotlinError.freeze()
+        )
+
+        return NSError.errorWithDomain(domain, code, userInfo)
     }
 }

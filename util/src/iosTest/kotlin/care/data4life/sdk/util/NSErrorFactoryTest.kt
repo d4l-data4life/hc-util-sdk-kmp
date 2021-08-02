@@ -16,9 +16,11 @@
 
 package care.data4life.sdk.util
 
+import co.touchlab.stately.isFrozen
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertSame
+import kotlin.test.assertTrue
 
 class NSErrorFactoryTest {
     @Test
@@ -49,5 +51,6 @@ class NSErrorFactoryTest {
             actual = error.userInfo["kotlinError"],
             expected = kotlinError
         )
+        assertTrue((error.userInfo["kotlinError"] as Throwable).isFrozen)
     }
 }
