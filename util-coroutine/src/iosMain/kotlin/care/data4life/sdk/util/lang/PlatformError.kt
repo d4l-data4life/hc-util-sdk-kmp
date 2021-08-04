@@ -14,19 +14,8 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.util.coroutine
+package care.data4life.sdk.util.lang
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
+import platform.Foundation.NSError
 
-interface D4LSDKFlowContract<T> {
-    val ktFlow: Flow<T>
-
-    fun subscribe(
-        scope: CoroutineScope,
-        onEach: (item: T) -> Unit,
-        onError: (error: Throwable) -> Unit,
-        onComplete: (() -> Unit)? = null,
-    ): Job
-}
+actual typealias PlatformError = NSError

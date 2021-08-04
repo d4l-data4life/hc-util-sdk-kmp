@@ -83,6 +83,7 @@ kotlin {
         val iosMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibNative)
+                implementation(Dependencies.multiplatform.coroutines.stately)  // TODO: Remove with Kotlin 1.5.x
             }
         }
 

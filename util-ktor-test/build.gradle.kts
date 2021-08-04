@@ -53,7 +53,7 @@ kotlin {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.testCommon)
                 implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
-                implementation(api(project(":util-coroutine-test"))!!)
+                api(project(":util-coroutine-test"))
             }
         }
 
@@ -83,8 +83,8 @@ kotlin {
 
         val iosMain by getting {
             dependencies {
-                implementation(api(project(":util"))!!)
                 implementation(Dependencies.multiplatform.kotlin.stdlibNative)
+                api(project(":util"))
             }
         }
 

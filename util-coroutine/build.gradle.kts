@@ -94,6 +94,7 @@ kotlin {
                 dependencies {
                     implementation(Dependencies.multiplatform.kotlin.testCommon)
                     implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
+                    api(project(":util"))
                 }
             }
         }

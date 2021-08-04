@@ -16,34 +16,30 @@
 
 package care.data4life.sdk.util.coroutine
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.cancel
+import care.data4life.sdk.util.lang.PlatformError
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.flow
-import java.util.concurrent.Executors
-import kotlin.coroutines.CoroutineContext
 import kotlin.test.Test
-import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class D4lSDKFlowJvmTest {
+class D4LSDKFlowFactoryTest {
     @Test
-    fun `Given subscribe is called with a scope it launches it in the given scope`() {
+    fun `It fulfils D4LSDKFlowFactory`() {
+        val factory: Any = D4LSDKFlow
+
+        assertTrue(factory is D4LSDKFlowFactoryContract)
+    }
+
+    @Test
+    fun `Given getInstance is called with a Scope, Flow and DomainErrorMapper it creates a instance of D4LSDKFlow`() {
         // Given
-        val testCoroutineContext: CoroutineContext = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
-        val scope = CoroutineScope(testCoroutineContext)
-        val ktFlow = flow<Unit> {}
+        val scope = GlobalScope
+        val flow = flow<Int> { }
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
-            scope,
-            {},
-            {},
-            {}
-        )
+        val result: Any = D4LSDKFlow.getInstance(scope, flow) { it as PlatformError }
+
         // Then
-        assertFalse(job.isCompleted)
-        scope.cancel()
-        assertTrue(job.isCompleted)
+        assertTrue(result is D4LSDKFlow<*>)
     }
 }

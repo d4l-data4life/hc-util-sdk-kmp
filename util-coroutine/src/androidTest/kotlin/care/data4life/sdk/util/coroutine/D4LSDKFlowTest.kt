@@ -17,34 +17,33 @@
 package care.data4life.sdk.util.coroutine
 
 import care.data4life.sdk.util.test.coroutine.runBlockingTest
-import care.data4life.sdk.util.test.coroutine.testCoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.asCoroutineDispatcher
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import java.util.concurrent.Executors
+import kotlin.coroutines.CoroutineContext
 import kotlin.test.Test
+import kotlin.test.assertFalse
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 class D4LSDKFlowTest {
-    @Test
-    fun `It fulfils the D4LSDKFlowContract`() {
-        // Given
-        val flow: Any = D4LSDKFlow(flow<Unit> { })
-
-        // Then
-        assertTrue(flow is D4LSDKFlowContract<*>)
-    }
-
     @Test
     fun `It exposes its wrapped Flow`() {
         // Given
         val ktFlow = flow<Unit> { }
 
         // When
-        val result = D4LSDKFlow(ktFlow).ktFlow
+        val result = D4LSDKFlow.getInstance(
+            GlobalScope,
+            ktFlow,
+            { it }
+        ).ktFlow
 
         // Then
         assertSame(
@@ -59,10 +58,14 @@ class D4LSDKFlowTest {
         val ktFlow = flow<Unit> { }
 
         // When
-        val job: Any = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
+        val job: Any = D4LSDKFlow.getInstance(
+            GlobalScope,
+            ktFlow,
+            { it }
+        ).subscribe(
             {},
             {},
+            {}
         )
 
         // Then
@@ -80,13 +83,17 @@ class D4LSDKFlowTest {
         val capturedItem = Channel<Any>()
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
+        val job = D4LSDKFlow.getInstance(
+            GlobalScope,
+            ktFlow,
+            { it }
+        ).subscribe(
             { delegatedItem ->
                 GlobalScope.launch {
                     capturedItem.send(delegatedItem)
                 }
             },
+            {},
             {}
         )
 
@@ -102,7 +109,7 @@ class D4LSDKFlowTest {
     }
 
     @Test
-    fun `Given subscribe is called with a Closure to receive emitted Errors it delegates the emitted Errors to there`() {
+    fun `Given subscribe is called with a Closure to receive emitted Errors it delegates the emitted Errors to there, while ignoring the ErrorMapper`() {
         // Given
         val error = RuntimeException()
         val ktFlow = flow<Any> {
@@ -112,21 +119,25 @@ class D4LSDKFlowTest {
         val capturedError = Channel<Throwable>()
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
+        val job = D4LSDKFlow.getInstance(
+            GlobalScope,
+            ktFlow,
+            { NullPointerException() }
+        ).subscribe(
             {},
             onError = { delegatedError ->
                 GlobalScope.launch {
                     capturedError.send(delegatedError)
                 }
-            }
+            },
+            {}
         )
 
         // Then
         runBlockingTest {
             job.join()
 
-            assertSame(
+            assertSame<Any>(
                 actual = capturedError.receive(),
                 expected = error
             )
@@ -140,8 +151,11 @@ class D4LSDKFlowTest {
         val ktFlow = flow<Unit> {}
 
         // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
-            CoroutineScope(testCoroutineContext),
+        val job = D4LSDKFlow.getInstance(
+            GlobalScope,
+            ktFlow,
+            { it }
+        ).subscribe(
             {},
             {},
             onComplete = {
@@ -157,5 +171,24 @@ class D4LSDKFlowTest {
 
             assertTrue(wasCalled.receive())
         }
+    }
+
+    @Test
+    fun `Given subscribe is called with a scope it launches it in the given scope`() {
+        // Given
+        val testCoroutineContext: CoroutineContext = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
+        val scope = CoroutineScope(testCoroutineContext)
+        val ktFlow = flow<Unit> {}
+
+        // When
+        val job = D4LSDKFlow.getInstance(scope, ktFlow, { it }).subscribe(
+            {},
+            {},
+            {}
+        )
+        // Then
+        assertTrue(job.isActive)
+        scope.cancel()
+        assertFalse(job.isActive)
     }
 }

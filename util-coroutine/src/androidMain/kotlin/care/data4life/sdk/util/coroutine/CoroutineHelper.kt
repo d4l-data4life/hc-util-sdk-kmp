@@ -18,32 +18,10 @@ package care.data4life.sdk.util.coroutine
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.flow
 import java.util.concurrent.Executors
-import kotlin.coroutines.CoroutineContext
-import kotlin.test.Test
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
-class D4lSDKFlowAndroidTest {
-    @Test
-    fun `Given subscribe is called with a scope it launches it in the given scope`() {
-        // Given
-        val testCoroutineContext: CoroutineContext = Executors.newSingleThreadExecutor().asCoroutineDispatcher()
-        val scope = CoroutineScope(testCoroutineContext)
-        val ktFlow = flow<Unit> {}
-
-        // When
-        val job = D4LSDKFlow(ktFlow).subscribe(
-            scope,
-            {},
-            {},
-            {}
-        )
-        // Then
-        assertTrue(job.isActive)
-        scope.cancel()
-        assertFalse(job.isActive)
+actual object CoroutineHelper : CoroutineHelperContract {
+    actual override fun createCoroutineScope(contextName: String): CoroutineScope {
+        return CoroutineScope(Executors.newSingleThreadExecutor().asCoroutineDispatcher())
     }
 }
