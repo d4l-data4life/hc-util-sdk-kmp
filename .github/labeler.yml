@@ -18,18 +18,6 @@ documentation:
 util-library:
   - util/**/*
 
-util-coroutine-library:
-  - util-coroutine/**/*
-
-util-test-library:
-  - util-test/**/*
-
-util-coroutine-test-library:
-  - util-coroutine-test/**/*
-
-util-ktor-test-library:
-  - util-ktor-test/**/*
-
 # Sample
 sample-android:
   - sample-android/**/*

@@ -23,7 +23,7 @@ endif::[]
     </p>
     <h1>Data4Life Util SDK</h1>
     <p>
-        This is the Util SDK that provides basic definition and implementation of e.g. Base64, Sha1-hash, MIME types and data size restriction with relating error codes.
+        This is the Util SDK that provides basic definition and implementation of e.g. Base64, Sha1-hash, MIME types and data size restriction.
     </p>
     <p>
         <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp"><strong>Explore the docs »</strong></a>
@@ -68,21 +68,7 @@ Currently we support Android, JVM and iOS, which can be conveniently consumed by
 * SHA1-HASH calculation
 * MIME type helpers
 * Logger
-* Platform restrictions and error
-
-==== util-coroutines
-* Compatibility wrapper for Kotlin Flows
-
-==== util-test
-* ResourceLoader for common code
-
-==== util-coroutine-test
-* runBlockingTest and runWithContextBlocking to enable tests with coroutines in common code
-
-==== util-ktor-test
-* convenient Factory for MockClient
-* convenient Factory to produce a HelloWorld response
-* Plugin to to resolve directly objects in order to avoid integration testing with a MockClient
+* Platform restrictions
 
 === Built With
 
@@ -132,44 +118,6 @@ Add following dependencies to your app build.gradle.
 ----
 dependencies {
     implementation "care.data4life.hc-util-sdk-kmp:util:$version"
-}
-----
-
-=== util-coroutine
-
-Add following dependencies to your app build.gradle.
-
-----
-dependencies {
-    implementation "care.data4life.hc-util-sdk-kmp:util-coroutine:$version"
-}
-----
-
-=== util-test
-
-----
-dependencies {
-    implementation "care.data4life.hc-util-sdk-kmp:util-test:$version"
-}
-----
-
-=== util-coroutine-test
-
-Add following dependencies to your app build.gradle.
-
-----
-dependencies {
-    implementation "care.data4life.hc-util-sdk-kmp:util-coroutine-test:$version"
-}
-----
-
-=== util-ktor-test
-
-Add following dependencies to your app build.gradle.
-
-----
-dependencies {
-    implementation "care.data4life.hc-util-sdk-kmp:util-ktor-test:$version"
 }
 ----
 

@@ -27,11 +27,7 @@ plugins {
 }
 
 include(
-    ":util",
-    ":util-coroutine",
-    ":util-test",
-    ":util-coroutine-test",
-    ":util-ktor-test"
+    ":util"
 )
 
 buildCache {
