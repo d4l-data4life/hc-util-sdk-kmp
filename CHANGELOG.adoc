@@ -21,9 +21,8 @@ toc::[]
 === Removed
 
 * _**BREAKING**_ D4LSDKFlow (moved to https://github.com/d4l-data4life/hc-result-sdk-kmp[hc-result-sdk-kmp])
-* _**BREAKING**_ D4LException and D4LRuntimeException (moved to https://github.com/d4l-data4life/hc-result-sdk-kmp[hc-result-sdk-kmp])
-* _**BREAKING**_ DataRestrictionException is now implemented by the Core SDK.
-* _**BREAKING**_ NSDataMapper (moved to https://github.com/d4l-data4life/hc-objc-util-sdk-kmp[hc-objc-util-kmp])
+* _**BREAKING**_ DataRestrictionException, D4LException and D4LRuntimeException (moved to https://github.com/d4l-data4life/hc-result-sdk-kmp[hc-result-sdk-kmp])
+* _**BREAKING**_ NSDataMapper (moved to https://github.com/d4l-data4life/hc-objc-util-sdk-kmp[hc-objc-util-sdk-kmp])
 * _**BREAKING**_ `util-coroutine` (move to https://github.com/d4l-data4life/hc-coroutine-util-sdk-kmp[hc-coroutine-util-sdk-kmp])
 * _**BREAKING**_ `util-test` (move to https://github.com/d4l-data4life/hc-test-util-sdk-kmp[hc-test-util-sdk-kmp])
 * _**BREAKING**_ `util-coroutine-test` (move to https://github.com/d4l-data4life/hc-test-util-sdk-kmp[hc-test-util-sdk-kmp])
