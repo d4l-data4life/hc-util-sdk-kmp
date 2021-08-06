@@ -24,7 +24,7 @@ import platform.Foundation.NSData
 import platform.Foundation.create
 import platform.posix.memcpy
 
-object NSDataMapper {
+internal object NSDataMapper {
     // see: https://github.com/JetBrains/kotlin-native/issues/3172
     // see: https://stackoverflow.com/questions/58521108/how-to-convert-kotlin-bytearray-to-nsdata-and-viceversa
     // see: https://gist.github.com/noahsark769/61cfb7a8b7231e2069a9dab94cf74a62
