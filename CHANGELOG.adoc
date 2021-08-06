@@ -12,11 +12,21 @@ and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioni
 ==== Versions
 toc::[]
 
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.9.0...main[Unreleased]
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.10.0...main[Unreleased]
 
 === Added
 
 === Changed
+
+=== Removed
+
+=== Fixed
+
+=== Bumped
+
+=== Migration
+
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.9.0...v1.10.0[1.10.0]
 
 === Removed
 
@@ -27,8 +37,6 @@ toc::[]
 * _**BREAKING**_ `util-test` (move to https://github.com/d4l-data4life/hc-test-util-sdk-kmp[hc-test-util-sdk-kmp])
 * _**BREAKING**_ `util-coroutine-test` (move to https://github.com/d4l-data4life/hc-test-util-sdk-kmp[hc-test-util-sdk-kmp])
 * _**BREAKING**_ `util-test` (move to https://github.com/d4l-data4life/hc-test-util-sdk-kmp[hc-test-util-sdk-kmp])
-
-=== Fixed
 
 === Bumped
 
