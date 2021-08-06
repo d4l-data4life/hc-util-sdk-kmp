@@ -32,6 +32,8 @@ toc::[]
 
 === Bumped
 
+* Gradle 6.8.3 -> 6.9
+
 === Migration
 
 == https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.8.1...v1.9.0[1.9.0]
