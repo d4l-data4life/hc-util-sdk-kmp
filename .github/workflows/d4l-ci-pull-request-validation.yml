@@ -10,7 +10,7 @@ on:
 jobs:
   pull-request-validation:
 
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     concurrency:
       group: validation-${{ github.head_ref }}
