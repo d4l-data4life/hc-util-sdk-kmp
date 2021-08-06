@@ -16,33 +16,20 @@
 
 plugins {
     `kotlin-dsl`
-
-    id("care.data4life.sdk.util.dependency")
+    `java-gradle-plugin`
 }
+
+// To make it available as direct dependency
+group = "care.data4life.sdk.util.dependency"
+version = "1.0.0-SNAPSHOT"
 
 repositories {
-    gradlePluginPortal()
     mavenCentral()
-    google()
 }
 
-dependencies {
-    implementation(care.data4life.sdk.util.dependency.GradlePlugin.kotlin)
-    implementation(care.data4life.sdk.util.dependency.GradlePlugin.android)
-
-    // dependency-updates
-    implementation("com.github.ben-manes:gradle-versions-plugin:0.38.0")
-    // download-scripts
-    implementation("de.undercouch:gradle-download-task:4.1.1")
-    // publishing
-    implementation("org.eclipse.jgit:org.eclipse.jgit:5.11.0.202103091610-r")
-    // quality
-    implementation("com.diffplug.spotless:spotless-plugin-gradle:5.10.2")
-    implementation("com.pinterest:ktlint:0.41.0")
-    // versioning
-    implementation("com.palantir.gradle.gitversion:gradle-git-version:0.12.3")
-}
-
-kotlinDslPluginOptions {
-    experimentalWarning.set(false)
+gradlePlugin {
+    plugins.register("care.data4life.sdk.util.dependency") {
+        id = "care.data4life.sdk.util.dependency"
+        implementationClass = "care.data4life.sdk.util.dependency.DependencyPlugin"
+    }
 }

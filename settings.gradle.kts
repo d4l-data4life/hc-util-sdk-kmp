@@ -18,13 +18,13 @@ pluginManagement {
         gradlePluginPortal()
         google()
     }
+
+    includeBuild("gradlePlugin/util-dependency")
 }
 
 plugins {
     id("com.gradle.enterprise") version("3.4.1")
 }
-
-rootProject.name = "hc-util-sdk-kmp"
 
 include(
     ":util",
@@ -41,3 +41,5 @@ buildCache {
         removeUnusedEntriesAfterDays = 30
     }
 }
+
+rootProject.name = "hc-util-sdk-kmp"

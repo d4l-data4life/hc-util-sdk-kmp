@@ -13,15 +13,17 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
+import care.data4life.sdk.util.LibraryConfig
+import care.data4life.sdk.util.dependency.Dependency
 
 plugins {
-    kotlinMultiplatform()
+    id("org.jetbrains.kotlin.multiplatform")
 
     // Android
-    androidLibrary()
+    id("com.android.library")
 
     // Publish
-    id("scripts.publishing-config")
+    id("care.data4life.sdk.util.publishing-config")
 }
 
 group = LibraryConfig.group
@@ -33,13 +35,7 @@ kotlin {
 
     jvm()
 
-    ios {
-        binaries {
-            framework {
-                baseName = LibraryConfig.name
-            }
-        }
-    }
+    ios {}
 
     sourceSets {
         val commonMain by getting {
