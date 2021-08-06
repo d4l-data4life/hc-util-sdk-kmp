@@ -26,7 +26,7 @@ object LibraryConfig {
     const val githubRepository = "hc-util-sdk-kmp"
 
     object PublishConfig {
-        const val groupId = "care.data4life.hc-coroutine-util-sdk-kmp"
+        const val groupId = "care.data4life.hc-util-sdk-kmp"
         const val description = "Util SDK provides basic definition and implementation of e.g. Base64, Sha1-hash, MIME types and data size restriction with relating error codes."
 
         const val year = "2021"

@@ -40,26 +40,6 @@ object Dependency {
             const val testJvm = "org.jetbrains.kotlin:kotlin-test:${Version.kotlin}"
             const val testJvmJunit = "org.jetbrains.kotlin:kotlin-test-junit:${Version.kotlin}"
         }
-
-        val coroutines = Coroutines
-
-        object Coroutines {
-            // https://github.com/Kotlin/kotlinx.coroutines
-            const val common =
-                "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.kotlinCoroutines}"
-            const val android =
-                "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.kotlinCoroutines}"
-            const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.kotlinCoroutines}"
-
-            const val stately = "co.touchlab:stately-common:${Version.stately}"
-        }
-
-        val ktor = Ktor
-
-        object Ktor {
-            const val common = "io.ktor:ktor-client-core:${Version.ktor}"
-            const val mock = "io.ktor:ktor-client-mock:${Version.ktor}"
-        }
     }
 
     val test = Test
