@@ -1,7 +1,18 @@
 = Changelog
+:link-repository: https://github.com/d4l-data4life/hc-util-sdk-kmp
+:doctype: article
 :toc: macro
 :toclevels: 1
 :toc-title:
+:icons: font
+:imagesdir: assets/images
+ifdef::env-github[]
+:warning-caption: :warning:
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+endif::[]
 
 All notable changes to this project will be documented in this file.
 
@@ -18,11 +29,17 @@ toc::[]
 
 === Changed
 
+=== Deprecated
+
 === Removed
 
 === Fixed
 
+=== Security
+
 === Bumped
+
+=== Deprecated
 
 === Migration
 
