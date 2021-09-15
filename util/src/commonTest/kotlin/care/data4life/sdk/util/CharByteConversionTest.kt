@@ -21,7 +21,11 @@ import kotlin.test.assertEquals
 
 class CharByteConversionTest {
     private val testCharArray = charArrayOf('a', 'b', 'c')
-    private val testByteArray = byteArrayOf('a'.toByte(), 'b'.toByte(), 'c'.toByte())
+    private val testByteArray = byteArrayOf(
+        'a'.code.toByte(),
+        'b'.code.toByte(),
+        'c'.code.toByte()
+    )
 
     @Test
     fun toBytesTest() {
