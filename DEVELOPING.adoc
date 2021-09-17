@@ -122,5 +122,3 @@ Releases are automatically created when a tag in the form of `v{major}.{minor}.{
 == Develop
 
 Coming soon
-
-TODO
