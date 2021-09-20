@@ -64,6 +64,7 @@ object Dependency {
         object AndroidX {
             // AndroidX
             const val ktx = "androidx.core:core-ktx:${Version.androidXKtx}"
+            const val annotation = "androidx.annotation:annotation:${Version.androidXAnnotation}"
             const val appCompat = "androidx.appcompat:appcompat:${Version.androidXAppCompat}"
             const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Version.androidXConstraintLayout}"
         }
