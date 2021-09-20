@@ -17,13 +17,13 @@
 import care.data4life.sdk.util.dependency.d4l
 
 plugins {
-    id("care.data4life.sdk.util.dependency")
+    id("care.data4life.gradle.util.dependency")
 
-    id("care.data4life.sdk.util.dependency-updates")
-    id("care.data4life.sdk.util.download-scripts")
-    id("care.data4life.sdk.util.publishing")
-    id("care.data4life.sdk.util.quality-spotless")
-    id("care.data4life.sdk.util.versioning")
+    id("care.data4life.gradle.util.script.dependency-updates")
+    id("care.data4life.gradle.util.script.download-scripts")
+    id("care.data4life.gradle.util.script.publishing")
+    id("care.data4life.gradle.util.script.quality-spotless")
+    id("care.data4life.gradle.util.script.versioning")
 }
 
 allprojects {
