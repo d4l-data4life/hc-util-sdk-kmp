@@ -42,6 +42,11 @@ object Dependency {
         }
     }
 
+    val d4l = D4L
+    object D4L {
+        const val sdkTestUtil = "care.data4life.hc-test-util-sdk-kmp:test-util:${Version.sdkTestUtil}"
+    }
+
     val test = Test
     object Test {
         const val junit = "junit:junit:${Version.testJUnit}"
