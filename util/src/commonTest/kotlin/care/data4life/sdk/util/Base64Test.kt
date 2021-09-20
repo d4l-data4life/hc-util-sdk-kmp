@@ -16,12 +16,14 @@
 
 package care.data4life.sdk.util
 
+import care.data4life.sdk.util.test.annotation.RobolectricTestRunner
+import care.data4life.sdk.util.test.annotation.RunWithRobolectricTestRunner
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
+@RunWithRobolectricTestRunner(RobolectricTestRunner::class)
 class Base64Test {
-    @ExperimentalUnsignedTypes
     @Test
     fun encode_shouldReturnEncodedByteArray_whenInputByteArray() {
         // given
@@ -35,7 +37,6 @@ class Base64Test {
         assertTrue(expected.contentEquals(actual))
     }
 
-    @ExperimentalUnsignedTypes
     @Test
     fun encode_shouldReturnEncodedByteArray_whenInputByteArrayLong() {
         // given
@@ -49,7 +50,6 @@ class Base64Test {
         assertTrue(expected.contentEquals(actual))
     }
 
-    @ExperimentalUnsignedTypes
     @Test
     fun encodeToString_shouldReturnEncodedString_whenInputString() {
         // given
@@ -76,7 +76,6 @@ class Base64Test {
         assertEquals(expected, actual)
     }
 
-    @ExperimentalUnsignedTypes
     @Test
     fun encodeToString_shouldReturnEncodedString_whenInputStringLong() {
         // given
@@ -90,7 +89,6 @@ class Base64Test {
         assertEquals(expected, actual)
     }
 
-    @ExperimentalUnsignedTypes
     @Test
     fun encodeToString_shouldReturnEncodedString_whenInputByteArray() {
         // given
@@ -104,7 +102,6 @@ class Base64Test {
         assertEquals(expected, actual)
     }
 
-    @ExperimentalUnsignedTypes
     @Test
     fun encodeToString_shouldReturnEncodedString_whenInputByteArrayLong() {
         // given
@@ -118,7 +115,6 @@ class Base64Test {
         assertEquals(expected, actual)
     }
 
-    @ExperimentalUnsignedTypes
     @Test
     fun decode_shouldReturnDecodedByteArray_whenInputByteArray() {
         // given
@@ -132,7 +128,6 @@ class Base64Test {
         assertTrue(expected.contentEquals(actual))
     }
 
-    @ExperimentalUnsignedTypes
     @Test
     fun decode_shouldReturnDecodedByteArray_whenInputByteArrayLong() {
         // given

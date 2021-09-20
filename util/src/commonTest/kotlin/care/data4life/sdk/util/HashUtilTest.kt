@@ -16,16 +16,18 @@
 
 package care.data4life.sdk.util
 
-import org.junit.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 class HashUtilTest {
 
-    @Test(expected = IllegalStateException::class)
+    @Test
     fun sha1_NoData_ShouldThrowException() {
         // when
-        HashUtil.sha1(null)
+        assertFailsWith<IllegalStateException> {
+            HashUtil.sha1(null)
+        }
     }
 
     @Test
@@ -42,23 +44,22 @@ class HashUtilTest {
         val data = "The quick brown fox jumps over the lazy dog"
 
         // when
-        val result = HashUtil.sha1(data.toByteArray())
+        val result = HashUtil.sha1(data.encodeToByteArray())
 
         // then
-        val hexResult = StringBuilder(result.size * 2)
-        for (byte in result)
-            hexResult.append("%02x".format(byte))
         assertEquals(
-            "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12",
-            hexResult.toString(),
+            expected = "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12",
+            actual = HexFormatter.format(result),
             "Failed to create sha1"
         )
     }
 
-    @Test(expected = IllegalStateException::class)
+    @Test
     fun sha1String_NoData_ShouldThrowException() {
         // when
-        HashUtil.sha1String(null)
+        assertFailsWith<IllegalStateException> {
+            HashUtil.sha1String(null)
+        }
     }
 
     @Test
@@ -75,7 +76,7 @@ class HashUtilTest {
         val data = "The quick brown fox jumps over the lazy dog"
 
         // when
-        val result = HashUtil.sha1String(data.toByteArray())
+        val result = HashUtil.sha1String(data.encodeToByteArray())
 
         // then
         assertEquals(
@@ -84,4 +85,8 @@ class HashUtilTest {
             "Failed to create sha1"
         )
     }
+}
+
+expect object HexFormatter {
+    fun format(toFormat: ByteArray): String
 }

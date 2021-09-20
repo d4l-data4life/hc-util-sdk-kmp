@@ -28,6 +28,12 @@ object Version {
      */
     const val kotlin = "1.4.32"
 
+    // D4L
+    /**
+     * https://github.com/d4l-data4life/hc-test-util-sdk-kmp
+     */
+    const val sdkTestUtil = "0.2.0"
+
     // Android
     /**
      *  https://developer.android.com/studio/write/java8-support
@@ -64,5 +70,5 @@ object Version {
     /**
      * [Robolectric](https://github.com/robolectric/robolectric)
      */
-    const val robolectric = "4.4"
+    const val robolectric = "4.6.1"
 }
