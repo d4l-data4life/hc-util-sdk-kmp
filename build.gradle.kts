@@ -14,7 +14,7 @@
  * contact D4L by email to help@data4life.care.
  */
 
-import care.data4life.sdk.util.dependency.d4l
+import care.data4life.gradle.util.dependency.d4l
 
 plugins {
     id("care.data4life.gradle.util.dependency")
