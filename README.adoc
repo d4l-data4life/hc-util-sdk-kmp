@@ -21,7 +21,7 @@ endif::[]
     <p>
         <a href="https://github.com/d4l-data4life/hc-util-sdk-kmp">
             <img src="assets/images/d4l-logo.svg" width="150"/>
-        </a><a><img src="assets/images/d4l-logo.svg" width="150"/></a>
+        </a>
     </p>
     <h1>Data4Life Util SDK</h1>
     <p>
