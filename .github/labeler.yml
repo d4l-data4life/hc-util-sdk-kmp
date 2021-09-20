@@ -1,12 +1,14 @@
 build:
   - .github/**/*
 
+scripts:
+  - buildSrc/src/main/kotlin/care/data4life/gradle/util/script/**/*.kts
+
 dependencies:
   - buildSrc/**/*
 
 documentation:
   - docs/**/*
-  - sdk-doc/**/*
   - README.adoc
   - LICENSE
   - CHANGELOG.adoc
@@ -18,7 +20,7 @@ documentation:
 util-library:
   - util/**/*
 
-# Sample
+# Sample Apps
 sample-android:
   - sample-android/**/*
 

@@ -14,17 +14,17 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.util
+package care.data4life.gradle.util.script
 
-import org.gradle.api.publish.maven.MavenPublication
+import care.data4life.gradle.util.config.LibraryConfig
 
 /**
  * Install:
  *
- * Just add id("care.data4life.sdk.util.publishing-config") to your project module build.gradle.kts plugins section
+ * Just add id("care.data4life.gradle.util.script.publishing-config") to your project module build.gradle.kts plugins section
  *
  * plugins {
- *     id("care.data4life.sdk.util.publishing-config")
+ *     id("care.data4life.gradle.util.script.publishing-config")
  * }
  *
  * Usage:
@@ -34,7 +34,7 @@ import org.gradle.api.publish.maven.MavenPublication
  * - ./gradlew publishSnapshot
  * - ./gradlew publishRelease
  *
- * This requires a care.data4life.sdk.util.LibraryConfig configured
+ * This requires a care.data4life.gradle.util.config.LibraryConfig configured
  */
 plugins {
     `maven-publish`
