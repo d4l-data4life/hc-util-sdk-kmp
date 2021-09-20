@@ -19,7 +19,7 @@ package care.data4life.sdk.util
 fun CharArray.toBytes(): ByteArray {
     val bytes = ByteArray(this.size)
     this.forEachIndexed { index, c ->
-        bytes[index] = c.toByte()
+        bytes[index] = c.code.toByte()
     }
 
     return bytes
@@ -28,7 +28,7 @@ fun CharArray.toBytes(): ByteArray {
 fun ByteArray.toChars(): CharArray {
     val chars = CharArray(this.size)
     this.forEachIndexed { index, c ->
-        chars[index] = c.toChar()
+        chars[index] = c.toInt().toChar()
     }
     return chars
 }
