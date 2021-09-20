@@ -72,6 +72,12 @@ Currently we support Android, JVM and iOS, which can be conveniently consumed by
 * Logger
 * Platform restrictions
 
+=== Dependencies
+
+The SDK has the following dependencies:
+
+* link:https://developer.android.com/jetpack/androidx/releases/annotation[AndroidX Annotation] (Android only)
+
 === Built With
 
 * link:https://kotlinlang.org/docs/reference/mpp-intro.html[Kotlin Multiplatform]

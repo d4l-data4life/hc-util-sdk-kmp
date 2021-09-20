@@ -23,22 +23,37 @@ object Version {
     }
 
     // Kotlin
-    // https://github.com/JetBrains/kotlin
+    /**
+     * https://github.com/JetBrains/kotlin
+     */
     const val kotlin = "1.5.21"
 
+    // D4L
+    /**
+     * https://github.com/d4l-data4life/hc-test-util-sdk-kmp
+     */
+    const val sdkTestUtil = "0.2.0"
+
     // Android
-    // https://developer.android.com/studio/write/java8-support
+    /**
+     *  https://developer.android.com/studio/write/java8-support
+     */
     const val androidDesugar = "1.0.4"
 
     // AndroidX
-    // https://developer.android.com/jetpack/androidx
+    /**
+     * https://developer.android.com/jetpack/androidx
+     */
     const val androidX = "1.1.0"
+    const val androidXAnnotation = "1.2.0"
     const val androidXKtx = "1.6.0"
     const val androidXAppCompat = "1.3.1"
 
     const val androidXConstraintLayout = "2.0.1"
 
-    // https://developer.android.com/testing
+    /**
+     * https://developer.android.com/testing
+     */
     const val androidXTest = "1.4.0"
     const val androidXEspresso = "3.4.0"
     const val androidXUiAutomator = "2.2.0"

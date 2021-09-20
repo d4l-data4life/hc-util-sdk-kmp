@@ -14,27 +14,18 @@
  * contact D4L by email to help@data4life.care.
  */
 
-import care.data4life.gradle.util.dependency.d4l
+package care.data4life.sdk.util
 
-plugins {
-    id("care.data4life.gradle.util.dependency")
+import platform.Foundation.NSString
+import platform.Foundation.stringByAppendingFormat
 
-    id("care.data4life.gradle.util.script.dependency-updates")
-    id("care.data4life.gradle.util.script.download-scripts")
-    id("care.data4life.gradle.util.script.publishing")
-    id("care.data4life.gradle.util.script.quality-spotless")
-    id("care.data4life.gradle.util.script.versioning")
-}
+actual object HexFormatter {
+    actual fun format(toFormat: ByteArray): String {
+        val hexResult = StringBuilder(toFormat.size * 2)
+        for (byte in toFormat) {
+            hexResult.append(("" as NSString).stringByAppendingFormat("%02hhx", byte))
+        }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        d4l()
+        return hexResult.toString()
     }
-}
-
-tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "7.2"
-    distributionType = Wrapper.DistributionType.ALL
 }

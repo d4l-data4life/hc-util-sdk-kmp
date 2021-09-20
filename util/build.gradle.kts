@@ -48,12 +48,14 @@ kotlin {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.testCommon)
                 implementation(Dependency.multiplatform.kotlin.testCommonAnnotations)
+                implementation(Dependency.d4l.sdkTestUtil)
             }
         }
 
         val androidMain by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibAndroid)
+                implementation(Dependency.android.androidX.annotation)
             }
         }
         val androidTest by getting {
@@ -126,4 +128,7 @@ android {
             res.setSrcDirs(setOf("src/androidTest/res"))
         }
     }
+}
+dependencies {
+    implementation("androidx.annotation:annotation:1.2.0")
 }

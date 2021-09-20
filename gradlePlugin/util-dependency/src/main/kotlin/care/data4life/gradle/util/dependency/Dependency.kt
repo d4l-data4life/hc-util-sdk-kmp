@@ -42,6 +42,11 @@ object Dependency {
         }
     }
 
+    val d4l = D4L
+    object D4L {
+        const val sdkTestUtil = "care.data4life.hc-test-util-sdk-kmp:test-util:${Version.sdkTestUtil}"
+    }
+
     val test = Test
     object Test {
         const val junit = "junit:junit:${Version.testJUnit}"
@@ -59,6 +64,7 @@ object Dependency {
         object AndroidX {
             // AndroidX
             const val ktx = "androidx.core:core-ktx:${Version.androidXKtx}"
+            const val annotation = "androidx.annotation:annotation:${Version.androidXAnnotation}"
             const val appCompat = "androidx.appcompat:appcompat:${Version.androidXAppCompat}"
             const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Version.androidXConstraintLayout}"
         }

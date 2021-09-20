@@ -29,6 +29,9 @@ toc::[]
 
 === Added
 
+* ProguardKeep to enable the keep annotation in common
+* link:https://developer.android.com/jetpack/androidx/releases/annotation[AndroidX Annotation] 1.2.0 (dependency)
+
 === Changed
 
 === Deprecated
