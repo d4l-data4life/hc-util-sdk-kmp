@@ -29,6 +29,8 @@ toc::[]
 
 === Added
 
+* D4LError module
+
 === Changed
 
 === Deprecated

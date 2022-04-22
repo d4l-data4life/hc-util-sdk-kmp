@@ -27,7 +27,8 @@ plugins {
 }
 
 include(
-    ":util"
+    ":util",
+    ":error"
 )
 
 buildCache {
