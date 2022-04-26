@@ -15,6 +15,7 @@
  */
 
 import care.data4life.gradle.util.dependency.d4l
+import care.data4life.gradle.util.dependency.ensureKotlinVersion
 
 plugins {
     `kotlin-dsl`
