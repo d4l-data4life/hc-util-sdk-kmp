@@ -32,6 +32,8 @@ allprojects {
         mavenCentral()
         d4l()
     }
+
+    ensureKotlinVersion()
 }
 
 tasks.named<Wrapper>("wrapper") {

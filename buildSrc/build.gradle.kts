@@ -29,6 +29,8 @@ repositories {
     d4l()
 }
 
+ensureKotlinVersion("1.5.31")
+
 dependencies {
     implementation(care.data4life.gradle.util.dependency.GradlePlugin.kotlin)
     implementation(care.data4life.gradle.util.dependency.GradlePlugin.android)
