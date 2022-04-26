@@ -42,6 +42,7 @@ toc::[]
 === Bumped
 
 * Android Desugar 1.0.4 -> 1.0.9
+* Gradle 7.2 -> 7.4.2
 
 === Migration
 
