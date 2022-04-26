@@ -15,6 +15,7 @@
  */
 
 import care.data4life.gradle.util.dependency.d4l
+import care.data4life.gradle.util.dependency.ensureKotlinVersion
 
 plugins {
     id("care.data4life.gradle.util.dependency")
@@ -32,9 +33,11 @@ allprojects {
         mavenCentral()
         d4l()
     }
+
+    ensureKotlinVersion()
 }
 
 tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "7.2"
+    gradleVersion = "7.4.2"
     distributionType = Wrapper.DistributionType.ALL
 }
