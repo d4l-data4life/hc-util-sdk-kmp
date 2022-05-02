@@ -1,6 +1,6 @@
 = Data4Life Util SDK
 :link-repository: https://github.com/d4l-data4life/hc-util-sdk-kmp
-:util-sdk-version: 1.12.0
+:util-sdk-version: 1.12.1
 :doctype: article
 :!showtitle:
 :toc: macro
@@ -72,6 +72,10 @@ Currently we support Android, JVM and iOS, which can be conveniently consumed by
 * Logger
 * Platform restrictions
 
+==== error
+* D4LRuntimeException
+* D4LException
+
 === Dependencies
 
 The SDK has the following dependencies:
@@ -88,7 +92,7 @@ The SDK has the following dependencies:
 
 * link:https://adoptopenjdk.net/[Java 11] | link:https://developer.android.com/studio/write/java8-support[Limitations of Java language features and APIs] | https://jakewharton.com/d8-library-desugaring/[Desugaring]
 * link:https://kotlinlang.org/[Kotlin 1.6.10]
-* Android 6.0 (API 23) to Android 11.0 (API 30)
+* Android 6.0 (API 23) to Android 11.0 (API 31)
 
 == Installation
 
