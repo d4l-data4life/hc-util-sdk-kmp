@@ -32,7 +32,7 @@ object Version {
     /**
      * https://github.com/d4l-data4life/hc-test-util-sdk-kmp
      */
-    const val sdkTestUtil = "0.4.0"
+    const val sdkTestUtil = "0.5.0"
 
     // Android
     /**
@@ -70,5 +70,5 @@ object Version {
     /**
      * [Robolectric](https://github.com/robolectric/robolectric)
      */
-    const val robolectric = "4.7.3"
+    const val robolectric = "4.8"
 }
