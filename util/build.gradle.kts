@@ -137,5 +137,5 @@ android {
     }
 }
 dependencies {
-    implementation("androidx.annotation:annotation:1.2.0")
+    implementation("androidx.annotation:annotation:1.4.0")
 }

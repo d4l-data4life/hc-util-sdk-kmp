@@ -89,9 +89,9 @@ enum class MimeType(val contentType: String) {
             if (input.size != reference?.size) return false
 
             for (i in reference.indices) {
-                if (reference[i] == null)
+                if (reference[i] == null) {
                     continue
-                else if (input[i] != reference[i]) return false
+                } else if (input[i] != reference[i]) return false
             }
             return true
         }
