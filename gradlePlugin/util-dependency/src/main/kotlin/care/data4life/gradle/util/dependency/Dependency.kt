@@ -72,6 +72,7 @@ object Dependency {
     }
 
     val androidTest = AndroidTest
+
     object AndroidTest {
         const val core = "androidx.test:core:${Version.androidXTest}"
         const val runner = "androidx.test:runner:${Version.androidXTest}"

@@ -19,14 +19,14 @@ object Version {
 
     object GradlePlugin {
         const val kotlin = Version.kotlin
-        const val android = "7.1.3"
+        const val android = "7.2.2"
     }
 
     // Kotlin
     /**
      * https://github.com/JetBrains/kotlin
      */
-    const val kotlin = "1.6.10"
+    const val kotlin = "1.7.10"
 
     // Android
     /**
@@ -38,12 +38,11 @@ object Version {
     /**
      * https://developer.android.com/jetpack/androidx
      */
-    const val androidX = "1.1.0"
-    const val androidXAnnotation = "1.2.0"
-    const val androidXKtx = "1.7.0"
-    const val androidXAppCompat = "1.4.1"
+    const val androidXAnnotation = "1.4.0"
+    const val androidXKtx = "1.8.0"
+    const val androidXAppCompat = "1.5.0"
 
-    const val androidXConstraintLayout = "2.1.3"
+    const val androidXConstraintLayout = "2.1.4"
 
     /**
      * https://developer.android.com/testing
@@ -64,5 +63,5 @@ object Version {
     /**
      * [Robolectric](https://github.com/robolectric/robolectric)
      */
-    const val robolectric = "4.8"
+    const val robolectric = "4.8.1"
 }

@@ -16,11 +16,11 @@
 
 package care.data4life.sdk.util
 
+import kotlin.test.Test
+import kotlin.test.assertTrue
 import kotlinx.cinterop.memScoped
 import platform.Foundation.NSData
 import platform.Foundation.create
-import kotlin.test.Test
-import kotlin.test.assertTrue
 
 class NSDataMapperTest {
     @ExperimentalUnsignedTypes
