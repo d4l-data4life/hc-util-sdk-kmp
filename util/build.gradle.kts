@@ -48,7 +48,6 @@ kotlin {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.testCommon)
                 implementation(Dependency.multiplatform.kotlin.testCommonAnnotations)
-                implementation(Dependency.d4l.sdkTestUtil)
             }
         }
 

@@ -28,12 +28,6 @@ object Version {
      */
     const val kotlin = "1.6.10"
 
-    // D4L
-    /**
-     * https://github.com/d4l-data4life/hc-test-util-sdk-kmp
-     */
-    const val sdkTestUtil = "0.5.0"
-
     // Android
     /**
      *  https://developer.android.com/studio/write/java8-support
