@@ -16,8 +16,8 @@
 
 package care.data4life.sdk.util
 
-import care.data4life.sdk.util.test.annotation.RobolectricTestRunner
-import care.data4life.sdk.util.test.annotation.RunWithRobolectricTestRunner
+import care.data4life.sdk.annotation.RobolectricTestRunner
+import care.data4life.sdk.annotation.RunWithRobolectricTestRunner
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
