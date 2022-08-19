@@ -25,23 +25,33 @@ Template could be found here: link:https://github.com/d4l-data4life/hc-readme-te
 ==== Versions
 toc::[]
 
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.13.0\...main[Unreleased]
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.14.0\...main[Unreleased]
 
 === Added
 
 === Changed
 
-* Android Target SDK 31 -> 33
-
 === Deprecated
 
 === Removed
 
-* hc-test-utils
-
 === Fixed
 
 === Security
+
+=== Bumped
+
+=== Migration
+
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.13.0\...v1.14.0[1.14.0]
+
+=== Changed
+
+* Android Target SDK 31 -> 33
+
+=== Removed
+
+* hc-test-utils
 
 === Bumped
 
@@ -52,10 +62,7 @@ toc::[]
 * Android AppCompat 1.4.1 -> 1.5.0
 * Android Constraint Layout 2.1.3 -> 2.1.4
 
-=== Migration
-
-
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.12.0\...1.13.0[1.13.0]
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.12.0\...v1.13.0[1.13.0]
 
 === Changed
 
@@ -65,7 +72,7 @@ toc::[]
 
 * hc-test-utils 0.4.0 -> 0.5.0
 
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/1.11.0\...1.12.0[1.12.0]
+== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v1.11.0\...v1.12.0[1.12.0]
 
 === Added
 
