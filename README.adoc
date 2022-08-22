@@ -91,7 +91,7 @@ The SDK has the following dependencies:
 === Requirements
 
 * link:https://adoptopenjdk.net/[Java 11] | link:https://developer.android.com/studio/write/java8-support[Limitations of Java language features and APIs] | https://jakewharton.com/d8-library-desugaring/[Desugaring]
-* link:https://kotlinlang.org/[Kotlin 1.6.10]
+* link:https://kotlinlang.org/[Kotlin 1.7.10]
 * Android 6.0 (API 23) to Android 11.0 (API 31)
 
 == Installation
